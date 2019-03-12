@@ -9,10 +9,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+            <link rel="stylesheet" type="text/css" href="">
+    <link rel="stylesheet" type="text/css" href="">
         <title>Pet Search</title>
     </head>
     <body>
-        <h1>Pet Search</h1>
-        <h2 style="color: red;">WEB SITE EM DESENVOLVIMENTO!!</h2>
+	<div align="center">
+                    <h1>Pet Search</h1>
+                    <h2 style="color: red;" align="center">EM DESENVOLVIMENTO!!</h2>	
+	</div>
     </body>
 </html>
