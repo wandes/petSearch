@@ -17,6 +17,7 @@
 	<div align="center">
                     <h1>Pet Search</h1>
                     <h2 style="color: red;" align="center">EM DESENVOLVIMENTO!!</h2>	
+                    <img src="https://mercado.etc.br/wp-content/uploads/2018/04/sinais-que-nos-indicam-se-um-cachorro-e-feliz.jpg">
 	</div>
     </body>
 </html>
