@@ -41,9 +41,9 @@ public class DatabaseConector {
    
     if (customerStmt != null) {
  
-                status = "STATUS--->Conectado com sucesso!";
+                status = "STATUS--->Conectado ao Banco com sucesso!";
             } else {
-                status = "STATUS--->Não foi possivel realizar conexão";
+                status = "STATUS--->Não foi possivel realizar conexão com o Banco de dados!";
             }
     con.close();
             return status;
