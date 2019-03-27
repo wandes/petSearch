@@ -29,7 +29,7 @@ public class DatabaseConector {
     
     private static final String PASS = "a3c7fd4329d7e123ba36da9e6593aa2f7933344c4866cc24e5b7770725ea1f66"; 
     
-    public  static String conection() throws SQLException{
+    public static String conection() throws SQLException{
      
      try{   
      Class.forName(DRIVER);
@@ -43,9 +43,12 @@ public class DatabaseConector {
             } else {
                 status = "STATUS--->Não foi possivel realizar conexão";
             }
+    con.close();
             return status;
     
      } catch (ClassNotFoundException e) {  //Driver não encontrado
        return "Erro: "+ e;}
-    } 
+    }
+    
+    
 }
