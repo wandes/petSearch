@@ -19,7 +19,7 @@ import java.util.concurrent.ExecutionException;
  */
 public class DatabaseConector {
     
-    private static final String DRIVER = "org.apache.derby.jdbc.ClientDriver";
+    private static final String DRIVER = "org.postgresql.Driver";
     
     private static final String URL = "postgres://wtdfwklzzaoenv:a3c7fd4329d7e"
    + "+123ba36da9e6593aa2f7933344c4866cc24e5b7770725ea1f66@"
