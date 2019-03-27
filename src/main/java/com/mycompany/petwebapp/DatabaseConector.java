@@ -21,9 +21,7 @@ public class DatabaseConector {
     
     private static final String DRIVER = "org.postgresql.Driver";
     
-    private static final String URL = "postgres://wtdfwklzzaoenv:a3c7fd4329d7e"
-   + "+123ba36da9e6593aa2f7933344c4866cc24e5b7770725ea1f66@"
-   + "ec2-50-19-109-120.compute-1.amazonaws.com:5432/df1vprb22k6md4";
+    private static final String URL = "postgres://wtdfwklzzaoenv:a3c7fd4329d7e123ba36da9e6593aa2f7933344c4866cc24e5b7770725ea1f66@ec2-50-19-109-120.compute-1.amazonaws.com:5432/df1vprb22k6md4";
     
     private static final String USER = "wtdfwklzzaoenv";
     
