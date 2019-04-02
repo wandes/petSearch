@@ -22,9 +22,7 @@
                     <h3><%= (DatabaseConector.conection())%></h3>
                     <img src="https://mercado.etc.br/wp-content/uploads/2018/04/sinais-que-nos-indicam-se-um-cachorro-e-feliz.jpg">
                     <%for (User i: User.getUsers()) {%>
-                    
                    <h4><%=i%></h4>
-                   
                    <%}%>
                     
 	</div>
