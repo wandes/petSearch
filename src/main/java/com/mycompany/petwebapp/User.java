@@ -13,7 +13,7 @@ import static javafx.css.StyleOrigin.USER;
  */
 public class User {
 
-    public User(int par, String nome, String email, int par4, char par5) {
+    public User(int id, String nome, String email, int celular, char sexo) {
     }
     private int id;
     private String nome; 
