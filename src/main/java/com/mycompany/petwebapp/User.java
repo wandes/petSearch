@@ -5,6 +5,7 @@
  */
 package com.mycompany.petwebapp;
 import java.util.ArrayList;
+import static javafx.css.StyleOrigin.USER;
 
 /**
  *
@@ -12,7 +13,7 @@ import java.util.ArrayList;
  */
 public class User {
 
-    public User(int id, String nome, String email, int celular, char sexo) {
+    public User(int par, String nome, String email, int par4, char par5) {
     }
     private int id;
     private String nome; 
