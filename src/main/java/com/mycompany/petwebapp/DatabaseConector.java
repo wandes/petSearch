@@ -29,9 +29,7 @@ public class DatabaseConector {
     
     
     public static String conection() throws SQLException{
-    
-      
-    
+   
      try{   
            
      Class.forName(DRIVER);
@@ -51,6 +49,5 @@ public class DatabaseConector {
      } catch (ClassNotFoundException e) {  //Driver não encontrado
        return "Erro: "+ e;}
     }
-    
     
 }
