@@ -5,7 +5,6 @@
  */
 package com.mycompany.petwebapp;
 import java.util.ArrayList;
-import static javafx.css.StyleOrigin.USER;
 
 /**
  *
