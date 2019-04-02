@@ -11,14 +11,22 @@ import java.util.ArrayList;
  * @author Wandes
  */
 public class User {
-
-    public User(int id, String nome, String email, int celular, char sexo) {
-    }
+   
     private int id;
     private String nome; 
     private String email;
     private int celular;
     private char sexo;
+
+    public User(int id, String nome, String email, int celular, char sexo) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.celular = celular;
+        this.sexo = sexo;
+    }
+    
+   
      
     public String getNome() {
         return nome;
