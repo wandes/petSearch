@@ -4,23 +4,22 @@
  * and open the template in the editor.
  */
 package com.mycompany.petwebapp;
+import java.util.ArrayList;
 
 /**
  *
  * @author Wandes
  */
 public class User {
+
+    public User(int id, String nome, String email, int celular, char sexo) {
+    }
+    private int id;
     private String nome; 
     private String email;
     private int celular;
-
-    public void User(String nome, String email, int celular) {
-        this.nome = nome;
-        this.email = email;
-        this.celular = celular;
-    }
-    
-    
+    private char sexo;
+     
     public String getNome() {
         return nome;
     }
@@ -59,5 +58,22 @@ public class User {
     //lista user
     }
     
+     public static ArrayList<User> getUsers() throws Exception {
+        String SQL = "SELECT * FROM USERS";
+        ArrayList<User> users = new ArrayList<>();
+        ArrayList<Object[]> list = DatabaseConector.getQuery(SQL, new Object[]{});
+        for (int i = 0; i < list.size(); i++) {
+            Object row[] = list.get(i);
+            User u = new User(
+                    (int) row[0], 
+                    (String) row[1], 
+                    (String) row[2], 
+                    (int) row[3], 
+                    (char) row[4]);
+            users.add(u);
+        }
+        return users;
+    }
+   
      
 }

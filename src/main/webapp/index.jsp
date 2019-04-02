@@ -4,6 +4,7 @@
     Author     : Wandes
 --%>
 <%@page import="com.mycompany.petwebapp.DatabaseConector"%>
+<%@page import="com.mycompany.petwebapp.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -20,6 +21,14 @@
                     <h2 style="color: red;" align="center">EM DESENVOLVIMENTO!!</h2>	
                     <h3><%= (DatabaseConector.conection())%></h3>
                     <img src="https://mercado.etc.br/wp-content/uploads/2018/04/sinais-que-nos-indicam-se-um-cachorro-e-feliz.jpg">
+                    <%User user = new User();
+                   
+                    for (String i: user.getUsers) {%>
+                    
+                   <h4><%=i%></h4>
+                   
+                   <%}%>
+                    
 	</div>
     </body>
 </html>
