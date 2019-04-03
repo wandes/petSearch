@@ -44,6 +44,7 @@ public class DatabaseConector {
                 status = "STATUS--->Não foi possivel realizar conexão com o Banco de dados!";
             }
             con.close();
+            customerStmt.close();
             return status;
 
         } catch (ClassNotFoundException e) {  //Driver não encontrado
