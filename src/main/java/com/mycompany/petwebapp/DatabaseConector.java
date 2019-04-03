@@ -19,56 +19,58 @@ import java.util.concurrent.ExecutionException;
  * @author Wandes
  */
 public class DatabaseConector {
-    
+
     private static final String DRIVER = "org.postgresql.Driver";
-    
+
     private static final String URL = "jdbc:postgresql://ec2-50-19-109-120.compute-1.amazonaws.com:5432/df1vprb22k6md4?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory";
-    
+
     private static final String USER = "wtdfwklzzaoenv";
-    
+
     private static final String PASS = "a3c7fd4329d7e123ba36da9e6593aa2f7933344c4866cc24e5b7770725ea1f66";
-    
-    
-    public static String conection() throws SQLException{
-   
-     try{   
-           
-     Class.forName(DRIVER);
-     String status = null;
-     Connection con = DriverManager.getConnection(URL, USER, PASS);       
-     Statement customerStmt = con.createStatement();
-   
-    if (customerStmt != null) {
- 
+
+    public static String conection() throws SQLException {
+
+        try {
+
+            Class.forName(DRIVER);
+            String status = null;
+            Connection con = DriverManager.getConnection(URL, USER, PASS);
+            Statement customerStmt = con.createStatement();
+
+            if (customerStmt != null) {
+
                 status = "STATUS--->Conectado ao Banco com sucesso!";
             } else {
                 status = "STATUS--->Não foi possivel realizar conexão com o Banco de dados!";
             }
-    con.close();
+            con.close();
             return status;
-    
-     } catch (ClassNotFoundException e) {  //Driver não encontrado
-       return "Erro: "+ e;}
-    } 
-    
-        public static final ArrayList<Object[]> getQuery(String SQL, Object[] parameters) throws Exception{
+
+        } catch (ClassNotFoundException e) {  //Driver não encontrado
+            return "Erro: " + e;
+        }
+    }
+
+    public static final ArrayList<Object[]> getQuery(String SQL, Object[] parameters) throws Exception {
         ArrayList<Object[]> list = new ArrayList<>();
         Class.forName(DRIVER);
         Connection con = DriverManager.getConnection(URL, USER, PASS);
         PreparedStatement stmt = con.prepareStatement(SQL);
         for (int i = 0; i < parameters.length; i++) {
-            stmt.setObject(i+1, parameters[i]);
+            stmt.setObject(i + 1, parameters[i]);
         }
         ResultSet rs = stmt.executeQuery();
-        while(rs.next()){
+        while (rs.next()) {
             Object row[] = new Object[rs.getMetaData().getColumnCount()];
             for (int i = 0; i < rs.getMetaData().getColumnCount(); i++) {
-                row[i] = rs.getObject(i+1);
+                row[i] = rs.getObject(i + 1);
             }
             list.add(row);
         }
-        rs.close(); stmt.close(); con.close();
+        rs.close();
+        stmt.close();
+        con.close();
         return list;
     }
-    
+
 }

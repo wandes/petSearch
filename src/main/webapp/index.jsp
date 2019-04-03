@@ -11,49 +11,19 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-            <link rel='stylesheet' type='text/css' href='css\style.css'>
+        <link rel='stylesheet' type='text/css' href='css\style.css'>
         <title>Pet Search</title>
-        
-        <style>
-            
-            
-        </style>
     </head>
-    <body>
-	<div align="center">
-                    <h1>Pet Search</h1>
- 	
-                    <h2>USUÁRIO CADASTRADO NO SISTEMA: </h2> 
-                    <br>
-                    <table>                     
-                        <thead>                         
-                            <tr> 
-                          <th>Id</th>
-                         <th>Nome</th>
-                          <th>Email</th>
-                           <th>Celular</th>
-                            </tr>                      
-                        </thead>
-                        
-                        <tbody>
-                            <tr>
-                    <%
-                     try{   
-                     for(User i : User.getUser()){%>
-                    <td> <%=i.getId()%></td> 
-                    <td> <%=i.getNome()%></td> 
-                    <td> <%=i.getEmail()%></td> 
-                    <td> <%=i.getCelular()%> </td>               
-                     <%}
-                 } catch (Exception e) {  //Driver não encontrado
-                    
-                    %><h2> ERROR: <%=e%></h2><%
-                      } 
     
-                     %>
-                      </tr>
-                     </tbody>
-                 </table>
-	</div>
+    <body style="text-align:center;">
+      <div >           
+       <h1 style="background-color:  #e1e1ea;">Pet Search</h1>    
+        <a href="user.jsp">Usuarios</a> |
+        <a href="animal.jsp">Animais</a>        
+      </div><br><br>
+        
+        <div>
+            <img src="https://pngimage.net/wp-content/uploads/2018/05/cachorros-em-png-3.png">
+        </div>
     </body>
 </html>

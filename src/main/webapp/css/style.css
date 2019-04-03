@@ -9,12 +9,58 @@ and open the template in the editor.
 */
 
 
-thead {color:black;}
-tbody {color:blue;}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 50%;
+  margin : auto;
+}
 
-table, th, td {
-  border: 0.5px solid black;
+td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
 }
-h2{
-    color: red;
+
+tr:nth-child(even) {
+  background-color: #dddddd;
 }
+
+button {
+  background-color: gray;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+ a{
+    text-decoration : none;
+    padding: 5px;
+   }
+
+  a :link{
+     
+     color: #b9c941;
+  }
+
+   a:visited{
+     
+     color: #c0c0c0;
+  }
+
+   a:hover{
+     
+     color: #FFF;
+     background: #6d790f;
+  }
+
+/*links ativos, quando clicado*/
+ a:active{
+     
+     color: #e4f371;
+  }
