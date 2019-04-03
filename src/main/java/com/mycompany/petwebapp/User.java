@@ -5,6 +5,7 @@
  */
 package com.mycompany.petwebapp;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -18,12 +19,12 @@ public class User {
     private int celular;
     private char sexo;
 
-    public User(int id, String nome, String email, int celular, char sexo) {
+    public User(int id, String nome, String email, int celular /*char sexo*/) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.celular = celular;
-        this.sexo = sexo;
+        //this.sexo = sexo;
     }
     
    
@@ -66,22 +67,41 @@ public class User {
     //lista user
     }
     
-     public static ArrayList<User> getUsers() throws Exception {
-        String SQL = "SELECT * FROM USERS";
-        ArrayList<User> users = new ArrayList<>();
+      public static ArrayList<User> getUser() throws Exception {
+        String SQL = "SELECT * FROM usuario;";
+        ArrayList<User> user = new ArrayList<>();
         ArrayList<Object[]> list = DatabaseConector.getQuery(SQL, new Object[]{});
         for (int i = 0; i < list.size(); i++) {
             Object row[] = list.get(i);
             User u = new User(
-                    (int) row[0], 
+                      (int) row[0],
                     (String) row[1], 
-                    (String) row[2], 
-                    (int) row[3], 
-                    (char) row[4]);
-            users.add(u);
+                    (String) row[2],
+                     (int)   row[3]);
+                     //(char) row[4]);
+            user.add(u);
         }
-        return users;
+  
+        return user;
+    } 
+
+    public int getId() {
+        return id;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+ /*   public char getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(char sexo) {
+        this.sexo = sexo;
+    }*/
+      
+      
    
      
 }

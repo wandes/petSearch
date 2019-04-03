@@ -51,7 +51,7 @@ public class DatabaseConector {
        return "Erro: "+ e;}
     } 
     
-     public static final ArrayList<Object[]> getQuery(String SQL, Object[] parameters) throws Exception{
+        public static final ArrayList<Object[]> getQuery(String SQL, Object[] parameters) throws Exception{
         ArrayList<Object[]> list = new ArrayList<>();
         Class.forName(DRIVER);
         Connection con = DriverManager.getConnection(URL, USER, PASS);
