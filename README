@@ -1,0 +1,10 @@
+Pet Search
+
+Projeto com fins acadêmicos desenvolvido no NetBeans IDE 8.2 e Maven ferramenta de automação de compilação utilizada primariamente 
+em projetos Java, utilizando o servidor Heroku para hospedagem e banco de dados PostgreSQL VERSÃO 11.2. 
+
+Descrição : 
+
+O sistema tem como objetivo auxiliar os donos que perderam os seus animais na procura e localização. Comparando as 
+características dos animais perdidos e mostrando os que foram encontrados nas proximidades, fornecendo aos donos 
+um alerta e uma lista dos animais com características semelhantes ao que procura.
