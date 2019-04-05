@@ -3,8 +3,7 @@
     Created on : 11/03/2019, 22:56:11
     Author     : Wandes
 --%>
-<%@page import="com.mycompany.petwebapp.DatabaseConector"%>
-<%@page import="com.mycompany.petwebapp.User"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -15,13 +14,13 @@
         <title>Pet Search</title>
     </head>
     
-    <body style="text-align:center;">
-      <div >           
-       <h1 style="background-color:  #e1e1ea;">Pet Search</h1>    
+   <body style="text-align:center;">
+     <!--  <div >           
+       
         <a href="user.jsp">Usuarios</a> |
         <a href="animal.jsp">Animais</a>        
-      </div><br><br>
-        
+      </div><br><br> -->
+        <h1 style="background-color:  #e1e1ea;">Pet Search</h1>    
         <div>
             <img src="https://pngimage.net/wp-content/uploads/2018/05/cachorros-em-png-3.png">
         </div>

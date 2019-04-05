@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.petwebapp;
+package br.com.petsearch.mvc.model;
 
 /**
  *
  * @author Wandes
  */
-public class Publication {
+public class Sugestor {
     
 }

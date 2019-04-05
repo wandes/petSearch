@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.petwebapp;
+package br.com.petsearch.mvc.model;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  *
@@ -80,10 +79,10 @@ public class User {
         //lista user
     }
   
-    public static ArrayList<User> getUser() throws Exception {
+ /*   public static ArrayList<User> getUser() throws Exception {
         String SQL = "SELECT * FROM usuario;";
         ArrayList<User> user = new ArrayList<>();
-        ArrayList<Object[]> list = DatabaseConector.getQuery(SQL, new Object[]{});
+        ArrayList<Object[]> list = DatabaseConnector.getQuery(SQL, new Object[]{});
         for (int i = 0; i < list.size(); i++) {
             Object row[] = list.get(i);
             User u = new User(
@@ -96,7 +95,7 @@ public class User {
         }
 
         return user;
-    }
+    }*/
 
 
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.petwebapp;
+package br.com.petsearch.mvc.model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -18,7 +18,7 @@ import java.util.concurrent.ExecutionException;
  *
  * @author Wandes
  */
-public class DatabaseConector {
+public class DatabaseConnector {
 
     private static final String DRIVER = "org.postgresql.Driver";
 
@@ -29,7 +29,7 @@ public class DatabaseConector {
     private static final String PASS = "a3c7fd4329d7e123ba36da9e6593aa2f7933344c4866cc24e5b7770725ea1f66";
 
     public static String conection() throws SQLException {
-
+        
         try {
 
             Class.forName(DRIVER);
@@ -52,7 +52,7 @@ public class DatabaseConector {
         }
     }
 
-    public static final ArrayList<Object[]> getQuery(String SQL, Object[] parameters) throws Exception {
+  /*  public static final ArrayList<Object[]> getQuery(String SQL, Object[] parameters) throws Exception {
         ArrayList<Object[]> list = new ArrayList<>();
         Class.forName(DRIVER);
         Connection con = DriverManager.getConnection(URL, USER, PASS);
@@ -72,6 +72,6 @@ public class DatabaseConector {
         stmt.close();
         con.close();
         return list;
-    }
+    }*/
 
 }
