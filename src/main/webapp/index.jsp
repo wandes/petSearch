@@ -9,20 +9,49 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel='stylesheet' type='text/css' href='css\style.css'>
+        <%@include file="WEB-INF/jspf/head.jspf"%>
         <title>Pet Search</title>
     </head>
     
-   <body style="text-align:center;">
+    <body>
      <!--  <div >           
-       
         <a href="user.jsp">Usuarios</a> |
         <a href="animal.jsp">Animais</a>        
       </div><br><br> -->
-        <h1 style="background-color:  #e1e1ea;">Pet Search</h1>    
-        <div>
-            <img src="https://pngimage.net/wp-content/uploads/2018/05/cachorros-em-png-3.png">
+     
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <!--header-->
+                <div class="navbar-header">
+                    <a href="index.jsp" class="navbar-brand">
+                        LOGO
+                    </a>
+                </div>
+                <!--navbar-->
+                <div class="">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Notificações</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Minha Conta</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Perfil</a></li>
+                                <li><a href="#">Sair</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div><!-- /container -->
+        </nav><!-- /nav -->
+        
+        <!--
+        <h1>Pet Search</h1>   --> 
+        <div class="container">
+            <img class="img-responsive" src="https://pngimage.net/wp-content/uploads/2018/05/cachorros-em-png-3.png">
         </div>
+        
+        
+        <%@include file="WEB-INF/jspf/bootstrapBody.jspf"%>
     </body>
 </html>
