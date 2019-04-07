@@ -27,29 +27,24 @@ public class User {
     private String sex;
    
 
-    /*public User(int id, String name, String email, String password, int telephone, String sex) {
+    public User(int id, String name, String email, String password, int telephone, String sex) {
     this.id = id;
     this.name = name;
     this.email = email;
     this.password = password;
     this.telephone = telephone;
     this.sex = sex;
-    }*/
-    public static void insertUser(String name, String email, String password, int telephone, String sex) throws SQLException, Exception {
-        //inserir usuario
-        try {
-
-            String sql = "INSERT INTO users (default, nome, email, celular, sexo) values ( ?, ?, ?, ?);";
-
-            Object parameters[] = {name, email, password, telephone, sex};
-            DatabaseConnector.execute(sql, parameters);
-
-        } catch (SQLException e) {
-            System.out.println(e);
-
-        }
-
     }
+   public static void insertUser(String name, String email, String password, int telephone, String sex) throws Exception {
+        //inserir usuario
+
+        String sql = "INSERT INTO  users (cd_user, nm_name, nm_email, nm_password, cd_telephone, sg_gender) VALUES (default, ?, ?, ?, ?, ?)";
+
+        Object parameters[] = {name, email, password, telephone, sex};
+
+        DatabaseConnector.execute(sql, parameters);
+
+    } 
 
     public List<User> getUsers() throws SQLException {
         //mostrar

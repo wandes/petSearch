@@ -22,11 +22,11 @@
 
         <div>
 
-            <form method="POST" action="">
+             <form method="POST" action="/ControllerServlet">
                 <fieldset name="Cadastrando usuário">
                     Nome : <input type="text" name="name" required placeholder="Nome"><br><br>
                     Email : <input type="email" name="email" required placeholder="email"><br><br>
-                    Senha : <input type="password" name="password" required placeholder="password"><br><br>
+                    Senha : <input type="text" name="password" required placeholder="password"><br><br>
                     Celular : <input type="number" name="telephone" required placeholder="celular"><br><br>
                      
                    <input type="radio" name="gender" value="male"> Masculino<br>
@@ -34,6 +34,8 @@
                    <input type="radio" name="gender" value="other"> Outros
                 </fieldset>
                 <br>
+                
+              
                 <button type="submit" value="add-user">Cadastrar </button>
 
             </form>
