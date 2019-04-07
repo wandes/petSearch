@@ -11,14 +11,11 @@
     <head>
         <%@include file="WEB-INF/jspf/head.jspf"%>
         <title>Pet Search</title>
+        
     </head>
     
     <body>
-     <!--  <div >           
-        <a href="user.jsp">Usuarios</a> |
-        <a href="animal.jsp">Animais</a>        
-      </div><br><br> -->
-     
+         
         <nav class="navbar navbar-default">
             <div class="container">
                 <!--header-->
@@ -45,8 +42,6 @@
             </div><!-- /container -->
         </nav><!-- /nav -->
         
-        <!--
-        <h1>Pet Search</h1>   --> 
         <div class="container">
             <img class="img-responsive" src="https://pngimage.net/wp-content/uploads/2018/05/cachorros-em-png-3.png">
         </div>
