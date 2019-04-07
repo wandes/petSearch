@@ -25,17 +25,17 @@ public class User {
     private String password;
     private int telephone;
     private String sex;
+   
 
-
-    public User(int id, String name, String email, String password, int telephone, String sex) {
+    /*public User(int id, String name, String email, String password, int telephone, String sex) {
     this.id = id;
     this.name = name;
     this.email = email;
     this.password = password;
     this.telephone = telephone;
     this.sex = sex;
-    }
-    public void insertUser(String name, String email, String password, int telephone, String sex) throws SQLException, Exception {
+    }*/
+    public static void insertUser(String name, String email, String password, int telephone, String sex) throws SQLException, Exception {
         //inserir usuario
         try {
 

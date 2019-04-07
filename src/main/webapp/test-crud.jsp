@@ -22,7 +22,7 @@
 
         <div>
 
-            <form method="POST">
+            <form method="POST" action="">
                 <fieldset name="Cadastrando usuário">
                     Nome : <input type="text" name="name" required placeholder="Nome"><br><br>
                     Email : <input type="email" name="email" required placeholder="email"><br><br>
@@ -34,7 +34,7 @@
                    <input type="radio" name="gender" value="other"> Outros
                 </fieldset>
                 <br>
-                <button type="submit" >Cadastrar </button>
+                <button type="submit" value="add-user">Cadastrar </button>
 
             </form>
 
