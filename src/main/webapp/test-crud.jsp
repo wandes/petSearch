@@ -15,7 +15,31 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-     
-        
+
+        <h2>TESTER CRUD</h2>
+
+
+
+        <div>
+
+            <form method="POST">
+                <fieldset name="Cadastrando usuário">
+                    Nome : <input type="text" name="name" required placeholder="Nome"><br><br>
+                    Email : <input type="email" name="email" required placeholder="email"><br><br>
+                    Senha : <input type="password" name="password" required placeholder="password"><br><br>
+                    Celular : <input type="number" name="telephone" required placeholder="celular"><br><br>
+                     
+                   <input type="radio" name="gender" value="male"> Masculino<br>
+                  <input type="radio" name="gender" value="female"> Feminino<br>
+                   <input type="radio" name="gender" value="other"> Outros
+                </fieldset>
+                <br>
+                <button type="submit" >Cadastrar </button>
+
+            </form>
+
+        </div>  
+
+
     </body>
 </html>

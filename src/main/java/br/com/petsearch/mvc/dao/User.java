@@ -25,42 +25,24 @@ public class User {
     private String password;
     private int telephone;
     private String sex;
-    
-    public User() {
-        
-    }
 
-    /*  public User(int id, String name, String email, String password, int telephone, String sex) {
+
+    public User(int id, String name, String email, String password, int telephone, String sex) {
     this.id = id;
     this.name = name;
     this.email = email;
     this.password = password;
     this.telephone = telephone;
     this.sex = sex;
-    }*/
-    
- 
-    public  void insertUser(String name, String email, String password, int telephone, String sex) throws SQLException {
+    }
+    public void insertUser(String name, String email, String password, int telephone, String sex) throws SQLException, Exception {
         //inserir usuario
-        Connection con = null;
-
         try {
-            con = new DatabaseConnector().getConnection();
 
             String sql = "INSERT INTO users (default, nome, email, celular, sexo) values ( ?, ?, ?, ?);";
 
-            PreparedStatement stmt = con.prepareStatement(sql);
-
-            stmt.setString(2, name);
-            stmt.setString(3, email);
-            stmt.setString(4, password);
-            stmt.setInt(5, telephone);
-            stmt.setString(6, sex);
-
-            stmt.execute();
-            stmt.close();
-            System.out.println("Gravado!");
-            con.close();
+            Object parameters[] = {name, email, password, telephone, sex};
+            DatabaseConnector.execute(sql, parameters);
 
         } catch (SQLException e) {
             System.out.println(e);
@@ -69,43 +51,14 @@ public class User {
 
     }
 
-    public  List<User> getUsers() throws SQLException {
+    public List<User> getUsers() throws SQLException {
         //mostrar
-        
-       try{
-        Connection con = null;
-       
-            con = new DatabaseConnector().getConnection();
 
-            String sql = "SELECT * FROM users;";
+ 
 
-            PreparedStatement stmt = con.prepareStatement(sql);
+        String sql = "SELECT * FROM users;";
+        return null;
 
-            List<User> u = new ArrayList<User>();
-            
-            ResultSet rs = stmt.executeQuery();
-            
-            while (rs.next()) {
-
-                User user = new User();
-             
-                user.setId(rs.getInt("id"));
-                user.setName(rs.getString("name"));
-                user.setEmail(rs.getString("email"));
-                user.setPassword(rs.getString("password"));
-                user.setTelephone(rs.getInt("Telephone"));
-                user.setSex(rs.getString("sex"));
-                
-                u.add(user);
-            }
-            rs.close();
-            stmt.close();
-            
-            return u;         
-    } catch(SQLException e){
-     return null;
-    }
-      
     }
 
     public static boolean updateUser() {
@@ -166,6 +119,4 @@ public class User {
         this.sex = sex;
     }
 
-    
-    
 }

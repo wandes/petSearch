@@ -28,13 +28,42 @@ public class DatabaseConnector {
 
     private static final String PASS = "a3c7fd4329d7e123ba36da9e6593aa2f7933344c4866cc24e5b7770725ea1f66";
 
-    public Connection getConnection() {
-        try {
-            return DriverManager.getConnection(URL, USER, PASS);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+ 
+    
+     public static final ArrayList<Object[]> getQuery(String SQL, Object[] parameters) throws Exception{
+        ArrayList<Object[]> list = new ArrayList<>();
+        Class.forName(DRIVER);
+        Connection con = DriverManager.getConnection(URL, USER, PASS);
+        PreparedStatement stmt = con.prepareStatement(SQL);
+        for (int i = 0; i < parameters.length; i++) {
+            stmt.setObject(i+1, parameters[i]);
         }
-        
+        ResultSet rs = stmt.executeQuery();
+        while(rs.next()){
+            Object row[] = new Object[rs.getMetaData().getColumnCount()];
+            for (int i = 0; i < rs.getMetaData().getColumnCount(); i++) {
+                row[i] = rs.getObject(i+1);
+            }
+            list.add(row);
+        }
+        rs.close(); stmt.close(); con.close();
+        return list;
     }
+    
+     //insere um objeto no banco
+    public static void execute (String SQL, Object[] parameters) throws Exception{
+        ArrayList<Object[]> list = new ArrayList<>();
+        Class.forName(DRIVER);
+        Connection con = DriverManager.getConnection(URL, USER, PASS);
+        PreparedStatement stmt = con.prepareStatement(SQL);
+        for (int i = 0; i < parameters.length; i++) {
+            stmt.setObject(i+1, parameters[i]);
+        }
+        stmt.execute();
+        stmt.close(); 
+        con.close();
+    }
+    
+    
     
 }

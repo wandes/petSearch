@@ -37,4 +37,3 @@ nm_cidade varchar(20),
 sg_estado varchar(2),
 nm_pais varchar(30),
 primary key (cd_endereco));
-
