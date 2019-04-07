@@ -4,6 +4,8 @@
     Author     : Wandes
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="br.com.petsearch.mvc.dao.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,5 +15,7 @@
     </head>
     <body>
         <h1>Hello World!</h1>
+     
+        
     </body>
 </html>

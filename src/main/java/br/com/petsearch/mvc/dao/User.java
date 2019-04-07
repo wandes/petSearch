@@ -30,16 +30,17 @@ public class User {
         
     }
 
-    public User(int id, String name, String email, String password, int telephone, String sex) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.telephone = telephone;
-        this.sex = sex;
-    }
-
-    public static void insertUser(String name, String email, String password, int telephone, String sex) throws SQLException {
+    /*  public User(int id, String name, String email, String password, int telephone, String sex) {
+    this.id = id;
+    this.name = name;
+    this.email = email;
+    this.password = password;
+    this.telephone = telephone;
+    this.sex = sex;
+    }*/
+    
+ 
+    public  void insertUser(String name, String email, String password, int telephone, String sex) throws SQLException {
         //inserir usuario
         Connection con = null;
 
@@ -68,8 +69,10 @@ public class User {
 
     }
 
-    public static List<User> getUsers() throws SQLException {
+    public  List<User> getUsers() throws SQLException {
         //mostrar
+        
+       try{
         Connection con = null;
        
             con = new DatabaseConnector().getConnection();
@@ -99,6 +102,10 @@ public class User {
             stmt.close();
             
             return u;         
+    } catch(SQLException e){
+     return null;
+    }
+      
     }
 
     public static boolean updateUser() {
