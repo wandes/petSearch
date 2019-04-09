@@ -14,4 +14,6 @@
     <body>
        Usuario :  ${param.name} adicionado com sucesso
     </body>
+    <br>
+    <a href="test-crud.jsp">Voltar</a>
 </html>
