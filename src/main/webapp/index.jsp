@@ -45,8 +45,7 @@
         <div class="container">
             <img class="img-responsive" src="https://pngimage.net/wp-content/uploads/2018/05/cachorros-em-png-3.png">
         </div>
-        
-        
+       
         <%@include file="WEB-INF/jspf/bootstrapBody.jspf"%>
     </body>
 </html>
