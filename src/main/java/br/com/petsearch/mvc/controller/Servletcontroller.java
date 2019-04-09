@@ -30,7 +30,7 @@ public class Servletcontroller extends HttpServlet {
             try {
                 User.insertUser(request.getParameter("name"), request.getParameter("email"), request.getParameter("password"),
                         Integer.parseInt(request.getParameter("telephone")), request.getParameter("gender"));
-                RequestDispatcher rd = request.getRequestDispatcher("/add-user.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/test-crud.jsp");
                 rd.forward(request, response);
             } catch (Exception ex) {
                 Logger.getLogger(Servletcontroller.class.getName()).log(Level.SEVERE, null, ex);

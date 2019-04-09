@@ -35,11 +35,10 @@ and open the template in the editor.
   height: 110px;
 }
 
-/*
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 50%;
+  width: 80%;
   margin : auto;
 }
 
@@ -52,7 +51,7 @@ td, th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
-
+/*
 button {
   background-color: gray;
   border: none;

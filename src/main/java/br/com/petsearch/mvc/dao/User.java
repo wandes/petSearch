@@ -46,14 +46,22 @@ public class User {
 
     } 
 
-    public List<User> getUsers() throws SQLException {
-        //mostrar
-
- 
-
-        String sql = "SELECT * FROM users;";
-        return null;
-
+   public static ArrayList<User> getUsers() throws Exception {
+        String SQL = "SELECT * FROM users;";
+        ArrayList<User> usuarios = new ArrayList<>();
+        ArrayList<Object[]> list = DatabaseConnector.getQuery(SQL, new Object[]{});
+        for (int i = 0; i < list.size(); i++) {
+            Object row[] = list.get(i);
+            User u = new User(
+                    (int) row[0],
+                    (String) row[1],
+                    (String) row[2], 
+                    (String) row[3], 
+                    (int) row[4],
+                    (String) row[5]);
+            usuarios.add(u);
+        }
+        return usuarios;
     }
 
     public static boolean updateUser() {
