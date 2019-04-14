@@ -9,7 +9,7 @@
 <html>
     <head>
         <%@include file="../WEB-INF/jspf/head.jspf"%>
-        <title>JSP Page</title>
+        <title>Home</title>
     </head>
     <body>
         <%@include file="../WEB-INF/jspf/header.jspf"%>
@@ -20,9 +20,49 @@
                     <div class="col-sm-4">
                         <div class="container border"><!-- Sidebar -->
                             <div class="row">
-                            <div class="col-sm-12 py-3 ">
-                                <img src="../img/testePerfil.jpg" alt="avatar" class="md-avatar rounded-circle">
+                                <div class="col-12 py-3 ">
+                                    <img src="../img/testePerfil.jpg" alt="avatar" class="md-avatar rounded-circle">
+                                    <span class="pl-2">Nome Sobrenome</span>
+                                </div>
                             </div>
+                            <div class="row">
+                                <button type="button" class="btn btn-primary m-2 w-100" data-toggle="modal" data-target="#criarPublicacao">Criar publicação</button>
+                                <div class="modal fade" id="criarPublicacao" tabindex="-1" role="dialog" aria-labelledby="TituloModalCriarPublicacao" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="TituloModalCriarPublicacao">Crie sua publicação!</h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                        </div>
+                                        <div class="modal-body">
+                                          <!-- FORMULÁRIO DE EDIÇÃO --->
+                                          <form>
+                                              <div class="form-group text-left">
+                                                <div class="border-bottom text-center font-weight-bold my-2">Sobre seu pet</div>
+                                                <label for="editarNomePet">Nome</label>
+                                                <input type="text" class="form-control" id="criarNomePet" placeholder="Nome do seu pet">
+                                                <label for="editarIdade">Idade</label>
+                                                <input type="text" class="form-control" id="criarIdade" placeholder="Idade do seu pet">
+                                                <label for="editarEstado">Espécie</label>
+                                                <input type="text" class="form-control" id="criarEspecie" placeholder="Espécie do seu pet">
+                                                <label for="editarCidade">Raça</label>
+                                                <input type="text" class="form-control" id="criarRaca" placeholder="Raça do seu pet">
+                                                <label for="editarRua">Sexo</label>
+                                                <input type="text" class="form-control" id="criarSexo" placeholder="Sexo do seu pet">
+                                                <label for="editarCor">Cor</label>
+                                                <input type="text" class="form-control" id="criarCor" placeholder="Cor do seu pet">
+                                              </div>
+                                          </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                          <button type="button" class="btn btn-primary">Salvar mudanças</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -30,20 +70,21 @@
                     <div class="col-sm-8 mb-5">
                         <div class="container border py-2"><!-- Principal -->
                             <div class="row"><!-- Header da postagem -->
-                                <div class="col-sm-4 d-flex align-items-center">
-                                    <img src="../img/testePerfil.jpg" alt="avatar" class="md-avatar size-3 rounded-circle">
-                                    <p class="pl-2">Nome Sobrenome</p>
+                                <div class="col-lg-4 d-flex align-items-center">
+                                    <img src="../img/testePerfil.jpg" alt="avatar" class="md-avatar size-2 rounded-circle">
+                                    <span class="pl-3">Nome Sobrenome</span>
                                 </div>
-                                <div class="col-sm-2 d-flex flex-column py-4">
+                                
+                                <div class="col-lg-2 d-flex flex-column py-4">
                                     <span class=" text-center">Nome</span>
                                     <span class=" text-center">Espécie Raça</span>
                                     <span class=" text-center">Sexo</span>
                                 </div>
-                                <div class="col-sm-2 d-flex flex-column py-4">
+                                <div class="col-lg-2 d-flex flex-column py-4">
                                     <span class=" text-center">Cor</span>
                                     <span class=" text-center">Idade</span>
                                 </div>
-                                <div class="col-sm-4 d-flex flex-column py-4">
+                                <div class="col-lg-4 d-flex flex-column py-4">
                                     <span class=" text-center">ENCONTRADO EM:</span>
                                     <span class=" text-center">Rua José Agapito Cardoso</span>
                                 </div>
@@ -110,6 +151,7 @@
                                     </div>
                                 </div>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
