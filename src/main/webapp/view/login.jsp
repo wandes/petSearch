@@ -42,7 +42,7 @@
                 <div class="row" >
                     <img class="img-responsive col-sm-6 pull-right " src="https://pngimage.net/wp-content/uploads/2018/05/cachorros-em-png-3.png">
                     <div class="col-sm-6 ">
-                        <div class="">
+                        <div class="row text-right">
                             <span class=" h3 text-warning">Cadastre-se !</span>
                         </div>
                         <form>
@@ -65,18 +65,18 @@
                             <label for="confirmaSenha" class="text-warning">Endereço</label>
                             <div class="row text-left">
                                 <div class="col-sm input-group small mb-2">    
-                                    <input type="password" class="form-control" id="Pais"  aria-label="Username" placeholder="País" aria-describedby="basic-addon1">
+                                    <input type="text" class="form-control" id="Pais"  aria-label="Username" placeholder="País" aria-describedby="basic-addon1">
                                 </div>
                                 <div class="col-sm input-group small mb-2">    
-                                    <input type="password" class="form-control" id="Estado"  aria-label="Username" placeholder="Estado" aria-describedby="basic-addon1">
+                                    <input type="text" class="form-control" id="Estado"  aria-label="Username" placeholder="Estado" aria-describedby="basic-addon1">
                                 </div>
                             </div>
                             <div class="row text-left">
                                 <div class="col-sm input-group small mb-2">    
-                                    <input type="password" class="form-control" id="Cidade"  aria-label="Username" placeholder="Cidade" aria-describedby="basic-addon1">
+                                    <input type="text" class="form-control" id="Cidade"  aria-label="Username" placeholder="Cidade" aria-describedby="basic-addon1">
                                 </div>
                                 <div class="col-sm input-group small mb-2">
-                                    <input type="password" class="form-control" id="Bairro"  aria-label="Username" placeholder="Bairro" aria-describedby="basic-addon1">
+                                    <input type="text" class="form-control" id="Bairro"  aria-label="Username" placeholder="Bairro" aria-describedby="basic-addon1">
                                 </div>
                             </div>
                             <div class="row text-left">
