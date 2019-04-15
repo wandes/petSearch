@@ -42,18 +42,43 @@
                 <div class="row" >
                     <img class="img-responsive col-sm-6 pull-right " src="https://pngimage.net/wp-content/uploads/2018/05/cachorros-em-png-3.png">
                     <div class="col-sm-6 ">
-                        <span class=" h3 text-warning text-center">Cadastre-se !</span>
+                        <div class="">
+                            <span class=" h3 text-warning">Cadastre-se !</span>
+                        </div>
                         <form>
-                            <div class="form-group-sm mb-3">
-                                <label for="emailCadastro" class="text-warning">E-mail</label>
-                                <input type="text" class="form-control" id="emailCadastro" placeholder="Ex:Fulano@gmail.com" />
-                                
-                                <label for="senhacadastro" class=" text-warning">Senha</label>
-                                <input type="password" class="form-control"  id="senhaCadastro">  
-                                
-                                <label for="confirmacadastro" class="text-warning">Confirme</label>
-                                <input type="text" class="form-control"  id="confirmaCadastro"/>
+                            <div class="row text-left">
+                            <label for="email" class="text-warning">E-mail</label>
+                            <div class=" input-group small mb-2">
+                                <input type="text" class="form-control"  id="email"  aria-label="Username" aria-describedby="basic-addon1">
                             </div>
+
+                            <label for="senha" class="text-warning">Senha</label>
+                            <div class="col-sm-4 input-group small mb-2">    
+                                <input type="password" class="form-control" id="senha"  aria-label="Username" aria-describedby="basic-addon1">
+                            </div>
+                            
+                            <label for="confirmaSenha" class="text-warning">Confirme</label>
+                            <div class="col-sm-4 input-group small mb-2">    
+                                <input type="password" class="form-control" id="confirmaSenha"  aria-label="Username" aria-describedby="basic-addon1">
+                            </div>
+                            
+                            <label for="confirmaSenha" class="text-warning">Endereço</label>
+                            <div class="col-sm-4 input-group small mb-2">    
+                                <input type="password" class="form-control" id="Pais"  aria-label="Username" placeholder="País" aria-describedby="basic-addon1">
+                            </div>
+                            <div class="col-sm-4 input-group small mb-2">    
+                                <input type="password" class="form-control" id="Estado"  aria-label="Username" placeholder="Estado" aria-describedby="basic-addon1">
+                            </div>
+                            
+                            <div class="col-sm-4 input-group small mb-2">    
+                                <input type="password" class="form-control" id="Cidade"  aria-label="Username" placeholder="Cidade" aria-describedby="basic-addon1">
+                            </div>
+                            <div class="col-sm-4 input-group small mb-2">    
+                                <input type="password" class="form-control" id="Bairro"  aria-label="Username" placeholder="Bairro" aria-describedby="basic-addon1">
+                            </div>
+                            
+                            <button type="button" class="col-sm btn btn-sm btn-outline-warning ">Cadastrar</button
+                    </div>
                         </form>
                     </div>
                     
