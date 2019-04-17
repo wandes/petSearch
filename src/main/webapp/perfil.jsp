@@ -81,7 +81,7 @@
                                                       <div class="form-check form-check-inline">
                                                         <input class="form-check-input" type="radio" name="radioSexo" id="editarSexo" value="Feminino">
                                                         <label class="form-check-label" for="editarSexo">Feminino</label>
-                                                      </div>
+                                                      </div><!--
                                                       <div class="border-bottom text-center font-weight-bold my-2">Sobre seu endereço</div>
                                                       <label for="editarPais">País</label>
                                                       <input type="text" class="form-control" id="editarNome" value="Brasil" placeholder="Seu país">
@@ -90,7 +90,7 @@
                                                       <label for="editarCidade">Cidade</label>
                                                       <input type="text" class="form-control" id="editarNome" value="Praia Grande" placeholder="Sua cidade">
                                                       <label for="editarRua">Rua</label>
-                                                      <input type="text" class="form-control" id="editarNome" value="José Agapito Cardoso" placeholder="Sua rua">
+                                                      <input type="text" class="form-control" id="editarNome" value="José Agapito Cardoso" placeholder="Sua rua">-->
                                                     </div>
                                                 </form>
                                               </div>
@@ -154,7 +154,7 @@
                                             <div class="col-8">
                                                 <div class="text-left">Masculino</div>
                                             </div>
-                                        </div>
+                                        </div><!--
                                         <div class="border-bottom text-left pl-3">
                                                 Sobre seu endereço
                                         </div>
@@ -189,7 +189,7 @@
                                             <div class="col-8">
                                                 <div class="text-left">José Agapito Cardoso</div>
                                             </div>
-                                        </div>
+                                        </div>-->
                                     </div>
                                     </div>
                                     
