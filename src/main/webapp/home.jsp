@@ -8,11 +8,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <%@include file="../WEB-INF/jspf/head.jspf"%>
+        <%@include file="WEB-INF/jspf/head.jspf"%>
         <title>Home</title>
     </head>
    
-        <%@include file="../WEB-INF/jspf/header.jspf"%>
+        <%@include file="WEB-INF/jspf/header.jspf"%>
         
         <%User user = (User)session.getAttribute("session_user");%>
         
@@ -164,6 +164,6 @@
     </div>
 </main>
 
-<%@include file="../WEB-INF/jspf/bootstrapBody.jspf"%>
+<%@include file="WEB-INF/jspf/bootstrapBody.jspf"%>
  
 </html>

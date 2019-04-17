@@ -2,10 +2,10 @@
 <%@ page pageEncoding="UTF-8" %>
 <nav class="navbar sticky-top navbar-expand-sm border-bottom bg-white">
     <div class="container">
-        <a class="navbar-brand text-warning" href="../view/home.jsp">LOGO</a>
+        <a class="navbar-brand text-warning" href="home.jsp">LOGO</a>
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link text-warning" href="../view/home.jsp">Página Inicial</a>
+                <a class="nav-link text-warning" href="home.jsp">Página Inicial</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-warning" href="#">Notificações</a>
@@ -15,7 +15,7 @@
                   Minha Conta
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item text-warning" href="../view/perfil.jsp">Perfil</a>
+                  <a class="dropdown-item text-warning" href="perfil.jsp">Perfil</a>
                   <a class="dropdown-item text-warning" href="#">Sair</a>
                 </div>
             </li>

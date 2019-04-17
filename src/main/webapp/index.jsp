@@ -1,27 +1,24 @@
 <%-- 
-    Document   : login
-    Created on : 14/04/2019, 18:29:51
-    Author     : thiag
+    Document   : index.jsp
+    Created on : 16/04/2019, 22:43:34
+    Author     : Wandes
 --%>
-
 <%@page import="br.com.petsearch.mvc.dao.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html>
     <head>
-        <%@include file="../WEB-INF/jspf/head.jspf"%>
-        <title>Login</title>
-
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <%@include file="WEB-INF/jspf/head.jspf"%>
+        <title>JSP Page</title>
     </head>
-
     <body>
 
         <nav class="navbar sticky-top navbar-expand-sm border-bottom bg-white">
             <div class="container">
                 <a class="navbar-brand text-warning" href="../view/home.jsp">LOGO</a>
 
-                <form method="post" action="login.jsp">
+                <form method="post" action="index.jsp">
                     <div class="row text-left">
                         <label for="email" class="text-warning">E-mail</label>
                         <div class="col-sm input-group small mb-2">
@@ -119,6 +116,6 @@
 
 
 
-    <%@include file="../WEB-INF/jspf/bootstrapBody.jspf"%>
+    <%@include file="WEB-INF/jspf/bootstrapBody.jspf"%>
 </body>
 </html>
