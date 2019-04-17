@@ -22,7 +22,7 @@
                     <div class="row text-left">
                         <label for="email" class="text-warning">E-mail</label>
                         <div class="col-sm input-group small mb-2">
-                            <input type="text" class="form-control"  id="email"  aria-label="Username" aria-describedby="basic-addon1" name="email">
+                            <input type="email" class="form-control"  id="email"  aria-label="Username" aria-describedby="basic-addon1" name="email">
                         </div>
 
                         <label for="senha" class="text-warning">Senha</label>
