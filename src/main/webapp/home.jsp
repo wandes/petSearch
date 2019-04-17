@@ -27,7 +27,7 @@
                 <div class="container border"><!-- Sidebar -->
                     <div class="row">
                         <div class="col-12 py-3 ">
-                            <img src="../img/testePerfil.jpg" alt="avatar" class="md-avatar rounded-circle">
+                            <img src="img/testePerfil.jpg" alt="avatar" class="md-avatar rounded-circle">
                             <span class="pl-2"><%=user.getName()%></span>
                         </div>
                     </div>
@@ -77,7 +77,7 @@
                 <div class="container border py-2"><!-- Principal -->
                     <div class="row"><!-- Header da postagem -->
                         <div class="col-lg-4 d-flex align-items-center">
-                            <img src="../img/testePerfil.jpg" alt="avatar" class="md-avatar size-2 rounded-circle">
+                            <img src="img/testePerfil.jpg" alt="avatar" class="md-avatar size-2 rounded-circle">
                             <span class="pl-3">Nome Sobrenome</span>
                         </div>
 
@@ -110,13 +110,13 @@
                         <div id="carouselExampleControls" class="carousel slide col-sm-12 px-0">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img src="../img/testeCarrossel.jpg" class="d-block w-100" alt="...">
+                                    <img src="img/testeCarrossel.jpg" class="d-block w-100" alt="...">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="../img/testeCarrossel.jpg" class="d-block w-100" alt="...">
+                                    <img src="img/testeCarrossel.jpg" class="d-block w-100" alt="...">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="../img/testeCarrossel.jpg" class="d-block w-100" alt="...">
+                                    <img src="img/testeCarrossel.jpg" class="d-block w-100" alt="...">
                                 </div>
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">

@@ -66,7 +66,22 @@
                                                       <label for="editarFoto">Fonto de perfil</label>
                                                       <input type="file" class="form-control-file" id="editarFoto">
                                                       <label for="editarNome">Nome</label>
-                                                      <input type="text" class="form-control" id="editarNome" value="Leonardo Santos" placeholder="Seu nome">
+                                                      <input type="text" class="form-control" id="editarNome" value="Leonardo Santos">
+                                                      <label for="editarNome">E-mail</label>
+                                                      <input type="email" class="form-control" id="editarEmail" value="leonardo@hotmail.com">
+                                                      <label for="editarNome">Senha</label>
+                                                      <input type="text" class="form-control" id="editarSenha" value="1234">
+                                                      <label for="editarNome">Celular</label>
+                                                      <input type="number" class="form-control" id="editarCelular" value="13988741744">
+                                                      <label class="d-block" for="editarSexo">Sexo</label>
+                                                      <div class="form-check form-check-inline">
+                                                          <input class="form-check-input" type="radio" name="radioSexo" id="editarSexo" value="Masculino">
+                                                        <label class="form-check-label" for="editarSexo">Masculino</label>
+                                                      </div>
+                                                      <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="radioSexo" id="editarSexo" value="Feminino">
+                                                        <label class="form-check-label" for="editarSexo">Feminino</label>
+                                                      </div>
                                                       <div class="border-bottom text-center font-weight-bold my-2">Sobre seu endereço</div>
                                                       <label for="editarPais">País</label>
                                                       <input type="text" class="form-control" id="editarNome" value="Brasil" placeholder="Seu país">
@@ -96,7 +111,7 @@
                                             </div>
                                             <div class="col-8">
                                                 <div class="text-left">
-                                                    <img src="../img/testePerfil.jpg" alt="avatar" class="md-avatar size-3 rounded-circle">
+                                                    <img src="img/testePerfil.jpg" alt="avatar" class="md-avatar size-3 rounded-circle">
                                                 </div>
                                             </div>
                                         </div>
@@ -106,6 +121,38 @@
                                             </div>
                                             <div class="col-8">
                                                 <div class="text-left"><%=user.getName()%></div>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-2">
+                                            <div class="col-4 ">
+                                                <div class="font-weight-bold text-right">E-mail:</div>
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="text-left">leonardo@hotmail.com</div>
+                                            </div>
+                                        </div>
+                                            <div class="row mt-2">
+                                            <div class="col-4 ">
+                                                <div class="font-weight-bold text-right">Senha:</div>
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="text-left">1234</div>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-2">
+                                            <div class="col-4 ">
+                                                <div class="font-weight-bold text-right">Celular:</div>
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="text-left">13988741744</div>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-2">
+                                            <div class="col-4 ">
+                                                <div class="font-weight-bold text-right">Sexo:</div>
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="text-left">Masculino</div>
                                             </div>
                                         </div>
                                         <div class="border-bottom text-left pl-3">
