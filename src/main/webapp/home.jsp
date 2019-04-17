@@ -4,6 +4,7 @@
     Author     : Leona
 --%>
 <%@page import="br.com.petsearch.mvc.dao.User"%>
+<%@page import="br.com.petsearch.mvc.dao.Animal"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,6 +20,14 @@
         <%if(user == null) {
             response.sendRedirect("login.jsp");             
               }%> 
+              
+  <%if (request.getParameter("registerPet") != null) {
+          String descricao = "";
+                    try {Animal.inserAnimal(0, request.getParameter("namePet"), request.getParameter("speciesPet"), request.getParameter("racePet"), request.getParameter("colorPet"), Integer.parseInt(request.getParameter("agePet")),descricao);
+                response.sendRedirect("home.jsp");
+            } catch (Exception ex) {
+             System.out.println(ex.getMessage());
+          } } %>
 
 <main class="mt-3">
     <div class="container">
@@ -42,30 +51,35 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
+                                    
+                                     <form method="post" action="home.jsp">
                                     <div class="modal-body">
                                         <!-- FORMULÁRIO DE EDIÇÃO --->
-                                        <form>
+                                       
+                                        
+                                    
                                             <div class="form-group text-left">
                                                 <div class="border-bottom text-center font-weight-bold my-2">Sobre seu pet</div>
                                                 <label for="editarNomePet">Nome</label>
-                                                <input type="text" class="form-control" id="criarNomePet" placeholder="Nome do seu pet">
+                                                <input type="text" class="form-control" id="criarNomePet" name="namePet" placeholder="Nome do seu pet">
                                                 <label for="editarIdade">Idade</label>
-                                                <input type="text" class="form-control" id="criarIdade" placeholder="Idade do seu pet">
+                                                <input type="text" class="form-control" id="criarIdade" name="agePet" placeholder="Idade do seu pet">
                                                 <label for="editarEstado">Espécie</label>
-                                                <input type="text" class="form-control" id="criarEspecie" placeholder="Espécie do seu pet">
+                                                <input type="text" class="form-control" id="criarEspecie" name="speciesPet" placeholder="Espécie do seu pet">
                                                 <label for="editarCidade">Raça</label>
-                                                <input type="text" class="form-control" id="criarRaca" placeholder="Raça do seu pet">
+                                                <input type="text" class="form-control" id="criarRaca" name="racePet" placeholder="Raça do seu pet">
                                                 <label for="editarRua">Sexo</label>
-                                                <input type="text" class="form-control" id="criarSexo" placeholder="Sexo do seu pet">
+                                                <input type="text" class="form-control" id="criarSexo" name="genderPet" placeholder="Sexo do seu pet">
                                                 <label for="editarCor">Cor</label>
-                                                <input type="text" class="form-control" id="criarCor" placeholder="Cor do seu pet">
+                                                <input type="text" class="form-control" id="criarCor" name="colorPet" placeholder="Cor do seu pet">
                                             </div>
-                                        </form>
+                                        
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                        <button type="button" class="btn btn-primary">Salvar mudanças</button>
+                                        <button type="submit" class="btn btn-primary" name="registerPet">Salvar mudanças</button>
                                     </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>

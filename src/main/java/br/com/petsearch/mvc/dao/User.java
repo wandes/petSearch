@@ -87,10 +87,10 @@ ArrayList<Object[]> list = DatabaseConnector.getQuery(SQL, parameters);
 } 
  
 
-    public static void updateUser(String name, String email, String password, int telephone, String gender) throws Exception {
+    public static void updateUser(String name, String email, String password, int telephone, int id) throws Exception {
      
-        String SQL = "UPDATE users SET nm_user = ? , nm_email = ? , nm_password = ? , cd_telephone = ? , sg_gender = ? ";
-        Object parameters[] = {name, email, password, telephone, gender};
+        String SQL = "UPDATE users SET nm_name = ? , nm_email = ? , nm_password = ? , cd_telephone = ?  WHERE cd_user = ?";
+        Object parameters[] = {name, email, password, telephone ,  id};
         DatabaseConnector.execute(SQL, parameters);
     }
     

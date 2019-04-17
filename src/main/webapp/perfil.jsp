@@ -19,6 +19,18 @@
         <%if(user == null) {
             response.sendRedirect("login.jsp");             
               }%> 
+                                  
+       <%if (request.getParameter("updateUser") != null) {
+            
+                    try { User.updateUser(request.getParameter("nameUp"), request.getParameter("emailUp"), request.getParameter("passwordUp"),
+                             Integer.parseInt(request.getParameter("telephoneUp")), Integer.parseInt(request.getParameter("idUp")));  
+               user = User.getUser(request.getParameter("emailUp"), request.getParameter("passwordUp"));
+               session.setAttribute("session_user", user);
+               response.sendRedirect("home.jsp");
+            } catch (Exception ex) {
+             System.out.println(ex.getMessage()); } } %>
+        
+            
         
         <main class="mt-3">
             <div class="container">
@@ -50,7 +62,12 @@
                                         <button type="button" class="btn btn-primary m-2" data-toggle="modal" data-target="#editarConteudoPerfil">Editar</button>
                                         <!-- Modal -->
                                         <div class="modal fade" id="editarConteudoPerfil" tabindex="-1" role="dialog" aria-labelledby="TituloModalPerfil" aria-hidden="true">
-                                          <div class="modal-dialog modal-dialog-centered" role="document">
+                                         
+                                            
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                          
+                                                <form method="post" action="perfil.jsp">
+
                                             <div class="modal-content">
                                               <div class="modal-header">
                                                 <h5 class="modal-title" id="TituloModalPerfil">Edite suas informações!</h5>
@@ -60,20 +77,21 @@
                                               </div>
                                               <div class="modal-body">
 <!---------------- FORMULÁRIO DE EDIÇÃO --------------------------------------->
-                                                <form>
                                                     <div class="form-group text-left">
                                                       <div class="border-bottom text-center font-weight-bold my-2">Sobre seu perfil</div>
                                                       <label for="editarFoto">Fonto de perfil</label>
                                                       <input type="file" class="form-control-file" id="editarFoto">
+                                                      <label for="editarNome" >ID</label>
+                                                      <input type="text" class="form-control" id="editarNome" value="<%=user.getId()%>" name="idUp">
                                                       <label for="editarNome">Nome</label>
-                                                      <input type="text" class="form-control" id="editarNome" value="<%=user.getName()%>">
+                                                      <input type="text" class="form-control" id="editarNome" value="<%=user.getName()%>" name="nameUp">
                                                       <label for="editarNome">E-mail</label>
-                                                      <input type="email" class="form-control" id="editarEmail" value="<%=user.getEmail()%>">
+                                                      <input type="email" class="form-control" id="editarEmail" value="<%=user.getEmail()%>" name="emailUp">
                                                       <label for="editarNome">Senha</label>
-                                                      <input type="password" class="form-control" id="editarSenha" value="<%=user.getPassword()%>">
+                                                      <input type="password" class="form-control" id="editarSenha" value="<%=user.getPassword()%>" name="passwordUp">
                                                       <label for="editarNome">Celular</label>
-                                                      <input type="text" class="form-control" id="editarCelular" value="<%=user.getTelephone()%>">
-                                                      <label class="d-block" for="editarSexo">Sexo</label>
+                                                      <input type="text" class="form-control" id="editarCelular" value="<%=user.getTelephone()%>" name="telephoneUp">
+                                                      <!--<label class="d-block" for="editarSexo">Sexo</label>
                                                       <div class="form-check form-check-inline">
                                                           <input class="form-check-input" type="radio" name="radioSexo" id="editarSexo" value="">
                                                         <label class="form-check-label" for="editarSexo">Masculino</label>
@@ -81,28 +99,19 @@
                                                       <div class="form-check form-check-inline">
                                                         <input class="form-check-input" type="radio" name="radioSexo" id="editarSexo" value="Feminino">
                                                         <label class="form-check-label" for="editarSexo">Feminino</label>
-                                                      </div><!--
-                                                      <div class="border-bottom text-center font-weight-bold my-2">Sobre seu endereço</div>
-                                                      <label for="editarPais">País</label>
-                                                      <input type="text" class="form-control" id="editarNome" value="Brasil" placeholder="Seu país" disabled>
-                                                      <label for="editarEstado">Estado</label>
-                                                      <input type="text" class="form-control" id="editarNome" value="São Paulo" placeholder="Seu estado" disabled>
-                                                      <label for="editarCidade">Cidade</label>
-                                                      <input type="text" class="form-control" id="editarNome" value="Praia Grande" placeholder="Sua cidade" disabled>
-                                                      <label for="editarRua">Rua</label>
-<<<<<<< HEAD
-                                                      <input type="text" class="form-control" id="editarNome" value="José Agapito Cardoso" placeholder="Sua rua" disabled>
-=======
-                                                      <input type="text" class="form-control" id="editarNome" value="José Agapito Cardoso" placeholder="Sua rua">-->
->>>>>>> origin/master
+                                                      </div>-->
+                                                     
                                                     </div>
-                                                </form>
+                                              
                                               </div>
                                               <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                                <button type="button" class="btn btn-primary">Salvar mudanças</button>
+                                                <button type="submit" class="btn btn-primary" name="updateUser">Salvar mudanças</button>
                                               </div>
                                             </div>
+                                              </form>
+                            
+                                            
                                           </div>
                                         </div>
                                         <div class="container">
@@ -150,42 +159,8 @@
                                             <div class="col-8">
                                                 <div class="text-left"><%=user.getGender()%></div>
                                             </div>
-                                        </div><!--
-                                        <div class="border-bottom text-left pl-3">
-                                                Sobre seu endereço
                                         </div>
-                                        <div class="row mt-2">
-                                            <div class="col-4 ">
-                                                <div class="font-weight-bold text-right">País:</div>
-                                            </div>
-                                            <div class="col-8">
-                                                <div class="text-left">Brasil</div>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-2">
-                                            <div class="col-4 ">
-                                                <div class="font-weight-bold text-right">Estado:</div>
-                                            </div>
-                                            <div class="col-8">
-                                                <div class="text-left">São Paulo</div>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-2">
-                                            <div class="col-4 ">
-                                                <div class="font-weight-bold text-right">Cidade:</div>
-                                            </div>
-                                            <div class="col-8">
-                                                <div class="text-left">Praia Grande</div>
-                                            </div>
-                                        </div>
-                                        <div class="row mt-2">
-                                            <div class="col-4 ">
-                                                <div class="font-weight-bold text-right">Rua:</div>
-                                            </div>
-                                            <div class="col-8">
-                                                <div class="text-left">José Agapito Cardoso</div>
-                                            </div>
-                                        </div>-->
+                                    
                                     </div>
                                     </div>
                                     
