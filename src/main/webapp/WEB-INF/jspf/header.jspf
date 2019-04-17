@@ -16,7 +16,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item text-warning" href="perfil.jsp">Perfil</a>
-                  <a class="dropdown-item text-warning" href="#">Sair</a>
+                  <a class="dropdown-item text-warning" href="logout.jsp">Sair</a>
                 </div>
             </li>
         </ul>
