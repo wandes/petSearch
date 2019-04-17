@@ -34,7 +34,17 @@
                 </form>
             </div>
         </nav><!--header-->
-
+       <%if (request.getParameter("register") != null) {
+           
+                    try { User.insertUser(request.getParameter("name"), request.getParameter("email"), request.getParameter("password"),
+                                Integer.parseInt(request.getParameter("telephone")), request.getParameter("gender"));  
+               response.sendRedirect("home.jsp");
+                User user = User.getUser(request.getParameter("email"), request.getParameter("password"));
+               session.setAttribute("session_user", user);
+                response.sendRedirect("home.jsp");
+            } catch (Exception ex) {
+             System.out.println(ex.getMessage());
+          } } %>
         <%
             String msg = "";
            
@@ -55,7 +65,7 @@
             }%>
             <p style="color:red; text-align: center;"><%=msg%></p>
 
-
+        
 
 
         <nav class="navbar navbar-default">
@@ -67,48 +77,49 @@
                         <div class="row ">
                             <h3 class=" text-warning ">Cadastre-se !</h3>
                         </div>
-                        <form>
+                        
+                        <form method="post" action="index.jsp">
                             <div class="row text-left">
                                 <div class="row">
                                     <label for="email" class="text-warning">E-mail</label>
                                     <div class="col-sm input-group small mb-2">
-                                        <input type="email" class="form-control"  id="email">
+                                        <input type="email" class="form-control"  id="email" name="email">
                                     </div>
                                     <label for="nome" class="text-warning">Nome</label>
                                     <div class="col-sm input-group small mb-2">
-                                        <input type="text" class="form-control"  id="nome">
+                                        <input type="text" class="form-control"  id="nome" name="name">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <label for="senha" class="text-warning">Senha</label>
                                     <div class="col-sm input-group small mb-2">    
-                                        <input type="password" class="form-control" id="senha">
+                                        <input type="password" class="form-control" id="senha" name="password">
                                     </div>
 
                                     <label for="confirmaSenha" class="text-warning">Confirme</label>
                                     <div class="col-sm input-group small mb-2">    
-                                        <input type="password" class="form-control" id="confirmaSenha">
+                                        <input type="password" class="form-control" id="confirmaSenha" disabled="">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <label for="celular" class="text-warning">Celular</label>
                                     <div class="col-sm input-group small mb-2">
-                                        <input type="text" class="form-control phone-ddd-mask" id="celular" placeholder="Ex.: (00) 0000-0000">
+                                        <input type="text" class="form-control phone-ddd-mask" id="telefone" name="telephone" placeholder="Ex.: (00) 0000-0000">
                                     </div>
                                 </div>
                             </div>
                             <div class="form-check">
                                 <div class="row">
                                     <div class="col-sm input-group  mb-2">
-                                        <input class="form-check-input " type="radio" name="sexo"  id="masculino" value="option1">
+                                        <input class="form-check-input " type="radio" name="gender"  id="masculino" value="M">
                                         <label class="form-check-label text-warning" for="masculino">Masculino</label>
                                     </div>
                                     <div class="col-sm input-group  mb-2">
-                                        <input class="form-check-input" type="radio" name="sexo"  id="feminino" value="option2">
+                                        <input class="form-check-input" type="radio" name="gender"  id="feminino" value="F">
                                         <label class="form-check-label text-warning" for="feminino">Feminino</label>
                                     </div>
                                     <div class="col-sm input-group  mb-2">
-                                        <input class="form-check-input" type="radio" name="sexo"  id="outros" value="option3">
+                                        <input class="form-check-input" type="radio" name="gender"  id="outros" value="O">
                                         <label class="form-check-label text-warning" for="outros">Outros</label>
                                     </div>
                                 </div>
@@ -116,7 +127,7 @@
                             
                             
                             <div class="row text-left">
-                                <button type="button" class="col-sm btn btn-sm btn-outline-warning ">Cadastrar</button>
+                                <button type="submit" class="col-sm btn btn-sm btn-outline-warning " name="register">Cadastrar</button>
                             </div>
                     </div>
                     </form>

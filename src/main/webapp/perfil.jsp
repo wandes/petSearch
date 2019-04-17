@@ -66,16 +66,16 @@
                                                       <label for="editarFoto">Fonto de perfil</label>
                                                       <input type="file" class="form-control-file" id="editarFoto">
                                                       <label for="editarNome">Nome</label>
-                                                      <input type="text" class="form-control" id="editarNome" value="Leonardo Santos">
+                                                      <input type="text" class="form-control" id="editarNome" value="<%=user.getName()%>">
                                                       <label for="editarNome">E-mail</label>
-                                                      <input type="email" class="form-control" id="editarEmail" value="leonardo@hotmail.com">
+                                                      <input type="email" class="form-control" id="editarEmail" value="<%=user.getEmail()%>">
                                                       <label for="editarNome">Senha</label>
                                                       <input type="text" class="form-control" id="editarSenha" value="1234">
                                                       <label for="editarNome">Celular</label>
-                                                      <input type="number" class="form-control" id="editarCelular" value="13988741744">
+                                                      <input type="text" class="form-control" id="editarCelular" value="<%=user.getTelephone()%>">
                                                       <label class="d-block" for="editarSexo">Sexo</label>
                                                       <div class="form-check form-check-inline">
-                                                          <input class="form-check-input" type="radio" name="radioSexo" id="editarSexo" value="Masculino">
+                                                          <input class="form-check-input" type="radio" name="radioSexo" id="editarSexo" value="">
                                                         <label class="form-check-label" for="editarSexo">Masculino</label>
                                                       </div>
                                                       <div class="form-check form-check-inline">
@@ -84,13 +84,13 @@
                                                       </div>
                                                       <div class="border-bottom text-center font-weight-bold my-2">Sobre seu endereço</div>
                                                       <label for="editarPais">País</label>
-                                                      <input type="text" class="form-control" id="editarNome" value="Brasil" placeholder="Seu país">
+                                                      <input type="text" class="form-control" id="editarNome" value="Brasil" placeholder="Seu país" disabled>
                                                       <label for="editarEstado">Estado</label>
-                                                      <input type="text" class="form-control" id="editarNome" value="São Paulo" placeholder="Seu estado">
+                                                      <input type="text" class="form-control" id="editarNome" value="São Paulo" placeholder="Seu estado" disabled>
                                                       <label for="editarCidade">Cidade</label>
-                                                      <input type="text" class="form-control" id="editarNome" value="Praia Grande" placeholder="Sua cidade">
+                                                      <input type="text" class="form-control" id="editarNome" value="Praia Grande" placeholder="Sua cidade" disabled>
                                                       <label for="editarRua">Rua</label>
-                                                      <input type="text" class="form-control" id="editarNome" value="José Agapito Cardoso" placeholder="Sua rua">
+                                                      <input type="text" class="form-control" id="editarNome" value="José Agapito Cardoso" placeholder="Sua rua" disabled>
                                                     </div>
                                                 </form>
                                               </div>
@@ -128,7 +128,7 @@
                                                 <div class="font-weight-bold text-right">E-mail:</div>
                                             </div>
                                             <div class="col-8">
-                                                <div class="text-left">leonardo@hotmail.com</div>
+                                                <div class="text-left"><%=user.getEmail()%></div>
                                             </div>
                                         </div>
                                             <div class="row mt-2">
@@ -136,7 +136,7 @@
                                                 <div class="font-weight-bold text-right">Senha:</div>
                                             </div>
                                             <div class="col-8">
-                                                <div class="text-left">1234</div>
+                                                <div class="text-left"><%=user.getPassword()%></div>
                                             </div>
                                         </div>
                                         <div class="row mt-2">
@@ -144,7 +144,7 @@
                                                 <div class="font-weight-bold text-right">Celular:</div>
                                             </div>
                                             <div class="col-8">
-                                                <div class="text-left">13988741744</div>
+                                                <div class="text-left"><%=user.getTelephone()%></div>
                                             </div>
                                         </div>
                                         <div class="row mt-2">
@@ -152,7 +152,7 @@
                                                 <div class="font-weight-bold text-right">Sexo:</div>
                                             </div>
                                             <div class="col-8">
-                                                <div class="text-left">Masculino</div>
+                                                <div class="text-left"><%=user.getGender()%></div>
                                             </div>
                                         </div>
                                         <div class="border-bottom text-left pl-3">
@@ -215,7 +215,7 @@
                                                     <div class="form-group text-left">
                                                       <div class="border-bottom text-center font-weight-bold my-2">Sobre seu pet</div>
                                                       <label for="editarNomePet">Nome</label>
-                                                      <input type="text" class="form-control" id="editarNomePet" value="Bob" placeholder="Nome do seu pet">
+                                                      <input type="text" class="form-control" id="editarNomePet" value="Bob" placeholder="Nome do seu pet" >
                                                       <label for="editarIdade">Idade</label>
                                                       <input type="text" class="form-control" id="editarIdade" value="3 anos" placeholder="Idade do seu pet">
                                                       <label for="editarEstado">Espécie</label>

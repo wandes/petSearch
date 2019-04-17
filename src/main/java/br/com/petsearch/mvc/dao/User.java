@@ -63,7 +63,7 @@ public class User {
         }
         return usuarios;
     }
-    
+   
    
   
  public static User getUser(String login, String senha) throws Exception {
@@ -87,10 +87,13 @@ ArrayList<Object[]> list = DatabaseConnector.getQuery(SQL, parameters);
 } 
  
 
-    public static boolean updateUser() {
-        //atualiza user
-        return false;
+    public static void updateUser(String name, String email, String password, int telephone, String gender) throws Exception {
+     
+        String SQL = "UPDATE users SET nm_user = ? , nm_email = ? , nm_password = ? , cd_telephone = ? , sg_gender = ? ";
+        Object parameters[] = {name, email, password, telephone, gender};
+        DatabaseConnector.execute(SQL, parameters);
     }
+    
 
     public static boolean deleteUser( long id) throws Exception {
         String SQL = "DELETE FROM USERS WHERE ID = ?";
