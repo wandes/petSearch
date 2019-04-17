@@ -5,8 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
-<%@page import="br.com.petsearch.mvc.controller.ControllerServlet"%>
+<%@page import="br.com.petsearch.mvc.dao.User"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,6 +14,11 @@
     </head>
    <body style="text-align:center;">
         <%@include file="../WEB-INF/jspf/header.jspf"%>
+         <%User user = (User)session.getAttribute("session_user");%>
+        
+        <%if(user == null) {
+            response.sendRedirect("login.jsp");             
+              }%> 
         
         <main class="mt-3">
             <div class="container">
@@ -101,7 +105,7 @@
                                                 <div class="font-weight-bold text-right">Nome:</div>
                                             </div>
                                             <div class="col-8">
-                                                <div class="text-left">Leonardo Santos</div>
+                                                <div class="text-left"><%=user.getName()%></div>
                                             </div>
                                         </div>
                                         <div class="border-bottom text-left pl-3">

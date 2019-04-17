@@ -55,7 +55,7 @@
                         <td>${user.name}</td>
                         <td>${user.email}</td>
                         <td>${user.telephone}</td>
-                        <td>${user.sex}</td>
+                        <td>${user.gender}</td>
                     </tr>                             
                 </c:forEach>
             </table>  

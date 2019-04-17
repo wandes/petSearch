@@ -4,6 +4,7 @@
     Author     : thiag
 --%>
 
+<%@page import="br.com.petsearch.mvc.dao.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -11,31 +12,55 @@
     <head>
         <%@include file="../WEB-INF/jspf/head.jspf"%>
         <title>Login</title>
-        
+
     </head>
-    
+
     <body>
+
         <nav class="navbar sticky-top navbar-expand-sm border-bottom bg-white">
             <div class="container">
                 <a class="navbar-brand text-warning" href="../view/home.jsp">LOGO</a>
-                <form>
-                    <div class="row text-left">
-                            <label for="email" class="text-warning">E-mail</label>
-                            <div class="col-sm input-group small mb-2">
-                                <input type="text" class="form-control"  id="email"  aria-label="Username" aria-describedby="basic-addon1">
-                            </div>
 
-                            <label for="senha" class="text-warning">Senha</label>
-                            <div class="col-sm input-group small mb-2">    
-                                <input type="password" class="form-control" id="senha"  aria-label="Username" aria-describedby="basic-addon1">
-                            </div>
-                            <button type="button" class="col-sm btn btn-sm btn-outline-warning ">Entrar</button
+                <form method="post" action="login.jsp">
+                    <div class="row text-left">
+                        <label for="email" class="text-warning">E-mail</label>
+                        <div class="col-sm input-group small mb-2">
+                            <input type="text" class="form-control"  id="email"  aria-label="Username" aria-describedby="basic-addon1" name="email">
+                        </div>
+
+                        <label for="senha" class="text-warning">Senha</label>
+                        <div class="col-sm input-group small mb-2">    
+                            <input type="password" class="form-control" id="senha"  aria-label="Username" aria-describedby="basic-addon1" name="password">
+                        </div>
+                        <button type="submit" name="login" class="col-sm btn btn-sm btn-outline-warning " >Entrar</button>
                     </div>
                 </form>
             </div>
-</nav><!--header-->
-         
-        
+        </nav><!--header-->
+
+        <%
+            String msg = "";
+           
+            if (request.getParameter("login") != null) {
+
+                String email = request.getParameter("email");
+                String pass = request.getParameter("password");
+
+                User user = User.getUser(email, pass);
+
+                if (user == null) {
+                msg = "Usuário ou senha Inválido!";
+                } else {
+                    session.setAttribute("session_user", user);
+                    response.sendRedirect("home.jsp");
+
+                }
+            }%>
+            <p style="color:red; text-align: center;"><%=msg%></p>
+
+
+
+
         <nav class="navbar navbar-default">
             <div class="container">
                 <!--navbar-->
@@ -49,7 +74,7 @@
                             <div class="row text-left">
                                 <label for="email" class="text-warning">E-mail</label>
                                 <div class=" input-group small mb-2">
-                                    <input type="text" class="form-control"  id="email"  aria-label="Username" aria-describedby="basic-addon1">
+                                    <input type="text" class="form-control"  id="email"  aria-label="Username" aria-describedby="basic-addon1" >
                                 </div>
 
                                 <label for="senha" class="text-warning">Senha</label>
@@ -80,20 +105,20 @@
                                 </div>
                             </div>
                             <div class="row text-left">
-                                <button type="button" class="col-sm btn btn-sm btn-outline-warning ">Cadastrar</button
+                                <button type="button" class="col-sm btn btn-sm btn-outline-warning ">Cadastrar</button>
                             </div>
                     </div>
-                        </form>
-                    </div>
-                    
-            
-        
-                </div> 
-            </div><!-- /container -->
-        </nav><!-- /nav -->
-        
-        
-       
-        <%@include file="../WEB-INF/jspf/bootstrapBody.jspf"%>
-    </body>
+                    </form>
+                </div>
+
+
+
+            </div> 
+        </div><!-- /container -->
+    </nav><!-- /nav -->
+
+
+
+    <%@include file="../WEB-INF/jspf/bootstrapBody.jspf"%>
+</body>
 </html>
