@@ -70,7 +70,7 @@
                                                       <label for="editarNome">E-mail</label>
                                                       <input type="email" class="form-control" id="editarEmail" value="<%=user.getEmail()%>">
                                                       <label for="editarNome">Senha</label>
-                                                      <input type="text" class="form-control" id="editarSenha" value="1234">
+                                                      <input type="password" class="form-control" id="editarSenha" value="<%=user.getPassword()%>">
                                                       <label for="editarNome">Celular</label>
                                                       <input type="text" class="form-control" id="editarCelular" value="<%=user.getTelephone()%>">
                                                       <label class="d-block" for="editarSexo">Sexo</label>
@@ -81,7 +81,7 @@
                                                       <div class="form-check form-check-inline">
                                                         <input class="form-check-input" type="radio" name="radioSexo" id="editarSexo" value="Feminino">
                                                         <label class="form-check-label" for="editarSexo">Feminino</label>
-                                                      </div>
+                                                      </div><!--
                                                       <div class="border-bottom text-center font-weight-bold my-2">Sobre seu endereço</div>
                                                       <label for="editarPais">País</label>
                                                       <input type="text" class="form-control" id="editarNome" value="Brasil" placeholder="Seu país" disabled>
@@ -90,7 +90,11 @@
                                                       <label for="editarCidade">Cidade</label>
                                                       <input type="text" class="form-control" id="editarNome" value="Praia Grande" placeholder="Sua cidade" disabled>
                                                       <label for="editarRua">Rua</label>
+<<<<<<< HEAD
                                                       <input type="text" class="form-control" id="editarNome" value="José Agapito Cardoso" placeholder="Sua rua" disabled>
+=======
+                                                      <input type="text" class="form-control" id="editarNome" value="José Agapito Cardoso" placeholder="Sua rua">-->
+>>>>>>> origin/master
                                                     </div>
                                                 </form>
                                               </div>
@@ -131,14 +135,6 @@
                                                 <div class="text-left"><%=user.getEmail()%></div>
                                             </div>
                                         </div>
-                                            <div class="row mt-2">
-                                            <div class="col-4 ">
-                                                <div class="font-weight-bold text-right">Senha:</div>
-                                            </div>
-                                            <div class="col-8">
-                                                <div class="text-left"><%=user.getPassword()%></div>
-                                            </div>
-                                        </div>
                                         <div class="row mt-2">
                                             <div class="col-4 ">
                                                 <div class="font-weight-bold text-right">Celular:</div>
@@ -154,7 +150,7 @@
                                             <div class="col-8">
                                                 <div class="text-left"><%=user.getGender()%></div>
                                             </div>
-                                        </div>
+                                        </div><!--
                                         <div class="border-bottom text-left pl-3">
                                                 Sobre seu endereço
                                         </div>
@@ -189,7 +185,7 @@
                                             <div class="col-8">
                                                 <div class="text-left">José Agapito Cardoso</div>
                                             </div>
-                                        </div>
+                                        </div>-->
                                     </div>
                                     </div>
                                     
