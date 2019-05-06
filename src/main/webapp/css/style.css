@@ -52,6 +52,17 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 
+.btnMenu{
+    border-radius: 0px;
+    border-left: 3px solid lightgray;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.btnMenu:hover{
+    border-color: orange;
+}
 /*
 button {
   background-color: gray;

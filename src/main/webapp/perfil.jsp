@@ -36,18 +36,18 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-4">
-                        <div class="container border"><!-- Sidebar -->
+                        <div class="container"><!-- Sidebar -->
                             <div class="row">
-                                <a class="btn btn-block btn-outline-warning text-left m-0" href="perfil.jsp">
-                                  Perfil
+                                <a class="btnMenu text-left pl-1 pt-3" href="perfil.jsp">
+                                    Perfil
                                 </a>
-                                <a class="btn btn-block btn-outline-warning text-left m-0" href="publicacoes.jsp">
+                                <a class="btnMenu text-left pl-1 pt-3" href="publicacoes.jsp">
                                   Publicações
                                 </a>
-                                <a class="btn btn-block btn-outline-warning text-left m-0" href="conta.jsp">
+                                <a class="btnMenu text-left pl-1 pt-3" href="conta.jsp">
                                   Conta
                                 </a>
-                                <a class="btn btn-block btn-outline-warning text-left m-0" href="ajuda.jsp">
+                                <a class="btnMenu text-left pl-1 pt-3" href="ajuda.jsp">
                                   Ajuda
                                 </a>
                             </div>    
