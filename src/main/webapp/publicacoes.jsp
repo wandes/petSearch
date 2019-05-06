@@ -57,8 +57,8 @@
                         <div class="container border pb-3"><!-- Principal -->
 <!-- ABA DO PERFIL ------------------------------------------------------------>
                             
-                                <%@include file="../WEB-INF/jspf/conteudoPerfil.jspf"%>
-                            
+                                
+                            <%@include file="../WEB-INF/jspf/conteudoPublicacoes.jspf"%>
                         </div>
                     </div>
                 </div>

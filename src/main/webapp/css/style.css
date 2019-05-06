@@ -52,10 +52,6 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 
-.conteudoPerfil{
-    min-height: 350px;
-}
-
 /*
 button {
   background-color: gray;

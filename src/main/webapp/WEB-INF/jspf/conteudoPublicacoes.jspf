@@ -1,0 +1,99 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<div id="publicacoesConteudo">
+    <div class="row d-flex justify-content-end">
+        <button type="button" class="btn btn-primary m-2" data-toggle="modal" data-target="#editarConteudoPublicacoes">Editar</button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="editarConteudoPublicacoes" tabindex="-1" role="dialog" aria-labelledby="TituloModalPet" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="TituloModalPet">Edite suas informações!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <!-- FORMULÁRIO DE EDIÇÃO --->
+                <form>
+                    <div class="form-group text-left">
+                      <div class="border-bottom text-center font-weight-bold my-2">Sobre seu pet</div>
+                      <label for="editarNomePet">Nome</label>
+                      <input type="text" class="form-control" id="editarNomePet" value="Bob" placeholder="Nome do seu pet" >
+                      <label for="editarIdade">Idade</label>
+                      <input type="text" class="form-control" id="editarIdade" value="3 anos" placeholder="Idade do seu pet">
+                      <label for="editarEstado">Espécie</label>
+                      <input type="text" class="form-control" id="editarEspecie" value="Cachorro" placeholder="Espécie do seu pet">
+                      <label for="editarCidade">Raça</label>
+                      <input type="text" class="form-control" id="editarRaca" value="Poodle" placeholder="Raça do seu pet">
+                      <label for="editarRua">Sexo</label>
+                      <input type="text" class="form-control" id="editarSexo" value="Macho" placeholder="Sexo do seu pet">
+                      <label for="editarCor">Cor</label>
+                      <input type="text" class="form-control" id="editarCor" value="Branco" placeholder="Cor do seu pet">
+                    </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary">Salvar mudanças</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+        <div class="border-bottom text-left pl-3">
+            Sobre seu pet
+        </div>
+        <div class="row mt-2">
+            <div class="col-4 ">
+                <div class="font-weight-bold text-right">Nome:</div>
+            </div>
+            <div class="col-8">
+                <div class="text-left">Bob</div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-4 ">
+                <div class="font-weight-bold text-right">Idade:</div>
+            </div>
+            <div class="col-8">
+                <div class="text-left">3 anos</div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-4 ">
+                <div class="font-weight-bold text-right">Espécie:</div>
+            </div>
+            <div class="col-8">
+                <div class="text-left">Cachorro</div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-4 ">
+                <div class="font-weight-bold text-right">Raça:</div>
+            </div>
+            <div class="col-8">
+                <div class="text-left">Poodle</div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-4 ">
+                <div class="font-weight-bold text-right">Sexo:</div>
+            </div>
+            <div class="col-8">
+                <div class="text-left">Macho</div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-4 ">
+                <div class="font-weight-bold text-right">Cor:</div>
+            </div>
+            <div class="col-8">
+                <div class="text-left">Branco</div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+</div>
