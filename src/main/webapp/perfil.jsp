@@ -118,6 +118,8 @@
                                             </div>
                                               </form>
                             
+                                <%@include file="../WEB-INF/jspf/conteudoPerfil.jspf"%>
+                            
                                             
                                           </div>
                                         </div>
