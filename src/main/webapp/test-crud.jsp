@@ -51,46 +51,21 @@
                 </fieldset>
                 <br>
                 <button type="submit" name="register">Cadastrar </button>
-            </form>        
-             
-            <table >
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Email</th>
-                    <th>Telefone</th>
-                    <th>Genero</th>
-                </tr>
+            </form>                             
        
-                      <c:forEach var="user" items="${User.getUsers()}" varStatus="contador" >
-                    <tr>
-                        <td><Input value="${user.id}" name="id" disabled ></td>
-                        <td><Input value="${user.name}" name="name" ></td>
-                        <td><Input value="${user.email}" name="email"  ></td>
-                        <td><Input value="${user.telephone}" name="telephone"></td>
-                        <td><Input value="${user.gender}" name="gender" ></td> 
-                        <td><button type="submit" name="update">Exluir </button></td> 
-                    </tr>                             
-                </c:forEach>
-                </table >
-                
-                <br><br>
-                
-               <table >
-                <tr>
-                    <th>Nome</th>           
-                    <th>Especie</th>
-                    <th>Raça</th>
-                    <th>Cor</th>                   
-                     <th>Idade</th>
-                     <th>Sexo</th>
-                </tr>
-                <tr>
-                  DESENVOLVIMENTO
-                </tr>
-            </table>
             
+            <%
+            String msg = "";
+            Animal animal = Animal.getAnimal(1);    
+            if(animal == null){
+            msg = Animal.getMsgConnection();
+            }else{%>
+            <p><%=animal.getNameAnimal()%></p>
+            <%}%>
+            
+            <p><%=msg%></p>
            
+            
         </div>  
     </body>
 </html>

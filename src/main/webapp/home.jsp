@@ -23,7 +23,7 @@
               
   <%if (request.getParameter("registerPet") != null) {
           String descricao = "";
-                    try {Animal.inserAnimal(0, request.getParameter("namePet"), request.getParameter("speciesPet"), request.getParameter("racePet"), request.getParameter("colorPet"), Integer.parseInt(request.getParameter("agePet")),descricao);
+                    try {Animal.insertAnimal(0, request.getParameter("namePet"), request.getParameter("speciesPet"), request.getParameter("racePet"), request.getParameter("colorPet"), Integer.parseInt(request.getParameter("agePet")),descricao,user.getId());
                 response.sendRedirect("home.jsp");
             } catch (Exception ex) {
              System.out.println(ex.getMessage());

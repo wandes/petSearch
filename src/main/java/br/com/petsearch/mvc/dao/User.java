@@ -35,6 +35,7 @@ public class User {
     this.telephone = telephone;
     this.gender = gender;
     }
+    
    public static void insertUser(String name, String email, String password, int telephone, String gender) throws Exception {
         //inserir usuario
 
@@ -45,7 +46,26 @@ public class User {
         DatabaseConnector.execute(sql, parameters);
 
     } 
-
+  // modificar método
+   public static ArrayList<User> getUserForId() throws Exception {
+   
+         String SQL = "SELECT * FROM users;";
+        ArrayList<User> usuarios = new ArrayList<>();
+        ArrayList<Object[]> list = DatabaseConnector.getQuery(SQL, new Object[]{});
+        for (int i = 0; i < list.size(); i++) {
+            Object row[] = list.get(i);
+            User u = new User(
+                    (int) row[0],
+                    (String) row[1],
+                    (String) row[2], 
+                    (String) row[3], 
+                    (int) row[4],
+                    (String) row[5]);
+            usuarios.add(u);
+        }
+        return usuarios;
+   }
+   
    public static ArrayList<User> getUsers() throws Exception {
         String SQL = "SELECT * FROM users;";
         ArrayList<User> usuarios = new ArrayList<>();

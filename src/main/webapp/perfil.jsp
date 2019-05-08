@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="br.com.petsearch.mvc.dao.User"%>
+<%@page import="br.com.petsearch.mvc.dao.Animal"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,7 +15,10 @@
     </head>
    <body style="text-align:center;">
         <%@include file="../WEB-INF/jspf/header.jspf"%>
-         <%User user = (User)session.getAttribute("session_user");%>
+        
+         <%
+            
+           User user = (User)session.getAttribute("session_user");%>
         
         <%if(user == null) {
             response.sendRedirect("login.jsp");             
@@ -24,8 +28,11 @@
             
                     try { User.updateUser(request.getParameter("nameUp"), request.getParameter("emailUp"), request.getParameter("passwordUp"),
                              Integer.parseInt(request.getParameter("telephoneUp")), Integer.parseInt(request.getParameter("idUp")));  
-               user = User.getUser(request.getParameter("emailUp"), request.getParameter("passwordUp"));
-               session.setAttribute("session_user", user);
+              
+                    //criar método puxar por ID user
+                    user = User.getUser(request.getParameter("emailUp"), request.getParameter("passwordUp"));
+               
+                    session.setAttribute("session_user", user);
                response.sendRedirect("home.jsp");
             } catch (Exception ex) {
              System.out.println(ex.getMessage()); } } %>
@@ -36,25 +43,25 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-4">
-                        <div class="container border"><!-- Sidebar -->
+                        <div class="container"><!-- Sidebar -->
                             <div class="row">
-                                <button class="btn btn-block btn-outline-warning text-left m-0" type="button" data-toggle="collapse" data-target="#perfilConteudo" aria-expanded="true" aria-controls="perfilConteudo">
-                                  Perfil
-                                </button>
-                                <button class="btn btn-block btn-outline-warning collapsed text-left m-0" type="button" data-toggle="collapse" data-target="#publicacoesConteudo" aria-expanded="false" aria-controls="publicacoesConteudo">
+                                <a class="btnMenu text-left pl-1 pt-3" href="perfil.jsp">
+                                    Perfil
+                                </a>
+                                <a class="btnMenu text-left pl-1 pt-3" href="publicacoes.jsp">
                                   Publicações
-                                </button>
-                                <button class="btn btn-block btn-outline-warning collapsed text-left m-0" type="button" data-toggle="collapse" data-target="#contaConteudo" aria-expanded="false" aria-controls="contaConteudo">
+                                </a>
+                                <a class="btnMenu text-left pl-1 pt-3" href="conta.jsp">
                                   Conta
-                                </button>
-                                <button class="btn btn-block btn-outline-warning collapsed text-left m-0" type="button" data-toggle="collapse" data-target="#ajudaConteudo" aria-expanded="false" aria-controls="ajudaConteudo">
+                                </a>
+                                <a class="btnMenu text-left pl-1 pt-3" href="ajuda.jsp">
                                   Ajuda
-                                </button>
+                                </a>
                             </div>    
                         </div>
                     </div>
                     <div class="col-sm-8 ">
-                        <div class="container conteudoPerfil border pb-3"><!-- Principal -->
+                        <div class="container border pb-3"><!-- Principal -->
 <!-- ABA DO PERFIL ------------------------------------------------------------>
                             <div class="accordion" id="areaConteudo">
                                 <div id="perfilConteudo" class="collapse show" aria-labelledby="headingOne" data-parent="#areaConteudo">
@@ -100,7 +107,7 @@
                                                         <input class="form-check-input" type="radio" name="radioSexo" id="editarSexo" value="Feminino">
                                                         <label class="form-check-label" for="editarSexo">Feminino</label>
                                                       </div>-->
-                                                     
+                                   
                                                     </div>
                                               
                                               </div>
@@ -182,23 +189,27 @@
                                               </div>
                                               <div class="modal-body">
                                                 <!-- FORMULÁRIO DE EDIÇÃO --->
-                                                <form>
+                                              <form>
+                                               
+                                               
                                                     <div class="form-group text-left">
                                                       <div class="border-bottom text-center font-weight-bold my-2">Sobre seu pet</div>
                                                       <label for="editarNomePet">Nome</label>
-                                                      <input type="text" class="form-control" id="editarNomePet" value="Bob" placeholder="Nome do seu pet" >
+                                                      <input type="text" class="form-control" id="editarNomePet" value="<%=animal.getNameAnimal()%>" name="NameAnimal"  >
                                                       <label for="editarIdade">Idade</label>
-                                                      <input type="text" class="form-control" id="editarIdade" value="3 anos" placeholder="Idade do seu pet">
+                                                      <input type="text" class="form-control" id="editarIdade" value="<%=animal.getAgeAnimal()%>" name="AgeAnimal" >
                                                       <label for="editarEstado">Espécie</label>
-                                                      <input type="text" class="form-control" id="editarEspecie" value="Cachorro" placeholder="Espécie do seu pet">
+                                                      <input type="text" class="form-control" id="editarEspecie" value="<%=animal.getNameSpeciesAnimal()%>" name="NameSpeciesAnimal" >
                                                       <label for="editarCidade">Raça</label>
-                                                      <input type="text" class="form-control" id="editarRaca" value="Poodle" placeholder="Raça do seu pet">
+                                                      <input type="text" class="form-control" id="editarRaca" value="<%=animal.getNameRace()%>" name="NameRace" >
                                                       <label for="editarRua">Sexo</label>
-                                                      <input type="text" class="form-control" id="editarSexo" value="Macho" placeholder="Sexo do seu pet">
+                                                      <input type="text" class="form-control" id="editarSexo" value="estruturar no banco" placeholder="Sexo do seu pet">
                                                       <label for="editarCor">Cor</label>
-                                                      <input type="text" class="form-control" id="editarCor" value="Branco" placeholder="Cor do seu pet">
+                                                      <input type="text" class="form-control" id="editarCor" value="<%=animal.getNameColor()%>" name="NameColor" >
                                                     </div>
-                                                </form>
+                                                
+                                             
+                                              </form>
                                               </div>
                                               <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -210,13 +221,19 @@
                                         <div class="container">
                                         <div class="border-bottom text-left pl-3">
                                             Sobre seu pet
-                                        </div>
+                                        
+                                     <% String msg = "";
+                                        Animal animal = Animal.getAnimal(1);    
+                                        if(animal == null){
+                                        msg = Animal.getMsgConnection();
+                                        }else{%>                                     
+                                       </div>                                       
                                         <div class="row mt-2">
                                             <div class="col-4 ">
                                                 <div class="font-weight-bold text-right">Nome:</div>
                                             </div>
                                             <div class="col-8">
-                                                <div class="text-left">Bob</div>
+                                                <div class="text-left"><%=animal.getNameAnimal()%></div>
                                             </div>
                                         </div>
                                         <div class="row mt-2">
@@ -224,7 +241,7 @@
                                                 <div class="font-weight-bold text-right">Idade:</div>
                                             </div>
                                             <div class="col-8">
-                                                <div class="text-left">3 anos</div>
+                                                <div class="text-left"><%=animal.getAgeAnimal()%></div>
                                             </div>
                                         </div>
                                         <div class="row mt-2">
@@ -232,7 +249,7 @@
                                                 <div class="font-weight-bold text-right">Espécie:</div>
                                             </div>
                                             <div class="col-8">
-                                                <div class="text-left">Cachorro</div>
+                                                <div class="text-left"><%=animal.getNameSpeciesAnimal()%></div>
                                             </div>
                                         </div>
                                         <div class="row mt-2">
@@ -240,7 +257,7 @@
                                                 <div class="font-weight-bold text-right">Raça:</div>
                                             </div>
                                             <div class="col-8">
-                                                <div class="text-left">Poodle</div>
+                                                <div class="text-left"><%=animal.getNameRace()%></div>
                                             </div>
                                         </div>
                                         <div class="row mt-2">
@@ -248,7 +265,7 @@
                                                 <div class="font-weight-bold text-right">Sexo:</div>
                                             </div>
                                             <div class="col-8">
-                                                <div class="text-left">Macho</div>
+                                                <div class="text-left">estruturar banco, get e set</div>
                                             </div>
                                         </div>
                                         <div class="row mt-2">
@@ -256,9 +273,11 @@
                                                 <div class="font-weight-bold text-right">Cor:</div>
                                             </div>
                                             <div class="col-8">
-                                                <div class="text-left">Branco</div>
-                                            </div>
+                                                <div class="text-left"><%=animal.getNameColor()%></div>
+                                            </div>                                                                 
                                         </div>
+                                        <%}%
+                                        <p><%=msg%></p>
                                     </div>
                                         
                                     </div>
@@ -284,9 +303,7 @@
         <!--
         <h1 style="background-color:  #e1e1ea;">Usuarios</h1>
         <h2>"Em desenvolvimento " Cadastrados: </h2> 
-        -->    
-        
-        
+        -->  
         
         <%@include file="../WEB-INF/jspf/bootstrapBody.jspf"%>
     </body>

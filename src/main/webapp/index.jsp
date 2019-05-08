@@ -136,8 +136,8 @@
 
 
             </div> 
-        </div><!-- /container -->
-    </nav><!-- /nav -->
+        </div>
+    </nav>
 
 
 
