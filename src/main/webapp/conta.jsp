@@ -17,20 +17,8 @@
          <%User user = (User)session.getAttribute("session_user");%>
         
         <%if(user == null) {
-            response.sendRedirect("login.jsp");             
+            response.sendRedirect("index.jsp");             
               }%> 
-                                  
-       <%if (request.getParameter("updateUser") != null) {
-            
-                    try { User.updateUser(request.getParameter("nameUp"), request.getParameter("emailUp"), request.getParameter("passwordUp"),
-                             Integer.parseInt(request.getParameter("telephoneUp")), Integer.parseInt(request.getParameter("idUp")));  
-               user = User.getUser(request.getParameter("emailUp"), request.getParameter("passwordUp"));
-               session.setAttribute("session_user", user);
-               response.sendRedirect("home.jsp");
-            } catch (Exception ex) {
-             System.out.println(ex.getMessage()); } } %>
-        
-            
         
         <main class="mt-3">
             <div class="container">

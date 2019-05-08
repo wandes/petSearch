@@ -25,7 +25,7 @@
                       <label for="editarFoto">Fonto de perfil</label>
                       <input type="file" class="form-control-file" id="editarFoto">
                       <label for="editarNome" >ID</label>
-                      <input type="text" class="form-control" id="editarNome" value="<%=user.getId()%>" name="idUp">
+                      <input type="text" class="form-control" id="editarNome" value="<%=user.getId()%>" name="idUp" disabled >
                       <label for="editarNome">Nome</label>
                       <input type="text" class="form-control" id="editarNome" value="<%=user.getName()%>" name="nameUp">
                       <label for="editarNome">E-mail</label>

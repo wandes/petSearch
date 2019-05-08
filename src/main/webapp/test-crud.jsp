@@ -56,7 +56,7 @@
             
             <%
             String msg = "";
-            Animal animal = Animal.getAnimal(1);    
+            Animal animal = Animal.getAnimal(6);    
             if(animal == null){
             msg = Animal.getMsgConnection();
             }else{%>

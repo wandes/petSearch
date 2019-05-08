@@ -18,7 +18,7 @@
         <%User user = (User)session.getAttribute("session_user");%>
         
         <%if(user == null) {
-            response.sendRedirect("login.jsp");             
+            response.sendRedirect("index.jsp");             
               }%> 
               
   <%if (request.getParameter("registerPet") != null) {

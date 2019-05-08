@@ -9,29 +9,35 @@
 <!DOCTYPE html>
 <html>
     <head>
+        
         <%@include file="../WEB-INF/jspf/head.jspf"%>
         <title>Usuarios</title>
     </head>
-   <body style="text-align:center;">
+    <body style="text-align:center;">
         <%@include file="../WEB-INF/jspf/header.jspf"%>
-         <%User user = (User)session.getAttribute("session_user");%>
-        
+        <%User user = (User)session.getAttribute("session_user");%>
+     
         <%if(user == null) {
-            response.sendRedirect("login.jsp");             
+            response.sendRedirect("index.jsp");             
               }%> 
-                                  
-       <%if (request.getParameter("updateUser") != null) {
+
+        <%if (request.getParameter("updateUser") != null) {
             
-                    try { User.updateUser(request.getParameter("nameUp"), request.getParameter("emailUp"), request.getParameter("passwordUp"),
-                             Integer.parseInt(request.getParameter("telephoneUp")), Integer.parseInt(request.getParameter("idUp")));  
-               user = User.getUser(request.getParameter("emailUp"), request.getParameter("passwordUp"));
-               session.setAttribute("session_user", user);
-               response.sendRedirect("home.jsp");
-            } catch (Exception ex) {
-             System.out.println(ex.getMessage()); } } %>
-        
+                     try { User.updateUser(request.getParameter("nameUp"), request.getParameter("emailUp"), request.getParameter("passwordUp"),
+                              Integer.parseInt(request.getParameter("telephoneUp")), Integer.parseInt(request.getParameter("idUp")));  
+                user = User.getUser(request.getParameter("emailUp"), request.getParameter("passwordUp"));
+                session.setAttribute("session_user", user);
+                response.sendRedirect("home.jsp");
+             } catch (Exception ex) {
+              System.out.println(ex.getMessage()); } } %>
+
+        <%if (request.getParameter("updateAnimal") != null) {
             
-        
+             try { Animal.updateAnimal(0, request.getParameter("nameAnimal"), request.getParameter("nameSpeciesAnimal"),
+                          request.getParameter("nameRace"),request.getParameter("nameColor"),Integer.parseInt(request.getParameter("ageAnimal")),"Descrição....",user.getId());             
+              } catch (Exception ex) {
+               System.out.println(ex.getMessage()); } } %>      
+
         <main class="mt-3">
             <div class="container">
                 <div class="row">
@@ -42,34 +48,34 @@
                                     Perfil
                                 </a>
                                 <a class="btnMenu text-left pl-1 pt-3" href="publicacoes.jsp">
-                                  Publicações
+                                    Publicações
                                 </a>
                                 <a class="btnMenu text-left pl-1 pt-3" href="conta.jsp">
-                                  Conta
+                                    Conta
                                 </a>
                                 <a class="btnMenu text-left pl-1 pt-3" href="ajuda.jsp">
-                                  Ajuda
+                                    Ajuda
                                 </a>
                             </div>    
                         </div>
                     </div>
                     <div class="col-sm-8 ">
                         <div class="container border pb-3"><!-- Principal -->
-<!-- ABA DO PERFIL ------------------------------------------------------------>
-                            
-                                
+                            <!-- ABA DO PERFIL ------------------------------------------------------------>
+
+
                             <%@include file="../WEB-INF/jspf/conteudoPublicacoes.jspf"%>
                         </div>
                     </div>
                 </div>
             </div>
         </main>
-        
+
         <!--
         <h1 style="background-color:  #e1e1ea;">Usuarios</h1>
         <h2>"Em desenvolvimento " Cadastrados: </h2> 
         -->  
-        
+
         <%@include file="../WEB-INF/jspf/bootstrapBody.jspf"%>
     </body>
 </html>

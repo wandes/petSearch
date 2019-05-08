@@ -22,32 +22,34 @@
                     <div class="row text-left">
                         <label for="email" class="text-warning">E-mail</label>
                         <div class="col-sm input-group small mb-2">
-                            <input type="email" class="form-control"  id="email"  aria-label="Username" aria-describedby="basic-addon1" name="email">
+                            <input type="email" class="form-control"  id="email"  aria-label="Username" aria-describedby="basic-addon1" name="email" required="">
                         </div>
 
                         <label for="senha" class="text-warning">Senha</label>
                         <div class="col-sm input-group small mb-2">    
-                            <input type="password" class="form-control" id="senha"  aria-label="Username" aria-describedby="basic-addon1" name="password">
+                            <input type="password" class="form-control" id="senha"  aria-label="Username" aria-describedby="basic-addon1" name="password" required="">
                         </div>
                         <button type="submit" name="login" class="col-sm btn btn-sm btn-outline-warning " >Entrar</button>
                     </div>
                 </form>
             </div>
         </nav><!--header-->
-       <%if (request.getParameter("register") != null) {
-           
-                    try { User.insertUser(request.getParameter("name"), request.getParameter("email"), request.getParameter("password"),
-                                Integer.parseInt(request.getParameter("telephone")), request.getParameter("gender"));  
-               response.sendRedirect("home.jsp");
-                User user = User.getUser(request.getParameter("email"), request.getParameter("password"));
-               session.setAttribute("session_user", user);
-                response.sendRedirect("home.jsp");
-            } catch (Exception ex) {
-             System.out.println(ex.getMessage());
-          } } %>
+        <%if (request.getParameter("register") != null) {
+
+                try {
+                    User.insertUser(request.getParameter("name"), request.getParameter("email"), request.getParameter("password"),
+                            Integer.parseInt(request.getParameter("telephone")), request.getParameter("gender"));
+                    response.sendRedirect("home.jsp");
+                    User user = User.getUser(request.getParameter("email"), request.getParameter("password"));
+                    session.setAttribute("session_user", user);
+                    response.sendRedirect("home.jsp");
+                } catch (Exception ex) {
+                    System.out.println(ex.getMessage());
+               }
+           } %>
         <%
             String msg = "";
-           
+
             if (request.getParameter("login") != null) {
 
                 String email = request.getParameter("email");
@@ -56,16 +58,16 @@
                 User user = User.getUser(email, pass);
 
                 if (user == null) {
-                msg = "Usuário ou senha Inválido!";
+                    msg = "Usuário ou senha Inválido!";
                 } else {
                     session.setAttribute("session_user", user);
                     response.sendRedirect("home.jsp");
 
                 }
             }%>
-            <p style="color:red; text-align: center;"><%=msg%></p>
+        <p style="color:red; text-align: center;"><%=msg%></p>
 
-        
+
 
 
         <nav class="navbar navbar-default">
@@ -77,23 +79,23 @@
                         <div class="row ">
                             <h3 class=" text-warning ">Cadastre-se !</h3>
                         </div>
-                        
+
                         <form method="post" action="index.jsp">
                             <div class="row text-left">
                                 <div class="row">
                                     <label for="email" class="text-warning">E-mail</label>
                                     <div class="col-sm input-group small mb-2">
-                                        <input type="email" class="form-control"  id="email" name="email">
+                                        <input type="email" class="form-control"  id="email" name="email" required="">
                                     </div>
                                     <label for="nome" class="text-warning">Nome</label>
                                     <div class="col-sm input-group small mb-2">
-                                        <input type="text" class="form-control"  id="nome" name="name">
+                                        <input type="text" class="form-control"  id="nome" name="name" required="">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <label for="senha" class="text-warning">Senha</label>
                                     <div class="col-sm input-group small mb-2">    
-                                        <input type="password" class="form-control" id="senha" name="password">
+                                        <input type="password" class="form-control" id="senha" name="password" required="">
                                     </div>
 
                                     <label for="confirmaSenha" class="text-warning">Confirme</label>
@@ -104,18 +106,18 @@
                                 <div class="row">
                                     <label for="celular" class="text-warning">Celular</label>
                                     <div class="col-sm input-group small mb-2">
-                                        <input type="text" class="form-control phone-ddd-mask" id="telefone" name="telephone" placeholder="Ex.: (00) 0000-0000">
+                                        <input type="text" class="form-control phone-ddd-mask" id="telefone" name="telephone" placeholder="Ex.: (00) 0000-0000" required="">
                                     </div>
                                 </div>
                             </div>
                             <div class="form-check">
                                 <div class="row">
                                     <div class="col-sm input-group  mb-2">
-                                        <input class="form-check-input " type="radio" name="gender"  id="masculino" value="M">
+                                        <input class="form-check-input " type="radio" name="gender"  id="masculino" value="M" >
                                         <label class="form-check-label text-warning" for="masculino">Masculino</label>
                                     </div>
                                     <div class="col-sm input-group  mb-2">
-                                        <input class="form-check-input" type="radio" name="gender"  id="feminino" value="F">
+                                        <input class="form-check-input" type="radio" name="gender"  id="feminino" value="F" >
                                         <label class="form-check-label text-warning" for="feminino">Feminino</label>
                                     </div>
                                     <div class="col-sm input-group  mb-2">
@@ -124,8 +126,8 @@
                                     </div>
                                 </div>
                             </div>
-                            
-                            
+
+
                             <div class="row text-left">
                                 <button type="submit" class="col-sm btn btn-sm btn-outline-warning " name="register">Cadastrar</button>
                             </div>
