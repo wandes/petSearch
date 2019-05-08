@@ -43,10 +43,10 @@ public class Animal {
         DatabaseConnector.execute(SQL, parameters);
     }
 
-    public static Animal getAnimal(int cd_user_animal) throws Exception {
+    public static Animal getAnimal(int cd_user) throws Exception {
         try {
             String SQL = "SELECT cd_animal, cd_status_animal, nm_animal, nm_species_animal, nm_race, nm_color, qt_age_animal, ds_comments, cd_user FROM animal WHERE cd_user = ?";
-            Object parameters[] = {cd_user_animal};
+            Object parameters[] = {cd_user};
             ArrayList<Object[]> list = DatabaseConnector.getQuery(SQL, parameters);
 
             if (list.isEmpty()) {
@@ -72,12 +72,12 @@ public class Animal {
         }
     }
 
-    public static void insertAnimal(int statusAnimal, String nameAnimal, String nameSpeciesAnimal, String nameRace, String nameColor, int ageAnimal, String comments, int idUser) throws Exception {
+    public static void insertAnimal(int statusAnimal, String nameAnimal, String nameSpeciesAnimal, String nameRace, String nameColor, int ageAnimal, String comments, int cd_user) throws Exception {
         //inserir animal
 
         String sql = "INSERT INTO  animal( cd_animal, cd_status_animal, nm_animal, nm_species_animal, nm_race, nm_color, qt_age_animal, ds_comments, cd_user) VALUES (default,?, ?, ?, ?, ?, ?,?,?)";
 
-        Object parameters[] = {statusAnimal, nameAnimal, nameSpeciesAnimal, nameRace, nameColor, ageAnimal, comments, idUser};
+        Object parameters[] = {statusAnimal, nameAnimal, nameSpeciesAnimal, nameRace, nameColor, ageAnimal, comments, cd_user};
 
         DatabaseConnector.execute(sql, parameters);
 

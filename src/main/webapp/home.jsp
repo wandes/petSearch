@@ -5,6 +5,7 @@
 --%>
 <%@page import="br.com.petsearch.mvc.dao.User"%>
 <%@page import="br.com.petsearch.mvc.dao.Animal"%>
+<%@page import="br.com.petsearch.mvc.dao.Address"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,18 +18,23 @@
         
         <%User user = (User)session.getAttribute("session_user");%>
         
-        <%if(user == null) {
-            response.sendRedirect("index.jsp");             
-              }%> 
+      
               
-  <%if (request.getParameter("registerPet") != null) {
-          String descricao = "";
-                    try {Animal.insertAnimal(0, request.getParameter("namePet"), request.getParameter("speciesPet"), request.getParameter("racePet"), request.getParameter("colorPet"), Integer.parseInt(request.getParameter("agePet")),descricao,user.getId());
-                response.sendRedirect("home.jsp");
+  <%if (request.getParameter("registerPublication") != null) {
+       
+                    //cadastrando animal e associando ao usuário      
+                    try {Animal.insertAnimal(Integer.parseInt(request.getParameter("statusAnimal")), request.getParameter("namePet"), request.getParameter("speciesPet"), request.getParameter("racePet"), request.getParameter("colorPet"), Integer.parseInt(request.getParameter("agePet")),request.getParameter("comments"),user.getId());
+                    //pegando codigo do animal que esta associado ao usuário
+                    Animal animal = (Animal)Animal.getAnimal(user.getId());
+                    //cadastrando e associando endereço aonde o animal foi perdido
+                   Address.insertAddress(request.getParameter("street"),Integer.parseInt(request.getParameter("postalCode")),request.getParameter("district"),request.getParameter("city"),request.getParameter("state"),request.getParameter("country"),animal.getIdAnimal());
+                
+                 response.sendRedirect("home.jsp");
+                    
             } catch (Exception ex) {
              System.out.println(ex.getMessage());
           } } %>
-
+  
 <main class="mt-3">
     <div class="container">
         <div class="row">
@@ -58,20 +64,20 @@
                                         <div class="form-group text-left">
                                             <div class="border-bottom text-center font-weight-bold my-2">Sobre sua publicação</div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="exampleRadios" id="perdidoRadio" value="option1" checked>
+                                                <input class="form-check-input" type="radio" name="statusAnimal" id="perdidoRadio" value="0" >
                                                 <label class="form-check-label" for="perdidoRadio">
                                                 Perdido
                                                 </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="exampleRadios" id="encontradoRadio" value="option2">
+                                                <input class="form-check-input" type="radio" name="statusAnimal" id="encontradoRadio" value="1">
                                                 <label class="form-check-label" for="encontradoRadio">
                                                 Encontrado
                                                 </label>
                                             </div>
                                             <div class="form-group">
                                                 <label>Observações</label>
-                                                <textarea class="form-control" rows="3"></textarea>
+                                                <textarea class="form-control" rows="3" name="comments"></textarea>
                                             </div>
                                         </div>
                                         
@@ -93,29 +99,29 @@
                                         <div class="form-group text-left">
                                             <div class="border-bottom text-center font-weight-bold my-2">Sobre o endereço</div>
                                             <label for="editarRua">CEP</label>
-                                            <input type="text" class="form-control" id="criarCEP" name="cepEnd">
+                                            <input type="text" class="form-control" id="criarCEP" name="postalCode">
                                             <label for="editarNomePet">País</label>
-                                            <input type="text" class="form-control" id="criarPais" name="paisEnd">
+                                            <input type="text" class="form-control" id="criarPais" name="country">
                                             <label>Estado</label>
-                                            <select class="form-control">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
+                                            <select class="form-control" name="state">
+                                                <option>SP</option>
+                                                <option>MG</option>
+                                                <option>PR</option>
+                                                <option>AM</option>
+                                                <option>RJ</option>
                                             </select>
                                             <label for="editarEstado">Cidade</label>
-                                            <input type="text" class="form-control" id="criarCidade" name="cidadeEnd">
+                                            <input type="text" class="form-control" id="criarCidade" name="city">
                                             <label for="editarCidade">Bairro</label>
-                                            <input type="text" class="form-control" id="criarBairro" name="bairroEnd">
+                                            <input type="text" class="form-control" id="criarBairro" name="district">
                                             <label for="editarCor">Rua</label>
-                                            <input type="text" class="form-control" id="criarRua" name="ruaEnd">
+                                            <input type="text" class="form-control" id="criarRua" name="street">
                                         </div>
                                         
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                        <button type="submit" class="btn btn-primary" name="registerPet">Salvar mudanças</button>
+                                        <button type="submit" class="btn btn-primary" name="registerPublication">Salvar mudanças</button>
                                     </div>
                                     </form>
                                 </div>

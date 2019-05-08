@@ -20,9 +20,7 @@
           String msg = ""; 
           User user = (User)session.getAttribute("session_user");%>
 
-        <%if(user == null) {
-            response.sendRedirect("index.jsp");             
-              }%> 
+    
 
         <%if (request.getParameter("updateUser") != null) {
             
