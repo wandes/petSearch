@@ -75,10 +75,7 @@
                                                 Encontrado
                                                 </label>
                                             </div>
-                                            <div class="form-group">
-                                                <label>Observações</label>
-                                                <textarea class="form-control" rows="3" name="comments"></textarea>
-                                            </div>
+                                          
                                         </div>
                                         
                                         <div class="form-group text-left">
@@ -95,6 +92,10 @@
                                             <input type="text" class="form-control" id="criarSexo" name="genderPet" placeholder="Sexo do seu pet">
                                             <label for="editarCor">Cor</label>
                                             <input type="text" class="form-control" id="criarCor" name="colorPet" placeholder="Cor do seu pet">
+                                              <div class="form-group">
+                                                <label>Observações</label>
+                                                <textarea class="form-control" rows="3" name="comments"></textarea>
+                                            </div>
                                         </div>
                                         <div class="form-group text-left">
                                             <div class="border-bottom text-center font-weight-bold my-2">Sobre o endereço</div>

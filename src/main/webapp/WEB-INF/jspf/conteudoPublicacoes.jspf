@@ -3,12 +3,13 @@
 <%@page import="br.com.petsearch.mvc.dao.Animal"%>
 <%@page import="br.com.petsearch.mvc.dao.Address"%>
 <%@ page pageEncoding="UTF-8" %>
-
+ <%String msg = ""; %>
 <div id="publicacoesConteudo">
-    <div class="row d-flex justify-content-end">
+    <div class="row d-flex justify-content-end"> 
+        
         <button type="button" class="btn btn-primary m-2" data-toggle="modal" data-target="#editarConteudoPublicacoes">Editar</button>
         <button type="button" class="btn btn-danger m-2" data-toggle="modal" data-target="#excluirConteudoPublicacoes">Excluir</button>
-        <%String msg = ""; %>
+       
         <%if (request.getParameter("updateAnimal") != null) {
 
                 try {
@@ -16,9 +17,11 @@
                             request.getParameter("nameRace"), request.getParameter("nameColor"), Integer.parseInt(request.getParameter("ageAnimal")), request.getParameter("comments"), user.getId());
 
                     //pegando codigo do animal que esta associado ao usuário
-                    Animal animal = (Animal) Animal.getAnimal(user.getId());
+                    int idUser = user.getId();
+                    Animal animal = (Animal) Animal.getAnimal(idUser);
+                    int idAnimal = animal.getIdAnimal();
                     //cadastrando e associando endereço aonde o animal foi perdido
-                    Address.updateAddress(request.getParameter("street"), Integer.parseInt(request.getParameter("postalCode")), request.getParameter("district"), request.getParameter("city"), request.getParameter("state"), request.getParameter("country"), animal.getIdAnimal());
+                    Address.updateAddress(request.getParameter("street"), Integer.parseInt(request.getParameter("postalCode")), request.getParameter("district"), request.getParameter("city"), request.getParameter("state"), request.getParameter("country"), idAnimal);
 
                 } catch (Exception ex) {
                      System.out.println(ex.getMessage());
@@ -39,13 +42,13 @@
                         <div class="modal-body">
                             <!-- FORMULÁRIO DE EDIÇÃO --->
 
-                            <% msg = "";
-                                Animal animal = Animal.getAnimal(user.getId());
-                                Address address = Address.getAddress(animal.getIdAnimal());
+                            <% 
+                                Animal animal = Animal.getAnimal(user.getId());                               
                                 if (animal == null) {
-                                    msg = Animal.getMsgConnection();
-                                } else {%>
-
+                                msg = Animal.getMsgConnection();
+                                } else {
+                            Address address = Address.getAddress(animal.getIdAnimal());
+                            %>
                             <div class="form-group text-left">
                                 <div class="border-bottom text-center font-weight-bold my-2">Sobre sua publicação</div>
                                 <div class="form-check">
@@ -60,10 +63,7 @@
                                         Encontrado
                                     </label>
                                 </div>
-                                <div class="form-group">
-                                    <label>Observações</label>
-                                    <textarea class="form-control" rows="3" name="comments"></textarea>
-                                </div>
+                                
                             </div>
 
                             <div class="form-group text-left">
@@ -80,7 +80,10 @@
                                 <input type="text" class="form-control" id="editarSexo" value="estruturar no banco" placeholder="Sexo do seu pet">
                                 <label for="editarCor">Cor</label>
                                 <input type="text" class="form-control" id="editarCor" value="<%=animal.getNameColor()%>" name="nameColor" placeholder="Cor do seu pet">
-
+                                <div class="form-group">
+                                    <label>Observações</label>
+                                    <textarea class="form-control" rows="3" name="comments"></textarea>
+                                </div>
                                 <div class="border-bottom text-center font-weight-bold my-2">Sobre o endereço</div>
                                 <label for="editarNomePet">CEP</label>
                                 <input type="text" class="form-control" id="editarCepEnd" value="<%=address.getPostalCode()%>" name="postalCode">
@@ -110,9 +113,11 @@
                             <button type="submit" class="btn btn-primary" name="updateAnimal">Salvar mudanças</button>
                         </div>
                     </form> 
-
-
-
+       
+                    <%if (animal == null) {
+                    msg = Animal.getMsgConnection();
+                } else {
+              Address address = Address.getAddress(animal.getIdAnimal());%>
                 </div>
             </div>
         </div>
@@ -125,7 +130,7 @@
                     <div class="font-weight-bold text-right">Tipo:</div>
                 </div>
                 <div class="col-8">
-                    <div class="text-left"></div>
+                    <div class="text-left"><%=animal.getStatusAnimal()%></div>
                 </div>
             </div>
 
@@ -134,15 +139,13 @@
                     <div class="font-weight-bold text-right">Observações:</div>
                 </div>
                 <div class="col-8">
-                    <div class="text-left"></div>
+                    <div class="text-left"><%=animal.getComments()%></div>
                 </div>
             </div>
             <div class="border-bottom text-left pl-3">
                 Sobre seu pet
             </div>
-            <%if (animal == null) {
-                    msg = Animal.getMsgConnection();
-                } else {%> 
+             
             <div class="row mt-2">
                 <div class="col-4 ">
                     <div class="font-weight-bold text-right">Nome:</div>
@@ -245,6 +248,6 @@
             <%}%>
             <p><%=msg%></p>
         </div>
-
+       
     </div>
 </div>

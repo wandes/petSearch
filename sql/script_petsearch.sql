@@ -7,4 +7,4 @@
  * Author:  Wandes
  * Created: 07/04/2019
  */
-SELECT * FROM users;
+SELECT * FROM animal;
