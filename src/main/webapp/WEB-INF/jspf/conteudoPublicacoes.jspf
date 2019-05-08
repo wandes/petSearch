@@ -6,6 +6,7 @@
 <div id="publicacoesConteudo">
     <div class="row d-flex justify-content-end">
         <button type="button" class="btn btn-primary m-2" data-toggle="modal" data-target="#editarConteudoPublicacoes">Editar</button>
+        <button type="button" class="btn btn-danger m-2" data-toggle="modal" data-target="#excluirConteudoPublicacoes">Excluir</button>
         <%String msg = ""; %>
 
         <%if (user == null) {
@@ -30,7 +31,28 @@
                                 Animal animal = Animal.getAnimal(user.getId());
                                 if (animal == null) {
                          msg = Animal.getMsgConnection();
-                     } else {%> 
+                     } else {%>
+                     
+                            <div class="form-group text-left">
+                                <div class="border-bottom text-center font-weight-bold my-2">Sobre sua publicação</div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" id="perdidoRadio" value="option1" checked>
+                                    <label class="form-check-label" for="perdidoRadio">
+                                    Perdido
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" id="encontradoRadio" value="option2">
+                                    <label class="form-check-label" for="encontradoRadio">
+                                    Encontrado
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label>Observações</label>
+                                    <textarea class="form-control" rows="3"></textarea>
+                                </div>
+                            </div>
+                                        
                             <div class="form-group text-left">
                                 <div class="border-bottom text-center font-weight-bold my-2">Sobre seu pet</div>
                                 <label for="editarNomePet">Nome</label>
@@ -45,6 +67,26 @@
                                 <input type="text" class="form-control" id="editarSexo" value="estruturar no banco" placeholder="Sexo do seu pet">
                                 <label for="editarCor">Cor</label>
                                 <input type="text" class="form-control" id="editarCor" value="<%=animal.getNameColor()%>" name="nameColor" placeholder="Cor do seu pet">
+                                
+                                <div class="border-bottom text-center font-weight-bold my-2">Sobre o endereço</div>
+                                <label for="editarNomePet">CEP</label>
+                                <input type="text" class="form-control" id="editarCepEnd" value="" name="nameAnimal">
+                                <label for="editarIdade">País</label>
+                                <input type="text" class="form-control" id="editarPais" value="" name="ageAnimal" >
+                                <label>Estado</label>
+                                <select class="form-control">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                                <label for="editarCidade">Cidade</label>
+                                <input type="text" class="form-control" id="editarCidade" value="" name="nameRace">
+                                <label for="editarRua">Bairro</label>
+                                <input type="text" class="form-control" id="editarBairro" value="estruturar no banco">
+                                <label for="editarCor">Rua</label>
+                                <input type="text" class="form-control" id="editarRua" value="" name="nameColor">
                             </div>
                             <%}%>
                             <p><%=msg%></p>
@@ -62,6 +104,26 @@
             </div>
         </div>
         <div class="container">
+            <div class="border-bottom text-left pl-3">
+                Sobre sua publicação
+            </div>
+            <div class="row mt-2">
+                <div class="col-4 ">
+                    <div class="font-weight-bold text-right">Tipo:</div>
+                </div>
+                <div class="col-8">
+                    <div class="text-left"></div>
+                </div>
+            </div>
+            
+            <div class="row mt-2">
+                <div class="col-4 ">
+                    <div class="font-weight-bold text-right">Observações:</div>
+                </div>
+                <div class="col-8">
+                    <div class="text-left"></div>
+                </div>
+            </div>
             <div class="border-bottom text-left pl-3">
                 Sobre seu pet
             </div>
@@ -114,6 +176,57 @@
                 </div>
                 <div class="col-8">
                     <div class="text-left"><%=animal.getNameColor()%></div>
+                </div>
+            </div>
+            <div class="border-bottom text-left pl-3">
+                Sobre o endereço
+            </div>
+            <div class="row mt-2">
+                <div class="col-4 ">
+                    <div class="font-weight-bold text-right">CEP:</div>
+                </div>
+                <div class="col-8">
+                    <div class="text-left"></div>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-4 ">
+                    <div class="font-weight-bold text-right">País:</div>
+                </div>
+                <div class="col-8">
+                    <div class="text-left"></div>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-4 ">
+                    <div class="font-weight-bold text-right">Estado:</div>
+                </div>
+                <div class="col-8">
+                    <div class="text-left"></div>
+                </div>
+            </div>
+                <div class="row mt-2">
+                <div class="col-4 ">
+                    <div class="font-weight-bold text-right">Cidade:</div>
+                </div>
+                <div class="col-8">
+                    <div class="text-left"></div>
+                </div>
+                </div>
+            <div class="row mt-2">
+                <div class="col-4 ">
+                    <div class="font-weight-bold text-right">Bairro:</div>
+                </div>
+                <div class="col-8">
+                    <div class="text-left"></div>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-4 ">
+                    <div class="font-weight-bold text-right">Rua:</div>
+                </div>
+                <div class="col-8">
+                    <div class="text-left"></div>
                 </div>
             </div>
             <%}%>

@@ -55,24 +55,62 @@
                                      <form method="post" action="home.jsp">
                                     <div class="modal-body">
                                         <!-- FORMULÁRIO DE EDIÇÃO --->
-                                       
-                                        
-                                    
-                                            <div class="form-group text-left">
-                                                <div class="border-bottom text-center font-weight-bold my-2">Sobre seu pet</div>
-                                                <label for="editarNomePet">Nome</label>
-                                                <input type="text" class="form-control" id="criarNomePet" name="namePet" placeholder="Nome do seu pet">
-                                                <label for="editarIdade">Idade</label>
-                                                <input type="text" class="form-control" id="criarIdade" name="agePet" placeholder="Idade do seu pet">
-                                                <label for="editarEstado">Espécie</label>
-                                                <input type="text" class="form-control" id="criarEspecie" name="speciesPet" placeholder="Espécie do seu pet">
-                                                <label for="editarCidade">Raça</label>
-                                                <input type="text" class="form-control" id="criarRaca" name="racePet" placeholder="Raça do seu pet">
-                                                <label for="editarRua">Sexo</label>
-                                                <input type="text" class="form-control" id="criarSexo" name="genderPet" placeholder="Sexo do seu pet">
-                                                <label for="editarCor">Cor</label>
-                                                <input type="text" class="form-control" id="criarCor" name="colorPet" placeholder="Cor do seu pet">
+                                        <div class="form-group text-left">
+                                            <div class="border-bottom text-center font-weight-bold my-2">Sobre sua publicação</div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="exampleRadios" id="perdidoRadio" value="option1" checked>
+                                                <label class="form-check-label" for="perdidoRadio">
+                                                Perdido
+                                                </label>
                                             </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="exampleRadios" id="encontradoRadio" value="option2">
+                                                <label class="form-check-label" for="encontradoRadio">
+                                                Encontrado
+                                                </label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Observações</label>
+                                                <textarea class="form-control" rows="3"></textarea>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group text-left">
+                                            <div class="border-bottom text-center font-weight-bold my-2">Sobre seu pet</div>
+                                            <label for="editarNomePet">Nome</label>
+                                            <input type="text" class="form-control" id="criarNomePet" name="namePet" placeholder="Nome do seu pet">
+                                            <label for="editarIdade">Idade</label>
+                                            <input type="text" class="form-control" id="criarIdade" name="agePet" placeholder="Idade do seu pet">
+                                            <label for="editarEstado">Espécie</label>
+                                            <input type="text" class="form-control" id="criarEspecie" name="speciesPet" placeholder="Espécie do seu pet">
+                                            <label for="editarCidade">Raça</label>
+                                            <input type="text" class="form-control" id="criarRaca" name="racePet" placeholder="Raça do seu pet">
+                                            <label for="editarRua">Sexo</label>
+                                            <input type="text" class="form-control" id="criarSexo" name="genderPet" placeholder="Sexo do seu pet">
+                                            <label for="editarCor">Cor</label>
+                                            <input type="text" class="form-control" id="criarCor" name="colorPet" placeholder="Cor do seu pet">
+                                        </div>
+                                        <div class="form-group text-left">
+                                            <div class="border-bottom text-center font-weight-bold my-2">Sobre o endereço</div>
+                                            <label for="editarRua">CEP</label>
+                                            <input type="text" class="form-control" id="criarCEP" name="cepEnd">
+                                            <label for="editarNomePet">País</label>
+                                            <input type="text" class="form-control" id="criarPais" name="paisEnd">
+                                            <label>Estado</label>
+                                            <select class="form-control">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
+                                            <label for="editarEstado">Cidade</label>
+                                            <input type="text" class="form-control" id="criarCidade" name="cidadeEnd">
+                                            <label for="editarCidade">Bairro</label>
+                                            <input type="text" class="form-control" id="criarBairro" name="bairroEnd">
+                                            <label for="editarCor">Rua</label>
+                                            <input type="text" class="form-control" id="criarRua" name="ruaEnd">
+                                        </div>
                                         
                                     </div>
                                     <div class="modal-footer">
