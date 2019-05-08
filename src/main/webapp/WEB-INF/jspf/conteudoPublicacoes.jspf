@@ -15,19 +15,20 @@
                 try {
                     Animal.updateAnimal(Integer.parseInt(request.getParameter("statusAnimal")), request.getParameter("nameAnimal"), request.getParameter("nameSpeciesAnimal"),
                             request.getParameter("nameRace"), request.getParameter("nameColor"), Integer.parseInt(request.getParameter("ageAnimal")), request.getParameter("comments"), user.getId());
-
-                    //pegando codigo do animal que esta associado ao usuário
-                    int idUser = user.getId();
-                    Animal animal = (Animal) Animal.getAnimal(idUser);
-                    int idAnimal = animal.getIdAnimal();
-                    //cadastrando e associando endereço aonde o animal foi perdido
-                    Address.updateAddress(request.getParameter("street"), Integer.parseInt(request.getParameter("postalCode")), request.getParameter("district"), request.getParameter("city"), request.getParameter("state"), request.getParameter("country"), idAnimal);
-
+                    
                 } catch (Exception ex) {
                      System.out.println(ex.getMessage());
                  }
-             } %>
-
+             } %> 
+           <%if (request.getParameter("updateAnimal") != null) {
+               try {
+             Address.updateAddress(request.getParameter("street"), Integer.parseInt(request.getParameter("postalCode")), request.getParameter("district"), request.getParameter("city"), request.getParameter("state"), request.getParameter("country"), user.getId());
+           } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+                msg = ex.getMessage();
+                 }
+             } %> 
+             <p><%=msg%></p>
         <!-- Modal -->
         <div class="modal fade" id="editarConteudoPublicacoes" tabindex="-1" role="dialog" aria-labelledby="TituloModalPet" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -88,9 +89,9 @@
                                 <label for="editarNomePet">CEP</label>
                                 <input type="text" class="form-control" id="editarCepEnd" value="<%=address.getPostalCode()%>" name="postalCode">
                                 <label for="editarIdade">País</label>
-                                <input type="text" class="form-control" id="editarPais" value="<%=address.getCountry()%>" name="state" >
+                                <input type="text" class="form-control" id="editarPais" value="<%=address.getCountry()%>" name="country" >
                                 <label>Estado</label>
-                                <select class="form-control">
+                                <select class="form-control" name="state">
                                     <option>SP</option>
                                     <option>MG</option>
                                     <option>PR</option>

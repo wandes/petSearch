@@ -16,25 +16,35 @@
    
         <%@include file="WEB-INF/jspf/header.jspf"%>
         
-        <%User user = (User)session.getAttribute("session_user");%>
+        <%User user = (User)session.getAttribute("session_user");
+        String msg="";
+        %>
         
       
               
   <%if (request.getParameter("registerPublication") != null) {
        
                     //cadastrando animal e associando ao usuário      
-                    try {Animal.insertAnimal(Integer.parseInt(request.getParameter("statusAnimal")), request.getParameter("namePet"), request.getParameter("speciesPet"), request.getParameter("racePet"), request.getParameter("colorPet"), Integer.parseInt(request.getParameter("agePet")),request.getParameter("comments"),user.getId());
-                    //pegando codigo do animal que esta associado ao usuário
-                    Animal animal = (Animal)Animal.getAnimal(user.getId());
-                    //cadastrando e associando endereço aonde o animal foi perdido
-                   Address.insertAddress(request.getParameter("street"),Integer.parseInt(request.getParameter("postalCode")),request.getParameter("district"),request.getParameter("city"),request.getParameter("state"),request.getParameter("country"),animal.getIdAnimal());
+                    try {
+                   Animal.insertAnimal(Integer.parseInt(request.getParameter("statusAnimal")), request.getParameter("namePet"), request.getParameter("speciesPet"), request.getParameter("racePet"), request.getParameter("colorPet"), Integer.parseInt(request.getParameter("agePet")),request.getParameter("comments"),user.getId());
+                                                        
+            } catch (Exception ex) {
+             System.out.println(ex.getMessage());
+             msg = ex.getMessage();
+          } } %>
+      <%if (request.getParameter("registerPublication") != null) {
+       
+                    //cadastrando animal e associando ao usuário      
+                    try {     
+           Address.insertAddress(request.getParameter("street"),Integer.parseInt(request.getParameter("postalCode")),request.getParameter("district"),request.getParameter("city"),request.getParameter("state"),request.getParameter("country"),user.getId());
                 
                  response.sendRedirect("home.jsp");
                     
             } catch (Exception ex) {
              System.out.println(ex.getMessage());
+             msg = ex.getMessage();
           } } %>
-  
+          <p><%=msg%></p>
 <main class="mt-3">
     <div class="container">
         <div class="row">

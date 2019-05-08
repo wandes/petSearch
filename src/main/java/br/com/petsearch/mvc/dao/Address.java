@@ -76,7 +76,7 @@ public class Address {
 
     public static void updateAddress( String street, int postalCode, String district, String city, String state, String country, int codAnimal) throws Exception {
 
-        String SQL = "UPDATE address SET  nm_street =? , cd_postal_code = ?, nm_district = ?, nm_city = ?, sg_state = ?, nm_country = ?, cd_animal = ?  WHERE cd_animal = ?";
+        String SQL = "UPDATE address SET  nm_street =? , cd_postal_code = ?, nm_district = ?, nm_city = ?, sg_state = ?, nm_country = ?  WHERE cd_animal = ?";
         Object parameters[] = { street, postalCode, district, city, state, country, codAnimal};
         DatabaseConnector.execute(SQL, parameters);
     }
