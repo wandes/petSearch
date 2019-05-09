@@ -20,7 +20,7 @@
           String msg = ""; 
           User user = (User)session.getAttribute("session_user");%>
 
-    
+
 
         <%if (request.getParameter("updateUser") != null) {
             

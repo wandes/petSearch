@@ -35,11 +35,11 @@ public class Address {
     }
 
 //inserindo um endereço
-    public static void insertAddress( String street, int postalCode, String district, String city, String state, String country, int codAnimal) throws Exception {
+    public static void insertAddress(String street, int postalCode, String district, String city, String state, String country, int codAnimal, int codUser) throws Exception {
 
-        String sql = "INSERT INTO  address( cd_address, nm_street , cd_postal_code, nm_district, nm_city, sg_state, nm_country, cd_animal) VALUES (default,?, ?, ?, ?, ?, ?,?)";
+        String sql = "INSERT INTO  address( cd_address, nm_street, cd_postal_code, nm_district, nm_city, sg_state, nm_country, cd_animal, cd_user) VALUES (default,?, ?, ?, ?, ?, ?,?,?)";
 
-        Object parameters[] = { street, postalCode, district, city, state, country, codAnimal};
+        Object parameters[] = {street, postalCode, district, city, state, country, codAnimal, codUser};
 
         DatabaseConnector.execute(sql, parameters);
 
@@ -74,19 +74,11 @@ public class Address {
         }
     }
 
-    public static void updateAddress( String street, int postalCode, String district, String city, String state, String country, int codAnimal) throws Exception {
+    public static void updateAddress(String street, int postalCode, String district, String city, String state, String country, int codAnimal) throws Exception {
 
         String SQL = "UPDATE address SET  nm_street =? , cd_postal_code = ?, nm_district = ?, nm_city = ?, sg_state = ?, nm_country = ?  WHERE cd_animal = ?";
-        Object parameters[] = { street, postalCode, district, city, state, country, codAnimal};
+        Object parameters[] = {street, postalCode, district, city, state, country, codAnimal};
         DatabaseConnector.execute(SQL, parameters);
-    }
-
-    public int getIdEndereco() {
-        return idAddress;
-    }
-
-    public void setIdEndereco(int idAddress) {
-        this.idAddress = idAddress;
     }
 
     public String getStreet() {
@@ -151,6 +143,14 @@ public class Address {
 
     public static void setMsgConnection(String msgConnection) {
         Address.msgConnection = msgConnection;
+    }
+
+    public int getIdAddress() {
+        return idAddress;
+    }
+
+    public void setIdAddress(int idAddress) {
+        this.idAddress = idAddress;
     }
 
 }

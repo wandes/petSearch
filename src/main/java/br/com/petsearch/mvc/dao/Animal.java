@@ -95,14 +95,6 @@ public class Animal {
         this.comments = comments;
     }
 
-    public int getIdAnimal() {
-        return idAnimal;
-    }
-
-    public void setIdAnimal(int idAnimal) {
-        this.idAnimal = idAnimal;
-    }
-
     public int getStatusAnimal() {
         return statusAnimal;
     }
@@ -149,6 +141,22 @@ public class Animal {
 
     public void setAgeAnimal(int ageAnimal) {
         this.ageAnimal = ageAnimal;
+    }
+
+    public int getIdAnimal() {
+        return idAnimal;
+    }
+
+    public void setIdAnimal(int idAnimal) {
+        this.idAnimal = idAnimal;
+    }
+
+    public int getCd_user() {
+        return cd_user;
+    }
+
+    public void setCd_user(int cd_user) {
+        this.cd_user = cd_user;
     }
 
 }
