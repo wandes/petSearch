@@ -7,10 +7,17 @@
 <div id="publicacoesConteudo">
     <div class="row d-flex justify-content-end"> 
 
-        <button type="button" class="btn btn-primary m-2" data-toggle="modal" data-target="#editarConteudoPublicacoes">Editar</button>
-        <button type="button" class="btn btn-danger m-2" data-toggle="modal" data-target="#excluirConteudoPublicacoes">Excluir</button>
 
-        <%if (request.getParameter("updateAnimal") != null) {
+        <button type="button" class="btn btn-primary m-2" data-toggle="modal" data-target="#editarConteudoPublicacoes">Editar</button>
+        <form method="post" action="perfil.jsp">
+            <button type="submit" class="btn btn-danger m-2" data-toggle="modal" name="deleteAnimal" >Excluir</button>
+        </form>
+
+        <%
+
+            Animal animal = Animal.getAnimal(user.getId());
+
+            if (request.getParameter("updateAnimal") != null) {
 
                 try {
                     Animal.updateAnimal(Integer.parseInt(request.getParameter("statusAnimal")), request.getParameter("nameAnimal"), request.getParameter("nameSpeciesAnimal"),
@@ -22,13 +29,18 @@
             } %> 
         <%if (request.getParameter("updateAnimal") != null) {
                 try {
-                    Animal animal = Animal.getAnimal(user.getId());
                     Address.updateAddress(request.getParameter("street"), Integer.parseInt(request.getParameter("postalCode")), request.getParameter("district"), request.getParameter("city"), request.getParameter("state"), request.getParameter("country"), animal.getIdAnimal());
                 } catch (Exception ex) {
                     System.out.println(ex.getMessage());
                     msg = ex.getMessage();
-                   }
-               } %> 
+                }
+
+            }
+
+            animal = Animal.getAnimal(user.getId());
+        %>  
+
+
 
         <!-- Modal -->
         <div class="modal fade" id="editarConteudoPublicacoes" tabindex="-1" role="dialog" aria-labelledby="TituloModalPet" aria-hidden="true">
@@ -46,7 +58,7 @@
 
                             <%
                                 try {
-                                    Animal animal = Animal.getAnimal(user.getId());
+
                                     if (animal == null) {
                                         msg = Animal.getMsgConnection();
                                     } else {

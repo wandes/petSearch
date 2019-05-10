@@ -3,6 +3,7 @@
 <div id="perfilConteudo">
     <div class="row d-flex justify-content-end">
         <button type="button" class="btn btn-primary m-2" data-toggle="modal" data-target="#editarConteudoPerfil">Editar</button>
+
         <!-- Modal -->
         <div class="modal fade" id="editarConteudoPerfil" tabindex="-1" role="dialog" aria-labelledby="TituloModalPerfil" aria-hidden="true">
 
@@ -11,100 +12,100 @@
 
                 <form method="post" action="perfil.jsp">
 
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="TituloModalPerfil">Edite suas informações!</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-<!---------------- FORMULÁRIO DE EDIÇÃO --------------------------------------->
-                    <div class="form-group text-left">
-                      <div class="border-bottom text-center font-weight-bold my-2">Sobre seu perfil</div>
-                      <label for="editarFoto">Fonto de perfil</label>
-                      <input type="file" class="form-control-file" id="editarFoto">
-                      <label for="editarNome" >ID</label>
-                      <input type="text" class="form-control" id="editarNome" value="<%=user.getId()%>" name="idUp" disabled >
-                      <label for="editarNome">Nome</label>
-                      <input type="text" class="form-control" id="editarNome" value="<%=user.getName()%>" name="nameUp">
-                      <label for="editarNome">E-mail</label>
-                      <input type="email" class="form-control" id="editarEmail" value="<%=user.getEmail()%>" name="emailUp">
-                      <label for="editarNome">Senha</label>
-                      <input type="password" class="form-control" id="editarSenha" value="<%=user.getPassword()%>" name="passwordUp">
-                      <label for="editarNome">Celular</label>
-                      <input type="text" class="form-control" id="editarCelular" value="<%=user.getTelephone()%>" name="telephoneUp">
-                      <!--<label class="d-block" for="editarSexo">Sexo</label>
-                      <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="radioSexo" id="editarSexo" value="">
-                        <label class="form-check-label" for="editarSexo">Masculino</label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="radioSexo" id="editarSexo" value="Feminino">
-                        <label class="form-check-label" for="editarSexo">Feminino</label>
-                      </div>-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="TituloModalPerfil">Edite suas informações!</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <!---------------- FORMULÁRIO DE EDIÇÃO --------------------------------------->
+                            <div class="form-group text-left">
+                                <div class="border-bottom text-center font-weight-bold my-2">Sobre seu perfil</div>
+                                <label for="editarFoto">Fonto de perfil</label>
+                                <input type="file" class="form-control-file" id="editarFoto">
+                                <label for="editarNome" >ID</label>
+                                <input type="text" class="form-control" id="editarNome" value="<%=user.getId()%>" name="idUp" disabled >
+                                <label for="editarNome">Nome</label>
+                                <input type="text" class="form-control" id="editarNome" value="<%=user.getName()%>" name="nameUp">
+                                <label for="editarNome">E-mail</label>
+                                <input type="email" class="form-control" id="editarEmail" value="<%=user.getEmail()%>" name="emailUp">
+                                <label for="editarNome">Senha</label>
+                                <input type="password" class="form-control" id="editarSenha" value="<%=user.getPassword()%>" name="passwordUp">
+                                <label for="editarNome">Celular</label>
+                                <input type="text" class="form-control" id="editarCelular" value="<%=user.getTelephone()%>" name="telephoneUp">
+                                <!--<label class="d-block" for="editarSexo">Sexo</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="radioSexo" id="editarSexo" value="">
+                                  <label class="form-check-label" for="editarSexo">Masculino</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                  <input class="form-check-input" type="radio" name="radioSexo" id="editarSexo" value="Feminino">
+                                  <label class="form-check-label" for="editarSexo">Feminino</label>
+                                </div>-->
 
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="submit" class="btn btn-primary" name="updateUser">Salvar mudanças</button>
+                        </div>
                     </div>
+                </form>
 
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                <button type="submit" class="btn btn-primary" name="updateUser">Salvar mudanças</button>
-              </div>
+
             </div>
-              </form>
-
-
-          </div>
         </div>
         <div class="container">
-        <div class="border-bottom text-left pl-3">
+            <div class="border-bottom text-left pl-3">
                 Sobre seu perfil
-        </div>
-        <div class="row mt-2">
-            <div class="col-4 ">
-                <div class="font-weight-bold text-right">Foto de perfil:</div>
             </div>
-            <div class="col-8">
-                <div class="text-left">
-                    <img src="img/testePerfil.jpg" alt="avatar" class="md-avatar size-3 rounded-circle">
+            <div class="row mt-2">
+                <div class="col-4 ">
+                    <div class="font-weight-bold text-right">Foto de perfil:</div>
+                </div>
+                <div class="col-8">
+                    <div class="text-left">
+                        <img src="img/testePerfil.jpg" alt="avatar" class="md-avatar size-3 rounded-circle">
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row mt-2">
-            <div class="col-4 ">
-                <div class="font-weight-bold text-right">Nome:</div>
+            <div class="row mt-2">
+                <div class="col-4 ">
+                    <div class="font-weight-bold text-right">Nome:</div>
+                </div>
+                <div class="col-8">
+                    <div class="text-left"><%=user.getName()%></div>
+                </div>
             </div>
-            <div class="col-8">
-                <div class="text-left"><%=user.getName()%></div>
+            <div class="row mt-2">
+                <div class="col-4 ">
+                    <div class="font-weight-bold text-right">E-mail:</div>
+                </div>
+                <div class="col-8">
+                    <div class="text-left"><%=user.getEmail()%></div>
+                </div>
             </div>
-        </div>
-        <div class="row mt-2">
-            <div class="col-4 ">
-                <div class="font-weight-bold text-right">E-mail:</div>
+            <div class="row mt-2">
+                <div class="col-4 ">
+                    <div class="font-weight-bold text-right">Celular:</div>
+                </div>
+                <div class="col-8">
+                    <div class="text-left"><%=user.getTelephone()%></div>
+                </div>
             </div>
-            <div class="col-8">
-                <div class="text-left"><%=user.getEmail()%></div>
+            <div class="row mt-2">
+                <div class="col-4 ">
+                    <div class="font-weight-bold text-right">Sexo:</div>
+                </div>
+                <div class="col-8">
+                    <div class="text-left"><%=user.getGender()%></div>
+                </div>
             </div>
-        </div>
-        <div class="row mt-2">
-            <div class="col-4 ">
-                <div class="font-weight-bold text-right">Celular:</div>
-            </div>
-            <div class="col-8">
-                <div class="text-left"><%=user.getTelephone()%></div>
-            </div>
-        </div>
-        <div class="row mt-2">
-            <div class="col-4 ">
-                <div class="font-weight-bold text-right">Sexo:</div>
-            </div>
-            <div class="col-8">
-                <div class="text-left"><%=user.getGender()%></div>
-            </div>
-        </div>
 
-    </div>
+        </div>
     </div>
 
 </div>

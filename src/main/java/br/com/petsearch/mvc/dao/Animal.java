@@ -71,6 +71,15 @@ public class Animal {
             return null;
         }
     }
+    
+     public static void deleteAnimal(int cd_animal) throws Exception {
+       
+        String SQL = "DELETE FROM animal WHERE cd_animal = ?";
+        Object parameters[] = {cd_animal};
+        DatabaseConnector.execute(SQL, parameters);
+        
+    }
+     
 
     public static void insertAnimal(int statusAnimal, String nameAnimal, String nameSpeciesAnimal, String nameRace, String nameColor, int ageAnimal, String comments, int cd_user) throws Exception {
         //inserir animal

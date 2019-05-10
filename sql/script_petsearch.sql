@@ -9,4 +9,4 @@
  */
 
 
-SELECT * FROM publication;
+select * from animal;

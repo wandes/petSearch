@@ -18,7 +18,11 @@
 
         <%
           String msg = ""; 
-          User user = (User)session.getAttribute("session_user");%>
+          User user = (User)session.getAttribute("session_user");
+        
+         Animal animal = Animal.getAnimal(user.getId());
+          
+        %>
 
 
 
@@ -35,7 +39,29 @@
              } catch (Exception ex) {
               System.out.println(ex.getMessage()); } } %>
 
+        <% 
+                      
+             if ((request.getParameter("deleteAnimal")) != null && (animal != null) ) {
+            
+                try {                     
+                Animal.deleteAnimal(animal.getIdAnimal());
+                } catch (Exception ex) {
+                 System.out.println(ex.getMessage());
+              
+                } } %> 
 
+        <% 
+                      
+    if (request.getParameter("deleteUser") != null ) {
+            
+       try {                     
+       User.deleteUser(user.getId());
+         session.invalidate();
+    response.sendRedirect("index.jsp");
+       } catch (Exception ex) {
+        System.out.println(ex.getMessage());
+              
+       } } %> 
 
         <main class="mt-3">
             <div class="container">
@@ -65,6 +91,10 @@
                                 <div id="perfilConteudo" class="collapse show" aria-labelledby="headingOne" data-parent="#areaConteudo">
                                     <div class="row d-flex justify-content-end">
                                         <button type="button" class="btn btn-primary m-2" data-toggle="modal" data-target="#editarConteudoPerfil">Editar</button>
+
+                                        <form method="post" action="perfil.jsp">
+                                            <button type="submit" class="btn btn-danger m-2" data-toggle="modal" name="deleteUser" >Excluir Conta</button>
+                                        </form>
                                         <!-- Modal -->
                                         <div class="modal fade" id="editarConteudoPerfil" tabindex="-1" role="dialog" aria-labelledby="TituloModalPerfil" aria-hidden="true">
 
@@ -191,7 +221,7 @@
                                                         <!-- FORMULÁRIO DE EDIÇÃO --->
                                                         <form>
                                                             <%  msg = "";
-                                                            Animal animal = Animal.getAnimal(user.getId());    
+                                                           
                                                             if(animal == null){
                                                             msg = Animal.getMsgConnection();
                                                             }else{%> 

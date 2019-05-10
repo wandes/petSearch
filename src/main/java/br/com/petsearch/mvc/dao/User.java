@@ -111,13 +111,15 @@ public class User {
         Object parameters[] = {name, email, password, telephone, cd_user};
         DatabaseConnector.execute(SQL, parameters);
     }
-
-    public static boolean deleteUser(int cd_user) throws Exception {
+  
+    public static void deleteUser(int cd_user) throws Exception {
+       
         String SQL = "DELETE FROM users WHERE cd_user = ?";
         Object parameters[] = {cd_user};
         DatabaseConnector.execute(SQL, parameters);
-        return false;
+     
     }
+     
 
     public int getId() {
         return id;
