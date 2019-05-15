@@ -63,6 +63,12 @@ tr:nth-child(even) {
 .btnMenu:hover{
     border-color: orange;
 }
+.stdBG{
+    background-color:#F3F3F3;
+}
+.stdinput{
+    color: #EFEFEF;
+}
 /*
 button {
   background-color: gray;
