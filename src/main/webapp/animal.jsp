@@ -12,7 +12,9 @@
         <title>Animal</title>
     </head>
    <body style="text-align:center;">
+       <% if(session.getAttribute("session_user") != null){%>
          <h1 style="background-color:  #e1e1ea;">Animal</h1>
         <h2 style="color: red;">Pagina em Desenvolvimento!!</h2> 
+        <%}%>
     </body>
 </html>

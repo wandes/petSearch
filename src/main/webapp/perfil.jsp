@@ -15,7 +15,7 @@
     </head>
     <body style="text-align:center;">
         <%@include file="../WEB-INF/jspf/header.jspf"%>
-
+ <% if(session.getAttribute("session_user") != null){%>
         <%
           String msg = ""; 
           User user = (User)session.getAttribute("session_user");
@@ -340,5 +340,6 @@
         -->  
 
         <%@include file="../WEB-INF/jspf/bootstrapBody.jspf"%>
+       <%}%>
     </body>
 </html>

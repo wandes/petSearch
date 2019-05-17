@@ -9,4 +9,5 @@
  */
 
 
-select * from animal;
+select * from users;
+

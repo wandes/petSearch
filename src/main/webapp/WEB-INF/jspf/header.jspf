@@ -1,7 +1,16 @@
 <%-- any content can be specified here e.g.: --%>
 <%@ page pageEncoding="UTF-8" %>
-<nav class="navbar sticky-top navbar-expand-sm border-bottom bg-white">
-    <div class="container">
+
+
+<% if(session.getAttribute("session_user") == null){
+            response.sendRedirect("index.jsp");
+
+             }
+%>
+
+
+<nav  class="navbar sticky-top navbar-expand-sm border-bottom bg-white">
+    <div class="container" >
         <a class="navbar-brand text-warning" href="home.jsp">LOGO</a>
         <ul class="navbar-nav">
             <li class="nav-item active">
@@ -21,4 +30,6 @@
             </li>
         </ul>
     </div>
+   
 </nav>
+  

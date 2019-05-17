@@ -14,11 +14,8 @@
     </head>
    <body style="text-align:center;">
         <%@include file="../WEB-INF/jspf/header.jspf"%>
+        <% if(session.getAttribute("session_user") != null){%>
          <%User user = (User)session.getAttribute("session_user");%>
-        
-        <%if(user == null) {
-            response.sendRedirect("index.jsp");             
-              }%> 
                                   
         <main class="mt-3">
             <div class="container">
@@ -59,5 +56,6 @@
         -->  
         
         <%@include file="../WEB-INF/jspf/bootstrapBody.jspf"%>
+        <%}%>
     </body>
 </html>

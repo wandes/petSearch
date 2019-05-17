@@ -16,11 +16,12 @@
 <html>
     <head>
         <%@include file="WEB-INF/jspf/head.jspf"%>
+        <%@include file="WEB-INF/jspf/header.jspf"%>
         <title>Home</title>
     </head>
 
-    <%@include file="WEB-INF/jspf/header.jspf"%>
-
+    <body class="stdBG" >
+    <% if(session.getAttribute("session_user") != null){%>
     <%User user = (User) session.getAttribute("session_user");
        String msg = "";
        boolean carregar = true;
@@ -270,5 +271,7 @@
     </main>
 
     <%@include file="WEB-INF/jspf/bootstrapBody.jspf"%>
-
+    
+    <%}%>
+</body>
 </html>

@@ -8,6 +8,9 @@ and open the template in the editor.
     Author     : Wandes
 */
 
+.carousel-inner{
+ height: auto;
+}
 .md-picture {
   vertical-align: middle;
   height: 300px;
@@ -64,11 +67,16 @@ tr:nth-child(even) {
     border-color: orange;
 }
 .stdBG{
-    background-color:#F3F3F3;
+   background-image: linear-gradient(to left, #113BC2, #19B2FF, #25D5E6);
 }
 .stdinput{
     color: #EFEFEF;
 }
+.navbar {
+    background-image: linear-gradient(to left, #113BC2, #19B2FF, #25D5E6);
+}
+
+
 /*
 button {
   background-color: gray;
