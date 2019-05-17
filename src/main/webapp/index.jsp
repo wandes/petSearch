@@ -10,8 +10,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <%@include file="WEB-INF/jspf/head.jspf"%>
-       
+        
+        
         <title>Login</title>
+        
+        
     </head>
     <body class="stdBG" >
        
@@ -23,12 +26,12 @@
                     <div class="row">
                         <label for="email" class="text-warning">E-mail</label>
                         <div class="col-sm-3 input-group-sm ">
-                            <input type="email" class="form-control"  id="email"  aria-label="Username" aria-describedby="basic-addon1" name="email" required="">
+                            <input type="email" class="form-control"  id="email"  aria-label="Username" aria-describedby="basic-addon1" name="email"  required="">
                         </div>
 
                         <label for="senha" class="text-warning">Senha</label>
                         <div class="col-sm-3 input-group-sm ">    
-                            <input type="password" class="form-control" id="senha"  aria-label="Username" aria-describedby="basic-addon1" name="password" required="">
+                            <input type="password" class="form-control" id="senha"  aria-label="Username" aria-describedby="basic-addon1" pattern="[\w\s]+" name="password" required="">
                         </div>
 
                         <div class="col-sm-3 input-group-sm " >
@@ -40,15 +43,15 @@
             
         </nav><!--header-->
         
-        <%if (request.getParameter("register") != null) {
+        <%if (request.getParameter("register") != null && request.getParameter("password").equals(request.getParameter("ConfirmPass"))  ) {
 
                 try {
                     User.insertUser(request.getParameter("name"), request.getParameter("email"), request.getParameter("password"),
                             Integer.parseInt(request.getParameter("telephone")), request.getParameter("gender"));
-                    response.sendRedirect("home.jsp");
+                 
                     User user = User.getUser(request.getParameter("email"), request.getParameter("password"));
                     session.setAttribute("session_user", user);
-                    response.sendRedirect("home.jsp");
+                   response.sendRedirect("home.jsp");
                 } catch (Exception ex) {
                     System.out.println(ex.getMessage());
                 }
@@ -119,39 +122,53 @@
                         </div>  
 
 
-                        <form method="post" action="index.jsp">
+                        <form method="post" action="#">
                             <div class="row ">
                                 <div class="row">
-                                    <div class="form-group col-md-12">
-                                        <label for="email" class="text-warning">E-mail</label>
-                                        <div class="col-sm input-group small mb-2">
-                                            <input type="email" class="form-control "  id="email" name="email" required="">
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="senha" class="text-warning">Senha</label>
-                                        <div class="col-sm input-group small mb-2">    
-                                            <input type="password" class="form-control" id="senha" name="password" required="">
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="confirmaSenha" class="text-warning">Confirme</label>
-                                        <div class="col-sm input-group small mb-2">    
-                                            <input type="password" class="form-control" id="confirmaSenha" disabled="">
-                                        </div>
-                                    </div>
+                                    
                                     <div class="form-group col-md-6">
                                         <label for="nome" class="text-warning">Nome</label>
                                         <div class="col-sm input-group small mb-2">
-                                            <input type="text" class="form-control"  id="nome" name="name" required="">
+                                            <input type="text" class="form-control"  id="nome" name="name" pattern="[\w\s]+" required>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="celular" class="text-warning">Celular</label>
                                         <div class="col-sm input-group small mb-2">
-                                            <input type="text" class="form-control phone-ddd-mask" id="telefone" name="telephone" placeholder="Ex.: (00) 0000-0000" required="">
+                                            <input type="number" class="form-control phone-ddd-mask" id="telefone" name="telephone"  required>
                                         </div>
                                     </div>
+                                    <div class="form-group col-md-12">
+                                        <label for="email" class="text-warning">E-mail</label>
+                                        <div class="col-sm input-group small mb-2">
+                                            <input type="email" class="form-control "  id="email" name="email" required>
+                                        </div>
+                                    </div>
+                                      <div class="form-group col-md-12"> 
+                                          <p style="color:black; text-align: justify;">
+                                           As senhas devem ter apenas letras sem acentuação e números!
+                                          </p>
+                                        </div>
+                                    <div class="form-group col-md-12"> 
+                                        <p style="color:red; text-align: center;" id="msgRegister"></p>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                        <label for="senha" class="text-warning">Senha</label>
+                                        <div class="col-sm input-group small mb-2">    
+                                            <input type="password" class="form-control" id="cadastroSenha" name="password" pattern="[\w\s]+" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group col-md-6">
+                                        <label for="confirmaSenha" class="text-warning">Confirme</label>
+                                        <div class="col-sm input-group small mb-2">    
+                                            <input type="password" class="form-control" id="confirmaSenha" name="ConfirmPass" pattern="[\w\s]+" required>
+                                        </div>
+                                    </div>
+                                        
+                                   
+                                    
+                                  
                                     <div class="form-group col-md-4">
                                         <div class="col-sm input-group  mb-2">
                                             <input class="form-check-input " type="radio" name="gender"  id="masculino" value="M" >
@@ -170,14 +187,12 @@
                                             <label class="form-check-label text-warning" for="outros">Outros</label>
                                         </div>
                                     </div>
+                                    
                                 </div>
 
-
-
                             </div>
-
                             <div class="row text-left">
-                                <button type="submit" class="col-sm btn btn-md btn-outline-warning " name="register">Cadastrar</button>
+                                <button type="submit" class="col-sm btn btn-md btn-outline-warning " name="register" onclick="validatePassword()">Cadastrar</button>
                             </div>
                     </div>
                     </form>
@@ -189,7 +204,7 @@
         </div>
     </nav>
 
-
+ <script type="text/javascript" src="js/Funcoes.js"></script>
 
     <%@include file="WEB-INF/jspf/bootstrapBody.jspf"%>
 </body>
