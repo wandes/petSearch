@@ -29,7 +29,7 @@
         <%if (request.getParameter("updateUser") != null) {
             
                      try { User.updateUser(request.getParameter("nameUp"), request.getParameter("emailUp"), request.getParameter("passwordUp"),
-                              Integer.parseInt(request.getParameter("telephoneUp")), user.getId());  
+                              request.getParameter("telephoneUp"), user.getId());  
               
                      //criar método puxar por ID user
                      user = User.getUser(request.getParameter("emailUp"), request.getParameter("passwordUp"));

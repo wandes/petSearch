@@ -19,26 +19,25 @@ public class Publication {
 
     private int codPublication;
     private int codStatusAnimal;
-    private String dataPublication;
+    private Date dataPublication;
     private int codUser;
-    private int codAddress;
+   
     private int codAnimal;
     protected static String msgConnection;
 
-    public Publication(int codPublication, int codStatusAnimal, String dataPublication, int codUser, int codAddress, int codAnimal) {
-        this.codPublication = codPublication;
+    public Publication( int codStatusAnimal, Date dataPublication, int codUser) {
+       
         this.codStatusAnimal = codStatusAnimal;
         this.dataPublication = dataPublication;
         this.codUser = codUser;
-        this.codAddress = codAddress;
-        this.codAnimal = codAnimal;
+       
     }
 
-    public static void insertPublication(int codStatusAnimal, String dataPublication, int codUser, int codAddress, int codAnimal) throws Exception {
+    public static void insertPublication(int codStatusAnimal, Date dataPublication, int codUser) throws Exception {
         //inserir animal
-        String sql = "INSERT INTO  publication( cd_publication, cd_status_animal , dt_publication, cd_user, cd_address, cd_animal) VALUES (default,?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO  publication( cd_publication, cd_status_animal , dt_publication, cd_user, cd_animal) VALUES (default,?, ?, ?, default)";
 
-        Object parameters[] = {codStatusAnimal, dataPublication, codUser, codAddress, codAnimal};
+        Object parameters[] = {codStatusAnimal, dataPublication, codUser};
 
         DatabaseConnector.execute(sql, parameters);
 
@@ -58,11 +57,9 @@ public class Publication {
                 Object row[] = list.get(0);
                 Publication p = new Publication(
                         (int) row[0],
-                        (int) row[1],
-                        (String) row[2],
-                        (int) row[3],
-                        (int) row[4],
-                        (int) row[5]);
+                        (Date) row[1],
+                        (int) row[2]);
+                     
                 return p;
             }
         } catch (Exception ex) {
@@ -81,11 +78,8 @@ public class Publication {
             Object row[] = list.get(i);
             Publication p = new Publication(
                     (int) row[0],
-                    (int) row[1],
-                    (String) row[2],
-                    (int) row[3],
-                    (int) row[4],
-                    (int) row[5]);
+                        (Date) row[1],
+                        (int) row[2]);
             publication.add(p);
         }
         return publication;
@@ -119,11 +113,11 @@ public class Publication {
         this.codStatusAnimal = codStatusAnimal;
     }
 
-    public String getDataPublication() {
+    public Date getDataPublication() {
         return dataPublication;
     }
 
-    public void setDataPublication(String dataPublication) {
+    public void setDataPublication(Date dataPublication) {
         this.dataPublication = dataPublication;
     }
 
@@ -135,12 +129,6 @@ public class Publication {
         this.codUser = codUser;
     }
 
-    public int getCodAddress() {
-        return codAddress;
-    }
-
-    public void setCodAddress(int codAddress) {
-        this.codAddress = codAddress;
-    }
+ 
 
 }

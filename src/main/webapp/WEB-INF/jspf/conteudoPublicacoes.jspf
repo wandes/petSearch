@@ -5,6 +5,10 @@
 <%@ page pageEncoding="UTF-8" %>
 <%String msg = ""; %>
 <div id="publicacoesConteudo">
+
+    <%if (session.getAttribute("session_user") == null) {
+             response.sendRedirect("index.jsp");
+         } else {%>
     <div class="row d-flex justify-content-end"> 
 
 
@@ -13,15 +17,13 @@
             <button type="submit" class="btn btn-danger m-2" data-toggle="modal" name="deleteAnimal" >Excluir</button>
         </form>
 
-        <%
-
-            Animal animal = Animal.getAnimal(user.getId());
+        <%Animal animal = Animal.getAnimal(user.getId());
 
             if (request.getParameter("updateAnimal") != null) {
 
                 try {
                     Animal.updateAnimal(Integer.parseInt(request.getParameter("statusAnimal")), request.getParameter("nameAnimal"), request.getParameter("nameSpeciesAnimal"),
-                            request.getParameter("nameRace"), request.getParameter("nameColor"), Integer.parseInt(request.getParameter("ageAnimal")), request.getParameter("comments"), user.getId());
+                            request.getParameter("nameRace"), request.getParameter("nameGenderAnimal"), request.getParameter("nameColor"), Integer.parseInt(request.getParameter("ageAnimal")), request.getParameter("comments"), user.getId());
 
                 } catch (Exception ex) {
                     System.out.println(ex.getMessage());
@@ -39,8 +41,6 @@
 
             animal = Animal.getAnimal(user.getId());
         %>  
-
-
 
         <!-- Modal -->
         <div class="modal fade" id="editarConteudoPublicacoes" tabindex="-1" role="dialog" aria-labelledby="TituloModalPet" aria-hidden="true">
@@ -92,7 +92,7 @@
                                 <label for="editarCidade">Raça</label>
                                 <input type="text" class="form-control" id="editarRaca" value="<%=animal.getNameRace()%>" name="nameRace" placeholder="Raça do seu pet">
                                 <label for="editarRua">Sexo</label>
-                                <input type="text" class="form-control" id="editarSexo" value="estruturar no banco" placeholder="Sexo do seu pet">
+                                <input type="text" class="form-control" id="editarSexo" value="<%=animal.getNameGenderAnimal()%>" name="nameGenderAnimal" placeholder="Sexo do seu pet">
                                 <label for="editarCor">Cor</label>
                                 <input type="text" class="form-control" id="editarCor" value="<%=animal.getNameColor()%>" name="nameColor" placeholder="Cor do seu pet">
                                 <div class="form-group">
@@ -201,7 +201,7 @@
                     <div class="font-weight-bold text-right">Sexo:</div>
                 </div>
                 <div class="col-8">
-                    <div class="text-left">estruturar no banco</div>
+                    <div class="text-left"><%=animal.getNameGenderAnimal()%></div>
                 </div>
             </div>
             <div class="row mt-2">
@@ -272,8 +272,10 @@
                 msg = ex.getMessage();
             }
         %>
-        <p>ERROR: <%=msg%></p>
+        
 
 
     </div>
+    <%}%>
 </div>
+

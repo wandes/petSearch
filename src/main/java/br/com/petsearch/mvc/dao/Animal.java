@@ -19,12 +19,13 @@ public class Animal {
     private String nameAnimal;
     private String nameSpeciesAnimal;
     private String nameRace;
+    private String nameGenderAnimal;
     private String nameColor;
     private int ageAnimal;
     private String comments;
     private int cd_user;
 
-    public Animal(int idAnimal, int statusAnimal, String nameAnimal, String nameSpeciesAnimal, String nameRace, String nameColor, int ageAnimal, String comments, int cd_user) {
+    public Animal(int idAnimal, int statusAnimal, String nameAnimal, String nameSpeciesAnimal, String nameRace, String nameGenderAnimal, String nameColor, int ageAnimal, String comments, int cd_user) {
         this.idAnimal = idAnimal;
         this.statusAnimal = statusAnimal;
         this.nameAnimal = nameAnimal;
@@ -34,18 +35,19 @@ public class Animal {
         this.ageAnimal = ageAnimal;
         this.comments = comments;
         this.cd_user = cd_user;
+        this.nameGenderAnimal = nameGenderAnimal;
     }
 
-    public static void updateAnimal(int statusAnimal, String nameAnimal, String nameSpeciesAnimal, String nameRace, String nameColor, int ageAnimal, String comments, int cd_user) throws Exception {
+    public static void updateAnimal(int statusAnimal, String nameAnimal, String nameSpeciesAnimal, String nameRace, String nameGenderAnimal ,String nameColor, int ageAnimal, String comments, int cd_user) throws Exception {
 
-        String SQL = "UPDATE animal SET cd_status_animal = ?, nm_animal = ? , nm_species_animal = ? , nm_race = ? , nm_color = ?, qt_age_animal = ?, ds_comments = ?  WHERE cd_user = ?";
-        Object parameters[] = {statusAnimal, nameAnimal, nameSpeciesAnimal, nameRace, nameColor, ageAnimal, comments, cd_user};
+        String SQL = "UPDATE animal SET cd_status_animal = ?, nm_animal = ? , nm_species_animal = ? , nm_race = ? ,sg_gender_animal = ? , nm_color = ?, qt_age_animal = ?, ds_comments = ?  WHERE cd_user = ?";
+        Object parameters[] = {statusAnimal, nameAnimal, nameSpeciesAnimal, nameRace,nameGenderAnimal , nameColor, ageAnimal, comments, cd_user};
         DatabaseConnector.execute(SQL, parameters);
     }
 
     public static Animal getAnimal(int cd_user) throws Exception {
         try {
-            String SQL = "SELECT cd_animal, cd_status_animal, nm_animal, nm_species_animal, nm_race, nm_color, qt_age_animal, ds_comments, cd_user FROM animal WHERE cd_user = ?";
+            String SQL = "SELECT cd_animal, cd_status_animal, nm_animal, nm_species_animal, nm_race, sg_gender_animal, nm_color, qt_age_animal, ds_comments, cd_user FROM animal WHERE cd_user = ?";
             Object parameters[] = {cd_user};
             ArrayList<Object[]> list = DatabaseConnector.getQuery(SQL, parameters);
 
@@ -61,14 +63,15 @@ public class Animal {
                         (String) row[3],
                         (String) row[4],
                         (String) row[5],
-                        (int) row[6],
-                        (String) row[7],
-                        (int) row[8]);
+                        (String) row[6],
+                        (int) row[7],
+                        (String) row[8],
+                        (int) row[9]);
                 return a;
             }
         } catch (Exception ex) {
-            msgConnection = "Error conexao " + ex;
-            return null;
+            msgConnection = "Problemas com a conexao: " + ex;
+           return null;
         }
     }
     
@@ -81,12 +84,12 @@ public class Animal {
     }
      
 
-    public static void insertAnimal(int statusAnimal, String nameAnimal, String nameSpeciesAnimal, String nameRace, String nameColor, int ageAnimal, String comments, int cd_user) throws Exception {
+    public static void insertAnimal(int statusAnimal, String nameAnimal, String nameSpeciesAnimal, String nameRace, String nameGenderAnimal, String nameColor, int ageAnimal, String comments) throws Exception {
         //inserir animal
 
-        String sql = "INSERT INTO  animal( cd_animal, cd_status_animal, nm_animal, nm_species_animal, nm_race, nm_color, qt_age_animal, ds_comments, cd_user) VALUES (default,?, ?, ?, ?, ?, ?,?,?)";
+        String sql = "INSERT INTO  animal( cd_animal, cd_status_animal, nm_animal, nm_species_animal, nm_race, sg_gender_animal, nm_color, qt_age_animal, ds_comments) VALUES (default,?, ?, ?, ?, ?, ?,?,?)";
 
-        Object parameters[] = {statusAnimal, nameAnimal, nameSpeciesAnimal, nameRace, nameColor, ageAnimal, comments, cd_user};
+        Object parameters[] = {statusAnimal, nameAnimal, nameSpeciesAnimal, nameRace, nameGenderAnimal, nameColor, ageAnimal, comments};
 
         DatabaseConnector.execute(sql, parameters);
 
@@ -166,6 +169,14 @@ public class Animal {
 
     public void setCd_user(int cd_user) {
         this.cd_user = cd_user;
+    }
+
+    public String getNameGenderAnimal() {
+        return nameGenderAnimal;
+    }
+
+    public void setNameGenderAnimal(String nameGenderAnimal) {
+        this.nameGenderAnimal = nameGenderAnimal;
     }
 
 }

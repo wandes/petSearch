@@ -5,9 +5,7 @@
  */
 /**
  * Author:  Wandes
- * Created: 07/04/2019
+ * Created: 18/05/2019
  */
 
-
-select * from users;
-
+select * from publication;

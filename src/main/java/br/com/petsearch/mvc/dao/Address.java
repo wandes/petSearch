@@ -13,7 +13,6 @@ import java.util.ArrayList;
  * @author Wandes
  */
 public class Address {
-
     private int idAddress;
     private String street;
     private int postalCode;
@@ -35,11 +34,11 @@ public class Address {
     }
 
 //inserindo um endereço
-    public static void insertAddress(String street, int postalCode, String district, String city, String state, String country, int codAnimal, int codUser) throws Exception {
+    public static void insertAddress(String street, int postalCode, String district, String city, String state, String country, int codAnimal) throws Exception {
 
-        String sql = "INSERT INTO  address( cd_address, nm_street, cd_postal_code, nm_district, nm_city, sg_state, nm_country, cd_animal, cd_user) VALUES (default,?, ?, ?, ?, ?, ?,?,?)";
+        String sql = "INSERT INTO  address( cd_address, nm_street, cd_postal_code, nm_district, nm_city, sg_state, nm_country, cd_animal) VALUES (default,?, ?, ?, ?, ?, ?,?)";
 
-        Object parameters[] = {street, postalCode, district, city, state, country, codAnimal, codUser};
+        Object parameters[] = {street, postalCode, district, city, state, country, codAnimal};
 
         DatabaseConnector.execute(sql, parameters);
 
@@ -69,7 +68,7 @@ public class Address {
                 return end;
             }
         } catch (Exception ex) {
-            msgConnection = "Error conexao " + ex;
+            msgConnection = "Problemas com a conexao: " + ex;
             return null;
         }
     }
@@ -80,6 +79,8 @@ public class Address {
         Object parameters[] = {street, postalCode, district, city, state, country, codAnimal};
         DatabaseConnector.execute(SQL, parameters);
     }
+    
+  
 
     public String getStreet() {
         return street;
