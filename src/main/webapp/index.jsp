@@ -10,14 +10,16 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <%@include file="WEB-INF/jspf/head.jspf"%>
-        
-        
+             
         <title>Login</title>
-        
-        
+
     </head>
+    
     <body class="stdBG" >
-       
+        
+        
+      
+
         <nav class="navbar sticky-top navbar-expand-sm border-bottom bg-white ">
             <div class="container">
                 <a class="navbar-brand text-warning" href="../view/home.jsp">LOGO</a>
@@ -26,12 +28,12 @@
                     <div class="row">
                         <label for="email" class="text-warning">E-mail</label>
                         <div class="col-sm-3 input-group-sm ">
-                            <input type="email" class="form-control"  id="email"  aria-label="Username" aria-describedby="basic-addon1" name="email"  required="">
+                            <input type="email" class="form-control"  id="email"  aria-label="Username" aria-describedby="basic-addon1" name="email" placeholder="nome@email.com"  required="">
                         </div>
 
                         <label for="senha" class="text-warning">Senha</label>
                         <div class="col-sm-3 input-group-sm ">    
-                            <input type="password" class="form-control" id="senha"  aria-label="Username" aria-describedby="basic-addon1" pattern="[\w\s]+" name="password" required="">
+                            <input type="password" class="form-control" id="senha"  aria-label="Username" aria-describedby="basic-addon1"  placeholder="senha"  name="password" required="">
                         </div>
 
                         <div class="col-sm-3 input-group-sm " >
@@ -40,25 +42,31 @@
                     </div>
                 </form>
             </div>
-            
-        </nav><!--header-->
-        
-        <%if (request.getParameter("register") != null && request.getParameter("password").equals(request.getParameter("ConfirmPass"))  ) {
 
+        </nav><!--header-->
+
+        <%    String msg = "";
+
+            if (request.getParameter("register") != null && request.getParameter("password").equals(request.getParameter("ConfirmPass"))) {
+             
+             String n = request.getParameter("telephone");
+             n = n.replaceAll("\\D", "");
+        
                 try {
                     User.insertUser(request.getParameter("name"), request.getParameter("email"), request.getParameter("password"),
-                            Integer.parseInt(request.getParameter("telephone")), request.getParameter("gender"));
-                 
+                            Integer.parseInt(n), request.getParameter("gender"));
+
                     User user = User.getUser(request.getParameter("email"), request.getParameter("password"));
                     session.setAttribute("session_user", user);
-                   response.sendRedirect("home.jsp");
+                    response.sendRedirect("home.jsp");
                 } catch (Exception ex) {
                     System.out.println(ex.getMessage());
+                    msg = ""+ex.getMessage();
                 }
             } %>
+           
         <%
-            String msg = "";
-
+          
             if (request.getParameter("login") != null) {
 
                 String email = request.getParameter("email");
@@ -74,15 +82,15 @@
 
                 }
             }%>
-        <p style="color:red; text-align: center;"><%=msg%></p>
+  
 
         <nav class="navbar navbar-default ">
             <div class="container  ">
                 <!--navbar-->
                 <div class="row" >
                     <div class="col-md-5 ">
-                       
-                           
+
+
                         <!-- carousel--> 
 
                         <div style="margin-top: 30%;" id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -111,7 +119,7 @@
                                 <span class="sr-only">Next</span>
                             </a>
                         </div>
-                       
+
                     </div>
                     <div class="col-sm-2 "></div>
                     <div class="col-md-5 ">
@@ -120,92 +128,90 @@
                                 <h3 class=" text-warning ">CADASTRE-SE !</h3><br>
                             </div>
                         </div>  
+                        <div class="form-group col-md-12"> 
+                            <p style="color:black; text-align: justify;">
+                           
+                            </p>
+                        </div>
 
 
                         <form method="post" action="#">
                             <div class="row ">
                                 <div class="row">
-                                    
+
                                     <div class="form-group col-md-6">
                                         <label for="nome" class="text-warning">Nome</label>
                                         <div class="col-sm input-group small mb-2">
-                                            <input type="text" class="form-control"  id="nome" name="name" pattern="[\w\s]+" required>
+                                            <input type="text" class="form-control"  id="name" name="name" required placeholder="Nome"  required >
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="celular" class="text-warning">Celular</label>
                                         <div class="col-sm input-group small mb-2">
-                                            <input type="number" class="form-control phone-ddd-mask" id="telefone" name="telephone"  required>
+                                            <input type="text" class="form-control phone-ddd-mask" id="telefone" name="telephone"  required placeholder="(99) 99999-9999">
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label for="email" class="text-warning">E-mail</label>
                                         <div class="col-sm input-group small mb-2">
-                                            <input type="email" class="form-control "  id="email" name="email" required>
+                                            <input type="email" class="form-control "  id="email" name="email" required placeholder="nome@email.com" required>
                                         </div>
                                     </div>
-                                      <div class="form-group col-md-12"> 
-                                          <p style="color:black; text-align: justify;">
-                                           As senhas devem ter apenas letras sem acentuação e números!
-                                          </p>
-                                        </div>
-                                    <div class="form-group col-md-12"> 
-                                        <p style="color:red; text-align: center;" id="msgRegister"></p>
-                                        </div>
-                                        <div class="form-group col-md-6">
+
+
+                                    <div class="form-group col-md-6">
                                         <label for="senha" class="text-warning">Senha</label>
                                         <div class="col-sm input-group small mb-2">    
-                                            <input type="password" class="form-control" id="cadastroSenha" name="password" pattern="[\w\s]+" required>
+                                            <input type="password" class="form-control" id="cadastroSenha" name="password"   required placeholder="Senha" required>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="form-group col-md-6">
                                         <label for="confirmaSenha" class="text-warning">Confirme</label>
                                         <div class="col-sm input-group small mb-2">    
-                                            <input type="password" class="form-control" id="confirmaSenha" name="ConfirmPass" pattern="[\w\s]+" required>
+                                            <input type="password" class="form-control"  id="confirmaSenha" name="ConfirmPass"   placeholder="Confirme a senha"  required>
                                         </div>
                                     </div>
-                                        
-                                   
-                                    
-                                  
-                                    <div class="form-group col-md-4">
-                                        <div class="col-sm input-group  mb-2">
+                                    <div class="form-group col-md-12"> 
+                                        <p style="color:red; text-align: center;" id="msgRegister"></p>
+                                    </div>
+
+
+                                    <div class="form-group col-md-6">
+                                        <div class="col-sm input-group  mb-6">
                                             <input class="form-check-input " type="radio" name="gender"  id="masculino" value="M" >
                                             <label class="form-check-label text-warning" for="masculino">Masculino</label>
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-4">
-                                        <div class="col-sm input-group  mb-2">
+                                    <div class="form-group col-md-6">
+                                        <div class="col-sm input-group  mb-6">
                                             <input class="form-check-input" type="radio" name="gender"  id="feminino" value="F" >
                                             <label class="form-check-label text-warning" for="feminino">Feminino</label>
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-4">
-                                        <div class="col-sm input-group  mb-2">
-                                            <input class="form-check-input" type="radio" name="gender"  id="outros" value="O">
-                                            <label class="form-check-label text-warning" for="outros">Outros</label>
-                                        </div>
-                                    </div>
-                                    
+
+
                                 </div>
 
                             </div>
                             <div class="row text-left">
-                                <button type="submit" class="col-sm btn btn-md btn-outline-warning " name="register" onclick="validatePassword()">Cadastrar</button>
+                                <button type="submit" class="col-sm btn btn-md btn-outline-warning " name="register" onclick="validatePassword()" >Cadastrar</button>
                             </div>
                     </div>
                     </form>
                 </div>
 
-
-
             </div> 
         </div>
     </nav>
 
- <script type="text/javascript" src="js/Funcoes.js"></script>
-
     <%@include file="WEB-INF/jspf/bootstrapBody.jspf"%>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/jquery.mask.min.js"></script>       
+   <script src="js/script_jquery.js"></script>  
+   <script type="text/javascript" src="js/Funcoes.js"></script>
+    
 </body>
+
+
 </html>
