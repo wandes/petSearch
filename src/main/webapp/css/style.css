@@ -67,14 +67,17 @@ tr:nth-child(even) {
     border-color: orange;
 }
 .stdBG{
-   background-image: linear-gradient(to left, #113BC2, #19B2FF, #25D5E6);
+    
 }
 .stdinput{
     color: #EFEFEF;
-}
-.navbar {
+} 
+
+.navbar{
     background-image: linear-gradient(to left, #113BC2, #19B2FF, #25D5E6);
 }
+
+
 
 
 /*

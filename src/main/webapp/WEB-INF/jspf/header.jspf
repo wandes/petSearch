@@ -9,7 +9,7 @@
 %>
 
 
-<nav  class="navbar sticky-top navbar-expand-sm border-bottom bg-white">
+<nav  class="navbar sticky-top navbar-expand-sm border-bottom bg-white" >
     <div class="container" >
         <a class="navbar-brand text-warning" href="home.jsp">LOGO</a>
         <ul class="navbar-nav">

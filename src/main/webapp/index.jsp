@@ -52,7 +52,9 @@
 
                 }
             }%>
-    <body class="stdBG" >
+         
+       
+       <body> 
         <nav class="navbar sticky-top navbar-expand-sm border-bottom bg-white ">
             <div class="container">
                 <a class="navbar-brand text-warning" href="../view/home.jsp">LOGO</a>
@@ -81,13 +83,15 @@
             </div>
 
         </nav><!--header-->
-      
-        <nav class="navbar navbar-default ">
-            <div class="container  ">
+         
+       
+   
+        
+        <div class="container" >   
+           
                 <!--navbar-->
                 <div class="row" >
                     <div class="col-md-5 ">
-
 
                         <!-- carousel--> 
 
@@ -199,11 +203,9 @@
                     </div>
                     </form>
                 </div>
-
+               
             </div> 
-        </div>
-    </nav>
-
+       
     <%@include file="WEB-INF/jspf/bootstrapBody.jspf"%>
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/jquery.mask.min.js"></script>       
