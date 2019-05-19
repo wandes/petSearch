@@ -8,4 +8,4 @@
  * Created: 18/05/2019
  */
 
-SELECT u.cd_animal, u.cd_status_animal, u.nm_animal, u.nm_species_animal, u.nm_race, u.sg_gender_animal, u.nm_color, u.qt_age_animal, u.ds_comments FROM animal u right JOIN users_animal a ON u.cd_animal = a.cd_animal AND a.cd_user = 1;
+SELECT * FROM animal;

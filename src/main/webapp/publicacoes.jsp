@@ -16,8 +16,7 @@
     </head>
     <body style="text-align:center;">
         <%@include file="../WEB-INF/jspf/header.jspf"%>
-        <%User user = (User)session.getAttribute("session_user");%>
-
+       
 
         <main class="mt-3">
             <div class="container">

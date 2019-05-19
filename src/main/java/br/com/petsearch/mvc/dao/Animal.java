@@ -38,16 +38,16 @@ public class Animal {
         this.nameGenderAnimal = nameGenderAnimal;
     }
 
-    public static void updateAnimal(int statusAnimal, String nameAnimal, String nameSpeciesAnimal, String nameRace, String nameGenderAnimal ,String nameColor, int ageAnimal, String comments, int cd_user) throws Exception {
+    public static void updateAnimal(int statusAnimal, String nameAnimal, String nameSpeciesAnimal, String nameRace, String nameGenderAnimal ,String nameColor, int ageAnimal, String comments, int cd_animal) throws Exception {
 
-        String SQL = "UPDATE animal SET cd_status_animal = ?, nm_animal = ? , nm_species_animal = ? , nm_race = ? ,sg_gender_animal = ? , nm_color = ?, qt_age_animal = ?, ds_comments = ?  WHERE cd_user = ?";
-        Object parameters[] = {statusAnimal, nameAnimal, nameSpeciesAnimal, nameRace,nameGenderAnimal , nameColor, ageAnimal, comments, cd_user};
+        String SQL = "UPDATE animal SET cd_status_animal = ?, nm_animal = ? , nm_species_animal = ? , nm_race = ? ,sg_gender_animal = ? , nm_color = ?, qt_age_animal = ?, ds_comments = ?  WHERE cd_animal= ?";
+        Object parameters[] = {statusAnimal, nameAnimal, nameSpeciesAnimal, nameRace,nameGenderAnimal , nameColor, ageAnimal, comments, cd_animal};
         DatabaseConnector.execute(SQL, parameters);
     }
 
     public static Animal getAnimal(int cd_user) throws Exception {
         try {
-            String SQL = "SELECT u.cd_animal, u.cd_status_animal, u.nm_animal, u.nm_species_animal, u.nm_race, u.sg_gender_animal, u.nm_color, u.qt_age_animal, u.ds_comments FROM animal u right JOIN users_animal a ON u.cd_animal = a.cd_animal AND a.cd_user = ?; ";
+            String SQL = "SELECT cd_animal, cd_status_animal, nm_animal, nm_species_animal, nm_race, sg_gender_animal, nm_color, qt_age_animal, ds_comments FROM animal WHERE cd_animal = ?; ";
             Object parameters[] = {cd_user};
             ArrayList<Object[]> list = DatabaseConnector.getQuery(SQL, parameters);
             if (list.isEmpty()) {

@@ -7,42 +7,25 @@
 <div id="publicacoesConteudo">
 
     <%if (session.getAttribute("session_user") == null) {
-             response.sendRedirect("index.jsp");
-         } else {%>
+            response.sendRedirect("index.jsp");
+        } else {
+            User user = (User) session.getAttribute("session_user");
+
+    %>
+    
+     <% /*
+                      
+             if ((request.getParameter("deleteAnimal")) != null && (animal != null) ) {
+            
+                try {                     
+                Animal.deleteAnimal(animal.getIdAnimal());
+                } catch (Exception ex) {
+                 System.out.println(ex.getMessage());
+              
+                } } */%>
+
     <div class="row d-flex justify-content-end"> 
 
-
-        <button type="button" class="btn btn-primary m-2" data-toggle="modal" data-target="#editarConteudoPublicacoes">Editar</button>
-        <form method="post" action="perfil.jsp">
-            <button type="submit" class="btn btn-danger m-2" data-toggle="modal" name="deleteAnimal" >Excluir</button>
-        </form>
-
-        <%Animal animal = Animal.getAnimal(user.getId());
-
-            if (request.getParameter("updateAnimal") != null) {
-
-                try {
-                    Animal.updateAnimal(Integer.parseInt(request.getParameter("statusAnimal")), request.getParameter("nameAnimal"), request.getParameter("nameSpeciesAnimal"),
-                            request.getParameter("nameRace"), request.getParameter("nameGenderAnimal"), request.getParameter("nameColor"), Integer.parseInt(request.getParameter("ageAnimal")), request.getParameter("comments"), user.getId());
-
-                } catch (Exception ex) {
-                    System.out.println(ex.getMessage());
-                }
-            } %> 
-        <%if (request.getParameter("updateAnimal") != null) {
-                try {
-                    Address.updateAddress(request.getParameter("street"), Integer.parseInt(request.getParameter("postalCode")), request.getParameter("district"), request.getParameter("city"), request.getParameter("state"), request.getParameter("country"), animal.getIdAnimal());
-                } catch (Exception ex) {
-                    System.out.println(ex.getMessage());
-                    msg = ex.getMessage();
-                }
-
-            }
-
-            animal = Animal.getAnimal(user.getId());
-        %>  
-
-        <p><%=animal.getNameAnimal()%></p>
         <!-- Modal -->
         <div class="modal fade" id="editarConteudoPublicacoes" tabindex="-1" role="dialog" aria-labelledby="TituloModalPet" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -53,230 +36,172 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form method="post" action="publicacoes.jsp">
-                        <div class="modal-body">
-                            <!-- FORMULÁRIO DE EDIÇÃO --->
 
-                            <%
-                                try {
+                    <% try {
 
-                                    if (animal == null) {
-                                        msg = Animal.getMsgConnection();
-                                    } else {
-                                        Address address = Address.getAddress(animal.getIdAnimal());
-                            %>
-                            <div class="form-group text-left">
-                                <div class="border-bottom text-center font-weight-bold my-2">Sobre sua publicação</div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="statusAnimal" id="perdidoRadio" value="0" checked>
-                                    <label class="form-check-label" for="perdidoRadio">
-                                        Perdido
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="statusAnimal" id="encontradoRadio" value="1">
-                                    <label class="form-check-label" for="encontradoRadio">
-                                        Encontrado
-                                    </label>
-                                </div>
+                            for (Animal a : Animal.getAnimais(user.getId())) {;%>  
 
-                            </div>
-
-                            <div class="form-group text-left">
-                                <div class="border-bottom text-center font-weight-bold my-2">Sobre seu pet</div>
-                                <label for="editarNomePet">Nome</label>
-                                <input type="text" class="form-control" id="editarNomePet" value="<%=animal.getNameAnimal()%>" name="nameAnimal" placeholder="Nome do seu pet" >
-                                <label for="editarIdade">Idade</label>
-                                <input type="text" class="form-control" id="editarIdade" value="<%=animal.getAgeAnimal()%>" name="ageAnimal" placeholder="Idade do seu pet">
-                                <label for="editarEstado">Espécie</label>
-                                <input type="text" class="form-control" id="editarEspecie" value="<%=animal.getNameSpeciesAnimal()%>" name="nameSpeciesAnimal" placeholder="Espécie do seu pet">
-                                <label for="editarCidade">Raça</label>
-                                <input type="text" class="form-control" id="editarRaca" value="<%=animal.getNameRace()%>" name="nameRace" placeholder="Raça do seu pet">
-                                <label for="editarRua">Sexo</label>
-                                <input type="text" class="form-control" id="editarSexo" value="<%=animal.getNameGenderAnimal()%>" name="nameGenderAnimal" placeholder="Sexo do seu pet">
-                                <label for="editarCor">Cor</label>
-                                <input type="text" class="form-control" id="editarCor" value="<%=animal.getNameColor()%>" name="nameColor" placeholder="Cor do seu pet">
-                                <div class="form-group">
-                                    <label>Observações</label>
-                                    <textarea class="form-control" rows="3" name="comments"></textarea>
-                                </div>
-                                <div class="border-bottom text-center font-weight-bold my-2">Sobre o endereço</div>
-                                <label for="editarNomePet">CEP</label>
-                                <input type="text" class="form-control" id="editarCepEnd" value="<%=address.getPostalCode()%>" name="postalCode">
-                                <label for="editarIdade">País</label>
-                                <input type="text" class="form-control" id="editarPais" value="<%=address.getCountry()%>" name="country" >
-                                <label>Estado</label>
-                                <select class="form-control" name="state">
-                                    <option>SP</option>
-                                    <option>MG</option>
-                                    <option>PR</option>
-                                    <option>AM</option>
-                                    <option>RJ</option>
-                                </select>
-                                <label for="editarCidade">Cidade</label>
-                                <input type="text" class="form-control" id="editarCidade" value="<%=address.getCity()%>" name="city">
-                                <label for="editarRua">Bairro</label>
-                                <input type="text" class="form-control" id="editarBairro" value="<%=address.getDistrict()%>" name="district">
-                                <label for="editarCor">Rua</label>
-                                <input type="text" class="form-control" id="editarRua" value="<%=address.getStreet()%>" name="street">
-                            </div>
-                            <%}%>
-                            <p><%=msg%></p>
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                            <button type="submit" class="btn btn-primary" name="updateAnimal">Salvar mudanças</button>
-                        </div>
-                    </form> 
-
-                    <%
-
-                        if (animal == null) {
-
+                    <%if (a == null) {
                             msg = Animal.getMsgConnection();
-                        } else {
-                            Address address = Address.getAddress(animal.getIdAnimal());%>
+                        } else {%>
                 </div>
+
             </div>
         </div>
+
+
         <div class="container">
             <div class="border-bottom text-left pl-3">
                 Sobre sua publicação
-            </div>
-            <div class="row mt-2">
-                <div class="col-4 ">
-                    <div class="font-weight-bold text-right">Tipo:</div>
-                </div>
-                <div class="col-8">
-                    <div class="text-left"><%=animal.getStatusAnimal()%></div>
-                </div>
+                <form method="post" action="alterar-publicacoes.jsp">   
+                    <div style="background-color: #E0EEEE;">    
+                        <div class="row mt-2">
+                            <div class="col-12 ">
+                                <input type="hidden" name="idAnimal" value="<%=a.getIdAnimal()%>">
+                            </div>
+                            <div class="col-4 ">
+                                <div class="font-weight-bold text-right">Tipo:</div>
+                            </div>
+                            <div class="col-8">
+                                <div class="text-left"><%=a.getStatusAnimal()%></div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-2">
+                            <div class="col-4 ">
+                                <div class="font-weight-bold text-right">Observações:</div>
+                            </div>
+                            <div class="col-8">
+                                <div class="text-left"><%=a.getComments()%></div>
+                            </div>
+                        </div>
+                        <div class="border-bottom text-left pl-3">
+                            Sobre seu pet
+                        </div>
+
+                        <div class="row mt-2">
+                            <div class="col-4 ">
+                                <div class="font-weight-bold text-right">Nome:</div>
+                            </div>
+                            <div class="col-8">
+                                <div class="text-left"><%=a.getNameAnimal()%></div>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-4 ">
+                                <div class="font-weight-bold text-right">Idade:</div>
+                            </div>
+                            <div class="col-8">
+                                <div class="text-left"><%=a.getAgeAnimal()%></div>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-4 ">
+                                <div class="font-weight-bold text-right">Espécie:</div>
+                            </div>
+                            <div class="col-8">
+                                <div class="text-left"><%=a.getNameSpeciesAnimal()%></div>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-4 ">
+                                <div class="font-weight-bold text-right">Raça:</div>
+                            </div>
+                            <div class="col-8">
+                                <div class="text-left"><%=a.getNameRace()%></div>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-4 ">
+                                <div class="font-weight-bold text-right">Sexo:</div>
+                            </div>
+                            <div class="col-8">
+                                <div class="text-left"><%=a.getNameGenderAnimal()%></div>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-4 ">
+                                <div class="font-weight-bold text-right">Cor:</div>
+                            </div>
+                            <div class="col-8">
+                                <div class="text-left"><%=a.getNameColor()%></div>
+                            </div>
+                        </div>
+                        <div class="border-bottom text-left pl-3">
+                            <% Address end = Address.getAddress(a.getIdAnimal());%> 
+                            Sobre o endereço
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-4 ">
+                                <div class="font-weight-bold text-right">CEP:</div>
+                            </div>
+                            <div class="col-8">
+                                <div class="text-left"><%=end.getPostalCode()%></div>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-4 ">
+                                <div class="font-weight-bold text-right">País:</div>
+                            </div>
+                            <div class="col-8">
+                                <div class="text-left"><%=end.getCountry()%></div>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-4 ">
+                                <div class="font-weight-bold text-right">Estado:</div>
+                            </div>
+                            <div class="col-8">
+                                <div class="text-left"><%=end.getState()%></div>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-4 ">
+                                <div class="font-weight-bold text-right">Cidade:</div>
+                            </div>
+                            <div class="col-8">
+                                <div class="text-left"><%=end.getCity()%></div>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-4 ">
+                                <div class="font-weight-bold text-right">Bairro:</div>
+                            </div>
+                            <div class="col-8">
+                                <div class="text-left"><%=end.getDistrict()%></div>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-4 ">
+                                <div class="font-weight-bold text-right">Rua:</div>
+                            </div>
+                            <div class="col-8">
+                                <div class="text-left"><%=end.getStreet()%></div>
+                            </div>
+                        </div>
+                    </div>
+                             
+                    <button class="btn btn-success" type="submit" name="alterar" >Alterar</button>  
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" name="deleteAnimal" >Excluir</button>
+                </form>
+               
+
+                <%}%>
+                <br>
+                <hr>
+
+
+                <% }
+                        } catch (Exception ex) {
+                            System.out.println(ex.getMessage());
+                            msg = ex.getMessage();
+                        }
+                    }%>  
+
             </div>
 
-            <div class="row mt-2">
-                <div class="col-4 ">
-                    <div class="font-weight-bold text-right">Observações:</div>
-                </div>
-                <div class="col-8">
-                    <div class="text-left"><%=animal.getComments()%></div>
-                </div>
-            </div>
-            <div class="border-bottom text-left pl-3">
-                Sobre seu pet
-            </div>
-
-            <div class="row mt-2">
-                <div class="col-4 ">
-                    <div class="font-weight-bold text-right">Nome:</div>
-                </div>
-                <div class="col-8">
-                    <div class="text-left"><%=animal.getNameAnimal()%></div>
-                </div>
-            </div>
-            <div class="row mt-2">
-                <div class="col-4 ">
-                    <div class="font-weight-bold text-right">Idade:</div>
-                </div>
-                <div class="col-8">
-                    <div class="text-left"><%=animal.getAgeAnimal()%></div>
-                </div>
-            </div>
-            <div class="row mt-2">
-                <div class="col-4 ">
-                    <div class="font-weight-bold text-right">Espécie:</div>
-                </div>
-                <div class="col-8">
-                    <div class="text-left"><%=animal.getNameSpeciesAnimal()%></div>
-                </div>
-            </div>
-            <div class="row mt-2">
-                <div class="col-4 ">
-                    <div class="font-weight-bold text-right">Raça:</div>
-                </div>
-                <div class="col-8">
-                    <div class="text-left"><%=animal.getNameRace()%></div>
-                </div>
-            </div>
-            <div class="row mt-2">
-                <div class="col-4 ">
-                    <div class="font-weight-bold text-right">Sexo:</div>
-                </div>
-                <div class="col-8">
-                    <div class="text-left"><%=animal.getNameGenderAnimal()%></div>
-                </div>
-            </div>
-            <div class="row mt-2">
-                <div class="col-4 ">
-                    <div class="font-weight-bold text-right">Cor:</div>
-                </div>
-                <div class="col-8">
-                    <div class="text-left"><%=animal.getNameColor()%></div>
-                </div>
-            </div>
-            <div class="border-bottom text-left pl-3">
-                Sobre o endereço
-            </div>
-            <div class="row mt-2">
-                <div class="col-4 ">
-                    <div class="font-weight-bold text-right">CEP:</div>
-                </div>
-                <div class="col-8">
-                    <div class="text-left"><%=address.getPostalCode()%></div>
-                </div>
-            </div>
-            <div class="row mt-2">
-                <div class="col-4 ">
-                    <div class="font-weight-bold text-right">País:</div>
-                </div>
-                <div class="col-8">
-                    <div class="text-left"><%=address.getCountry()%></div>
-                </div>
-            </div>
-            <div class="row mt-2">
-                <div class="col-4 ">
-                    <div class="font-weight-bold text-right">Estado:</div>
-                </div>
-                <div class="col-8">
-                    <div class="text-left"><%=address.getState()%></div>
-                </div>
-            </div>
-            <div class="row mt-2">
-                <div class="col-4 ">
-                    <div class="font-weight-bold text-right">Cidade:</div>
-                </div>
-                <div class="col-8">
-                    <div class="text-left"><%=address.getCity()%></div>
-                </div>
-            </div>
-            <div class="row mt-2">
-                <div class="col-4 ">
-                    <div class="font-weight-bold text-right">Bairro:</div>
-                </div>
-                <div class="col-8">
-                    <div class="text-left"><%=address.getDistrict()%></div>
-                </div>
-            </div>
-            <div class="row mt-2">
-                <div class="col-4 ">
-                    <div class="font-weight-bold text-right">Rua:</div>
-                </div>
-                <div class="col-8">
-                    <div class="text-left"><%=address.getStreet()%></div>
-                </div>
-            </div>
         </div>
-
-        <%}
-
-            } catch (Exception ex) {
-                System.out.println(ex.getMessage());
-                msg = ex.getMessage();
-            }
-        %>
-        
 
 
     </div>
-    <%}%>
-</div>
 

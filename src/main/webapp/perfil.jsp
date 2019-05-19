@@ -39,16 +39,7 @@
              } catch (Exception ex) {
               System.out.println(ex.getMessage()); } } %>
 
-        <% 
-                      
-             if ((request.getParameter("deleteAnimal")) != null && (animal != null) ) {
-            
-                try {                     
-                Animal.deleteAnimal(animal.getIdAnimal());
-                } catch (Exception ex) {
-                 System.out.println(ex.getMessage());
-              
-                } } %> 
+        
 
         <% 
                       
