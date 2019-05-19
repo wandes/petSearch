@@ -34,11 +34,11 @@ public class Address {
     }
 
 //inserindo um endereço
-    public static void insertAddress(String street, int postalCode, String district, String city, String state, String country, int codAnimal) throws Exception {
+    public static void insertAddress(String street, int postalCode, String district, String city, String state, String country) throws Exception {
 
-        String sql = "INSERT INTO  address( cd_address, nm_street, cd_postal_code, nm_district, nm_city, sg_state, nm_country, cd_animal) VALUES (default,?, ?, ?, ?, ?, ?,?)";
+        String sql = "INSERT INTO  address( cd_address, nm_street, cd_postal_code, nm_district, nm_city, sg_state, nm_country, cd_animal) VALUES (default,?, ?, ?, ?, ?, ?, default )";
 
-        Object parameters[] = {street, postalCode, district, city, state, country, codAnimal};
+        Object parameters[] = {street, postalCode, district, city, state, country};
 
         DatabaseConnector.execute(sql, parameters);
 

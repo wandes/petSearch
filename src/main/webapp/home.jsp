@@ -11,9 +11,7 @@
 <%@page import="br.com.petsearch.mvc.dao.Address"%>
 <%@page import="br.com.petsearch.mvc.dao.Publication"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-import java.util.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -54,13 +52,13 @@ import java.text.SimpleDateFormat;
                 }
             }
         %>
-    <p>ERROR: <%=msg%></p>
+  
     
         <%if (request.getParameter("registerPublication") != null) {
 
                 Animal animal = Animal.getAnimal(user.getId());
                 try {
-                    Address.insertAddress(request.getParameter("street"), Integer.parseInt(request.getParameter("postalCode")), request.getParameter("district"), request.getParameter("city"), request.getParameter("state"), request.getParameter("country"), animal.getIdAnimal());
+                    Address.insertAddress(request.getParameter("street"), Integer.parseInt(request.getParameter("postalCode")), request.getParameter("district"), request.getParameter("city"), request.getParameter("state"), request.getParameter("country"));
                 } catch (Exception ex) {
                     System.out.println(ex.getMessage());
                     msg = ex.getMessage();

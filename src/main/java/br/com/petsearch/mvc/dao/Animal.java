@@ -5,6 +5,7 @@
  */
 package br.com.petsearch.mvc.dao;
 
+import static br.com.petsearch.mvc.dao.User.msgConnection;
 import java.util.ArrayList;
 
 /**
@@ -23,9 +24,9 @@ public class Animal {
     private String nameColor;
     private int ageAnimal;
     private String comments;
-    private int cd_user;
+  
 
-    public Animal(int idAnimal, int statusAnimal, String nameAnimal, String nameSpeciesAnimal, String nameRace, String nameGenderAnimal, String nameColor, int ageAnimal, String comments, int cd_user) {
+    public Animal(int idAnimal, int statusAnimal, String nameAnimal, String nameSpeciesAnimal, String nameRace, String nameGenderAnimal, String nameColor, int ageAnimal, String comments) {
         this.idAnimal = idAnimal;
         this.statusAnimal = statusAnimal;
         this.nameAnimal = nameAnimal;
@@ -34,7 +35,6 @@ public class Animal {
         this.nameColor = nameColor;
         this.ageAnimal = ageAnimal;
         this.comments = comments;
-        this.cd_user = cd_user;
         this.nameGenderAnimal = nameGenderAnimal;
     }
 
@@ -47,10 +47,9 @@ public class Animal {
 
     public static Animal getAnimal(int cd_user) throws Exception {
         try {
-            String SQL = "SELECT cd_animal, cd_status_animal, nm_animal, nm_species_animal, nm_race, sg_gender_animal, nm_color, qt_age_animal, ds_comments, cd_user FROM animal WHERE cd_user = ?";
+            String SQL = "SELECT u.cd_animal, u.cd_status_animal, u.nm_animal, u.nm_species_animal, u.nm_race, u.sg_gender_animal, u.nm_color, u.qt_age_animal, u.ds_comments FROM animal u right JOIN users_animal a ON u.cd_animal = a.cd_animal AND a.cd_user = ?; ";
             Object parameters[] = {cd_user};
             ArrayList<Object[]> list = DatabaseConnector.getQuery(SQL, parameters);
-
             if (list.isEmpty()) {
                 msgConnection = "Não existe dados cadastrados ";
                 return null;
@@ -65,8 +64,8 @@ public class Animal {
                         (String) row[5],
                         (String) row[6],
                         (int) row[7],
-                        (String) row[8],
-                        (int) row[9]);
+                        (String) row[8]);
+                     
                 return a;
             }
         } catch (Exception ex) {
@@ -74,6 +73,31 @@ public class Animal {
            return null;
         }
     }
+    
+    public static ArrayList<Animal> getAnimais (int cod)throws Exception{
+      String SQL = "SELECT a.cd_animal, a.cd_status_animal, a.nm_animal, a.nm_species_animal, a.nm_race, a.sg_gender_animal, a.nm_color, a.qt_age_animal, a.ds_comments FROM animal a, users_animal u WHERE a.cd_animal = u.cd_animal AND u.cd_user = ?  ";
+        ArrayList<Animal> animal = new ArrayList<>();
+        ArrayList<Object[]> list = DatabaseConnector.getQuery(SQL, new Object[]{cod});
+        for (int i = 0; i < list.size(); i++) {
+            Object row[] = list.get(i);
+            Animal a = new Animal(
+                        (int) row[0],
+                        (int) row[1],
+                        (String) row[2],
+                        (String) row[3],
+                        (String) row[4],
+                        (String) row[5],
+                        (String) row[6],
+                        (int) row[7],
+                        (String) row[8]);
+            animal.add(a);
+        }
+        return animal;
+    }
+
+ 
+  
+
     
      public static void deleteAnimal(int cd_animal) throws Exception {
        
@@ -163,13 +187,7 @@ public class Animal {
         this.idAnimal = idAnimal;
     }
 
-    public int getCd_user() {
-        return cd_user;
-    }
-
-    public void setCd_user(int cd_user) {
-        this.cd_user = cd_user;
-    }
+  
 
     public String getNameGenderAnimal() {
         return nameGenderAnimal;

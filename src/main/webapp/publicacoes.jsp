@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="br.com.petsearch.mvc.dao.User"%>
+<%@page import="br.com.petsearch.mvc.dao.Animal"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -42,6 +43,13 @@
                     <div class="col-sm-8 ">
                         <div class="container border pb-3"><!-- Principal -->
                             <!-- ABA DO PERFIL ------------------------------------------------------------>
+
+ 
+  
+
+
+
+
 
 
                             <%@include file="../WEB-INF/jspf/conteudoPublicacoes.jspf"%>

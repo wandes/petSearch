@@ -40,7 +40,7 @@ nm_district varchar(20),
 nm_city varchar(20),
 sg_state varchar(30),
 nm_country varchar(30),
-cd_animal int,
+cd_animal serial not null,
 primary key (cd_address),
 foreign key (cd_animal) references animal(cd_animal)ON DELETE CASCADE); 
 
