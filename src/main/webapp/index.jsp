@@ -57,34 +57,34 @@
        <body> 
         <nav class="navbar sticky-top navbar-expand-sm border-bottom bg-white ">
             <div class="container">
-                <a class="navbar-brand text-warning" href="../view/home.jsp">LOGO</a>
+                <a class="navbar-brand text-secondary" href="../view/home.jsp">LOGO</a>
 
                 <form method="post" action="index.jsp">
                     <div class="row">
-                        <label for="email" class="text-warning">E-mail</label>
+                        <label for="email" class="dark link">E-mail</label>
                         <div class="col-sm-3 input-group-sm ">
                             <input type="email" class="form-control"  id="email"  aria-label="Username" aria-describedby="basic-addon1" name="email" placeholder="nome@email.com"  required="">
                              
                         </div>
 
-                        <label for="senha" class="text-warning">Senha</label>
+                        <label for="senha" class="dark link">Senha</label>
                         <div class="col-sm-3 input-group-sm ">    
                             <input type="password" class="form-control" id="senha"  aria-label="Username" aria-describedby="basic-addon1"  placeholder="senha"  name="password" required="">
                         </div>
                           
                         <div class="col-sm-3 input-group-sm " >
-                            <button type="submit" name="login" class="col-sm btn btn-sm btn-outline-warning " >Entrar</button>
+                            <button type="submit" name="login" class="col-sm btn btn-sm btn-outline-primary " >Entrar</button>
                         </div>
                         
                     </div>
-                    <span style="color: black;"><%=msg%></span>  
+                    <span class="text-danger" ><%=msg%></span>  
                 </form>
             
             </div>
 
         </nav><!--header-->
          
-       
+    
    
         
         <div class="container" >   
@@ -92,10 +92,20 @@
                 <!--navbar-->
                 <div class="row" >
                     <div class="col-md-5 ">
-
+                        <br>
                         <!-- carousel--> 
+                        <div class="row ">
+                            <div class="col-md-12 dark link">
+                                <h3 class=" dark link ">Como funciona o Pet Search?</h3><br>
+                                <p style="text-align: justify">
+                                Pet Search é um site que tem o intuito de facilitar o encontro de animais 
+                                desaparecidos, aproximando através de comparações de caracteristicas
+                               os animais desaparecidos com os encontrados.
+                                </p>
+                            </div>
+                        </div> 
 
-                        <div style="margin-top: 30%;" id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        <div  id="carouselExampleIndicators" class="carousel slide rounded"  data-ride="carousel">
                             <ol class="carousel-indicators">
                                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -103,13 +113,13 @@
                             </ol>
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img class="d-block w-100" src="img/carouse2.jpg" alt="First slide">
+                                    <img class="d-block w-100 rounded" src="img/carouse2.jpg" alt="First slide"   >
                                 </div>
                                 <div class="carousel-item">
-                                    <img  class="d-block w-100" src="img/carouse1.jpg" alt="Second slide">
+                                    <img  class="d-block w-100 rounded" src="img/carouse1.jpg" alt="Second slide">
                                 </div>
                                 <div class="carousel-item">
-                                    <img class="d-block w-100" src="img/carouse3.jpg" alt="Third slide">
+                                    <img class="d-block w-100 rounded" src="img/carouse3.jpg" alt="Third slide">
                                 </div>
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -123,11 +133,13 @@
                         </div>
 
                     </div>
+                    
                     <div class="col-sm-2 "></div>
                     <div class="col-md-5 ">
+                        <br>
                         <div class="row ">
                             <div class="col-md-12 text-center">
-                                <h3 class=" text-warning ">CADASTRE-SE !</h3><br>
+                                <h3 class=" text-secondary ">CADASTRE-SE !</h3><br>
                             </div>
                         </div>  
                         <div class="form-group col-md-12"> 
@@ -142,19 +154,19 @@
                                 <div class="row">
 
                                     <div class="form-group col-md-6">
-                                        <label for="nome" class="text-warning">Nome</label>
+                                        <label for="nome" class="dark link">Nome</label>
                                         <div class="col-sm input-group small mb-2">
                                             <input type="text" class="form-control"  id="name" name="name" required placeholder="Nome"  required >
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="celular" class="text-warning">Celular</label>
+                                        <label for="celular" class="dark link">Celular</label>
                                         <div class="col-sm input-group small mb-2">
                                             <input type="text" class="form-control " id="telefone" name="telephone"  required placeholder="(99)99999-9999">
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
-                                        <label for="email" class="text-warning">E-mail</label>
+                                        <label for="email" class="dark link">E-mail</label>
                                         <div class="col-sm input-group small mb-2">
                                             <input type="email" class="form-control "  id="email" name="email" required placeholder="nome@email.com" required>
                                         </div>
@@ -162,20 +174,20 @@
 
 
                                     <div class="form-group col-md-6">
-                                        <label for="senha" class="text-warning">Senha</label>
+                                        <label for="senha" class="dark link">Senha</label>
                                         <div class="col-sm input-group small mb-2">    
                                             <input type="password" class="form-control" id="cadastroSenha" name="password"   required placeholder="Senha" required>
                                         </div>
                                     </div>
 
                                     <div class="form-group col-md-6">
-                                        <label for="confirmaSenha" class="text-warning">Confirme</label>
+                                        <label for="confirmaSenha" class="dark link">Confirme</label>
                                         <div class="col-sm input-group small mb-2">    
                                             <input type="password" class="form-control"  id="confirmaSenha" name="ConfirmPass"   placeholder="Confirme a senha"  required>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12"> 
-                                        <p style="color:black; text-align: center;" id="msgRegister"></p>
+                                        <p class="text-danger " id="msgRegister"></p>
                                     </div>
 
 
@@ -183,13 +195,13 @@
                                         <div class="col-sm input-group  mb-6">
                                             
                                             <input class="form-check-input " type="radio" name="gender"  id="masculino" value="Masculino" required >
-                                            <label class="form-check-label text-warning" for="masculino" >Masculino</label>
+                                            <label class="form-check-label dark link" for="masculino" >Masculino</label>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <div class="col-sm input-group  mb-6">
                                             <input class="form-check-input" type="radio" name="gender"  id="feminino" value="Feminino" >
-                                            <label class="form-check-label text-warning" for="feminino">Feminino</label>
+                                            <label class="form-check-label dark link" for="feminino">Feminino</label>
                                         </div>
                                     </div>
 
@@ -198,20 +210,31 @@
 
                             </div>
                             <div class="row text-left">
-                                <button type="submit" class="col-sm btn btn-md btn-outline-warning " name="register" onclick="validatePassword()" >Cadastrar</button>
+                                <button type="submit" class="col-sm btn btn-md bg-info " name="register" onclick="validatePassword()" >Cadastrar</button>
                             </div>
+                         </form>
+
                     </div>
-                    </form>
                 </div>
                
             </div> 
-       
-    <%@include file="WEB-INF/jspf/bootstrapBody.jspf"%>
+           <%@include file="WEB-INF/jspf/bootstrapBody.jspf"%>
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/jquery.mask.min.js"></script>       
    <script src="js/script_jquery.js"></script>  
    <script type="text/javascript" src="js/Funcoes.js"></script>
+     
+<div class="row ">
+    <div class="col-md-12 dark link">
+        <footer>
+            <hr>    
+       </footer>
+        </div>
+    </div>   
+        
+       
     
+ 
 </body>
 
 

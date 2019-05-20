@@ -8,6 +8,7 @@ and open the template in the editor.
     Author     : Wandes
 */
 
+
 .carousel-inner{
  height: auto;
 }
@@ -74,9 +75,20 @@ tr:nth-child(even) {
 } 
 
 .navbar{
-    background-image: linear-gradient(to left, #113BC2, #19B2FF, #25D5E6);
+    background-image: linear-gradient(to right, #113BC2, #19B2FF, #25D5E6);
 }
 
+p{
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: 18px;
+    color: grey;
+}
+
+footer{
+	
+	background-color: black;
+       
+}
 
 
 
