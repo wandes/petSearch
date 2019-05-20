@@ -63,17 +63,17 @@
                     <div class="row">
                         <label for="email" class="dark link">E-mail</label>
                         <div class="col-sm-3 input-group-sm ">
-                            <input type="email" class="form-control"  id="email"  aria-label="Username" aria-describedby="basic-addon1" name="email" placeholder="nome@email.com"  required="">
+                            <input type="email" class="form-control campoNomeEmail"    aria-label="Username" aria-describedby="basic-addon1" name="email" placeholder="nome@email.com"  required="">
                              
                         </div>
 
                         <label for="senha" class="dark link">Senha</label>
                         <div class="col-sm-3 input-group-sm ">    
-                            <input type="password" class="form-control" id="senha"  aria-label="Username" aria-describedby="basic-addon1"  placeholder="senha"  name="password" required="">
+                            <input type="password" class="form-control campoSenha"  aria-label="Username" aria-describedby="basic-addon1"  placeholder="senha"  name="password" required="">
                         </div>
                           
                         <div class="col-sm-3 input-group-sm " >
-                            <button type="submit" name="login" class="col-sm btn btn-sm btn-outline-primary " >Entrar</button>
+                            <button type="submit" name="login" class="col-sm btn btn-primary btn-sm" >Entrar</button>
                         </div>
                         
                     </div>
@@ -156,19 +156,19 @@
                                     <div class="form-group col-md-6">
                                         <label for="nome" class="dark link">Nome</label>
                                         <div class="col-sm input-group small mb-2">
-                                            <input type="text" class="form-control"  id="name" name="name" required placeholder="Nome"  required >
+                                            <input type="text" class="form-control campoNome"    name="name" required placeholder="Nome"  required >
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="celular" class="dark link">Celular</label>
                                         <div class="col-sm input-group small mb-2">
-                                            <input type="text" class="form-control " id="telefone" name="telephone"  required placeholder="(99)99999-9999">
+                                            <input type="text" class=" form-control campoTelefone"   name="telephone"  required placeholder="(99)99999-9999">
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label for="email" class="dark link">E-mail</label>
                                         <div class="col-sm input-group small mb-2">
-                                            <input type="email" class="form-control "  id="email" name="email" required placeholder="nome@email.com" required>
+                                            <input type="email" class="form-control "   name="email" required placeholder="nome@email.com" required>
                                         </div>
                                     </div>
 
@@ -176,14 +176,14 @@
                                     <div class="form-group col-md-6">
                                         <label for="senha" class="dark link">Senha</label>
                                         <div class="col-sm input-group small mb-2">    
-                                            <input type="password" class="form-control" id="cadastroSenha" name="password"   required placeholder="Senha" required>
+                                            <input type="password" class="form-control campoSenha" id="cadastroSenha" name="password"   required placeholder="Senha" required>
                                         </div>
                                     </div>
 
                                     <div class="form-group col-md-6">
                                         <label for="confirmaSenha" class="dark link">Confirme</label>
                                         <div class="col-sm input-group small mb-2">    
-                                            <input type="password" class="form-control"  id="confirmaSenha" name="ConfirmPass"   placeholder="Confirme a senha"  required>
+                                            <input type="password" class="form-control campoSenha" id="confirmaSenha"  name="ConfirmPass"   placeholder="Confirme a senha"  required>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-12"> 
@@ -210,7 +210,7 @@
 
                             </div>
                             <div class="row text-left">
-                                <button type="submit" class="col-sm btn btn-md bg-info " name="register" onclick="validatePassword()" >Cadastrar</button>
+                                <button type="submit" class="col-sm  btn btn-lg btn-primary" name="register" onclick="validatePassword()" >Cadastrar</button>
                             </div>
                          </form>
 
@@ -227,7 +227,7 @@
 <div class="row ">
     <div class="col-md-12 dark link">
         <footer>
-            <hr>    
+           
        </footer>
         </div>
     </div>   

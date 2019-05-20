@@ -115,7 +115,7 @@
                                                     <div class="form-group text-left">
                                                         <div class="border-bottom text-center font-weight-bold my-2">Sobre sua publicação</div>
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="statusAnimal" id="perdidoRadio" value="0" >
+                                                            <input class="form-check-input" type="radio" name="statusAnimal" id="perdidoRadio" value="0" required >
                                                             <label class="form-check-label" for="perdidoRadio">
                                                                 Perdido
                                                             </label>
@@ -130,44 +130,43 @@
                                                     </div>
 
                                                     <div class="form-group text-left">
-                                                        <div class="border-bottom text-center font-weight-bold my-2">Sobre seu pet</div>
+                                                        <div class="border-bottom text-center font-weight-bold my-2">Cadastrar Pet</div>
                                                         <label for="editarNomePet">Nome</label>
-                                                        <input type="text" class="form-control" id="criarNomePet" name="namePet" placeholder="Nome do seu pet">
+                                                        <input type="text" class="form-control campoNome"  name="namePet" placeholder="Nome do seu pet" required="">
                                                         <label for="editarIdade">Idade</label>
-                                                        <input type="text" class="form-control" id="criarIdade" name="agePet" placeholder="Idade do seu pet">
+                                                        <input type="text" class="form-control campoIdade"  name="agePet" placeholder="Idade do seu pet" required>
                                                         <label for="editarEstado">Espécie</label>
-                                                        <input type="text" class="form-control" id="criarEspecie" name="speciesPet" placeholder="Espécie do seu pet">
+                                                        <input type="text" class="form-control campoNome"  name="speciesPet" placeholder="Espécie do seu pet" required>
                                                         <label for="editarCidade">Raça</label>
-                                                        <input type="text" class="form-control" id="criarRaca" name="racePet" placeholder="Raça do seu pet">
+                                                        <input type="text" class="form-control campoNome"  name="racePet" placeholder="Raça do seu pet" required>
                                                         <label for="editarRua">Sexo</label>
-                                                        <input type="text" class="form-control" id="criarSexo" name="genderPet" placeholder="Sexo do seu pet">
+                                                        <input type="text" class="form-control campoNome"  name="genderPet" placeholder="Sexo do seu pet" required>
                                                         <label for="editarCor">Cor</label>
-                                                        <input type="text" class="form-control" id="criarCor" name="colorPet" placeholder="Cor do seu pet">
+                                                        <input type="text" class="form-control campoNome"  name="colorPet" placeholder="Cor do seu pet" required>
                                                         <div class="form-group">
                                                             <label>Observações</label>
-                                                            <textarea class="form-control" rows="3" name="comments"></textarea>
+                                                            <textarea class="form-control campoComentarios" rows="3"  name="comments"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="form-group text-left">
-                                                        <div class="border-bottom text-center font-weight-bold my-2">Sobre o endereço</div>
+                                                        <div class="border-bottom text-center font-weight-bold my-2">Cadastrar Endereço</div>
                                                         <label for="editarRua">CEP</label>
-                                                        <input type="text" class="form-control" id="criarCEP" name="postalCode">
+                                                        <input type="text" class="form-control campoCep"  name="postalCode" required>
                                                         <label for="editarNomePet">País</label>
-                                                        <input type="text" class="form-control" id="criarPais" name="country">
+                                                        <input type="text" class="form-control campoNome"  name="country" required>
                                                         <label>Estado</label>
-                                                        <select class="form-control" name="state">
-                                                            <option>SP</option>
+                                                        <select required  class="form-control" name="state"> 
+                                                            <option >SP</option>
                                                             <option>MG</option>
-                                                            <option>PR</option>
-                                                            <option>AM</option>
-                                                            <option>RJ</option>
+                                                            <option>RS</option>
+                                                            <option>RJ</option>                                                           
                                                         </select>
                                                         <label for="editarEstado">Cidade</label>
-                                                        <input type="text" class="form-control" id="criarCidade" name="city">
+                                                        <input type="text" class="form-control campoNome"  name="city" required>
                                                         <label for="editarCidade">Bairro</label>
-                                                        <input type="text" class="form-control" id="criarBairro" name="district">
+                                                        <input type="text" class="form-control campoNome"  name="district" required>
                                                         <label for="editarCor">Rua</label>
-                                                        <input type="text" class="form-control" id="criarRua" name="street">
+                                                        <input type="text" class="form-control campoNome"  name="street" required>
                                                     </div>
 
                                                 </div>
@@ -280,8 +279,12 @@
                 </div>
             </div>
         </main>
-
+         
         <%@include file="WEB-INF/jspf/bootstrapBody.jspf"%>
+        <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/jquery.mask.min.js"></script>       
+   <script src="js/script_jquery.js"></script>  
+   <script type="text/javascript" src="js/Funcoes.js"></script>
 
         <%}%>
     </body>
