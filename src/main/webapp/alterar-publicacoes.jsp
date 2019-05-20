@@ -11,15 +11,17 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <%@include file="WEB-INF/jspf/head.jspf"%>
+         <%if (session.getAttribute("session_user") == null) {
+                    response.sendRedirect("index.jsp");
+                } else {%>
         <% if (session.getAttribute("session_animal") == null) {
 
                 Animal animal = Animal.getAnimal(Integer.parseInt(request.getParameter("idAnimal")));
                 session.setAttribute("session_animal", animal);
-
-            } else {
-                Animal an = (Animal) session.getAttribute("session_animal");
-
-        %>
+        }
+         
+        if (session.getAttribute("session_animal") != null) {
+             Animal an = (Animal) session.getAttribute("session_animal");%>
         <title>Alterar Usuário</title>
     </head> 
 
@@ -28,9 +30,7 @@
         <%String msg = ""; %>
         <div id="publicacoesConteudo">
 
-            <%if (session.getAttribute("session_user") == null) {
-                    response.sendRedirect("index.jsp");
-                } else {%>
+           
 
 
             <%
@@ -50,13 +50,14 @@
                         try {
 
                             Address.updateAddress(request.getParameter("street"), Integer.parseInt(request.getParameter("postalCode")), request.getParameter("district"), request.getParameter("city"), request.getParameter("state"), request.getParameter("country"), an.getIdAnimal());
+                            session.setAttribute("session_animal", null);
                             response.sendRedirect("publicacoes.jsp");
                         } catch (Exception ex) {
                             System.out.println(ex.getMessage());
                             msg = ex.getMessage();
                         }
                     }
-                }
+                
             %>   
             <%try {
 
@@ -150,7 +151,7 @@
             %>  
 
 
-            <% }%>  
+            <% }}%>  
 
 
         </div>
