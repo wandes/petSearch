@@ -88,6 +88,8 @@ p{
         /*border: solid 3px green;*/
 	min-height: 100%;
         /*margin-bottom: 50px;*/
+          background-image: linear-gradient( #EEE9E9, white);
+          margin: auto;
         
 }
 
@@ -96,18 +98,16 @@ p{
 	/*overflow: auto;*/
 	padding-bottom: 50px;
 }
-/*
-#rodape{
-    background-color: #1a1a1a;
-    color: white;
-    text-align: center;
-    border: solid 1px red;
-    position: relative;
-    height: 50px;
-    margin-top: -50px;
+
+footer{
     clear: both;
+    background-image: linear-gradient( #EEE9E9, white );
+    text-align: center;
+    height: 15%;
+    margin-top: 5%;
+    margin-bottom: 0;
 }
-*/
+
 /*
 button {
   background-color: gray;
