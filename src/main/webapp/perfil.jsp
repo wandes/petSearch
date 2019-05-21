@@ -332,5 +332,10 @@
 
         <%@include file="../WEB-INF/jspf/bootstrapBody.jspf"%>
        <%}%>
+       
+       <footer >          
+            <hr>
+            <span class=" dark link">Disponível em : <a target="_blank" href="https://github.com/petSearch.git">https://github.com/petSearch.git</a></span>
+        </footer>
     </body>
 </html>
