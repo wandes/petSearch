@@ -88,7 +88,7 @@ p{
         /*border: solid 3px green;*/
 	min-height: 100%;
         /*margin-bottom: 50px;*/
-        background-color: #4d4d4d;
+        
 }
 
 #principal{
@@ -96,17 +96,18 @@ p{
 	/*overflow: auto;*/
 	padding-bottom: 50px;
 }
-
+/*
 #rodape{
     background-color: #1a1a1a;
     color: white;
     text-align: center;
-    /*border: solid 1px red;*/
+    border: solid 1px red;
     position: relative;
     height: 50px;
     margin-top: -50px;
     clear: both;
 }
+*/
 /*
 button {
   background-color: gray;

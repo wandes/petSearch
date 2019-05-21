@@ -223,7 +223,7 @@
             </div>
         </div>
         <footer id="rodape">
-            <label>Todos os direitos reservados.</label>
+           
         </footer>
         <%@include file="WEB-INF/jspf/bootstrapBody.jspf"%>
         <script src="js/jquery-3.4.1.min.js"></script>
