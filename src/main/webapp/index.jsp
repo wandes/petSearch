@@ -59,23 +59,25 @@
             <div id="principal">
                 <nav class="navbar sticky-top navbar-expand-sm border-bottom bg-white ">
                     <div class="container">
-                        <a class="navbar-brand text-secondary" href="../view/home.jsp">LOGO</a>
+                        <a class="navbar-brand  " href="../view/home.jsp">
+                            <img class="logosize" src="img/logopetsearch2.png">
+                        </a>
 
                         <form method="post" action="index.jsp">
                             <div class="row">
-                                <label for="email" class="dark link">E-mail</label>
-                                <div class="col-sm-3 input-group-sm ">
+                                <label for="email" class="text-white">E-mail</label>
+                                <div class="col-md-3 input-group-md ">
                                     <input type="email" class="form-control campoNomeEmail"    aria-label="Username" aria-describedby="basic-addon1" name="email" placeholder="nome@email.com"  required="">
 
                                 </div>
 
-                                <label for="senha" class="dark link">Senha</label>
-                                <div class="col-sm-3 input-group-sm ">    
+                                <label for="senha" class="text-white">Senha</label>
+                                <div class="col-md-3 input-group-md ">    
                                     <input type="password" class="form-control campoSenha"  aria-label="Username" aria-describedby="basic-addon1"  placeholder="senha"  name="password" required="">
                                 </div>
 
-                                <div class="col-sm-3 input-group-sm " >
-                                    <button type="submit" name="login" class="col-sm btn btn-primary btn-sm" >Entrar</button>
+                                <div class="col-md-3 input-group-md " >
+                                    <button type="submit" name="login" class="col-sm btn btn-primary btn-md" >Entrar</button>
                                 </div>
 
                             </div>

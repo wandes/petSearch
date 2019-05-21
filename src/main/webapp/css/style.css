@@ -70,10 +70,10 @@ tr:nth-child(even) {
 .stdBG{
     
 }
-.stdinput{
-    color: #EFEFEF;
-} 
-
+.logosize{
+    max-height:80px;
+    width: auto;
+}
 .navbar{
     background-image: linear-gradient(to right, #113BC2, #19B2FF, #25D5E6);
 }
