@@ -59,9 +59,9 @@
             <div id="principal">
                 <nav class="navbar sticky-top navbar-expand-sm border-bottom bg-white ">
                     <div class="container">
-                        <a class="navbar-brand  " href="../view/home.jsp">
+                        <span>
                             <img class="logosize" src="img/logopetsearch2.png">
-                        </a>
+                        </span>
 
                         <form method="post" action="index.jsp">
                             <div class="row">
