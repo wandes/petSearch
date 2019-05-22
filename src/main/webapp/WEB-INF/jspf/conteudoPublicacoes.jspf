@@ -3,26 +3,23 @@
 <%@page import="br.com.petsearch.mvc.dao.Animal"%>
 <%@page import="br.com.petsearch.mvc.dao.Address"%>
 <%@ page pageEncoding="UTF-8" %>
+
+
 <%String msg = ""; %>
 <div id="publicacoesConteudo">
 
-    <%if (session.getAttribute("session_user") == null) {
+    <%
+
+        if (session.getAttribute("session_user") == null) {
             response.sendRedirect("index.jsp");
+
         } else {
             User user = (User) session.getAttribute("session_user");
 
     %>
-    
-     <% /*
-                      
-             if ((request.getParameter("deleteAnimal")) != null && (animal != null) ) {
-            
-                try {                     
-                Animal.deleteAnimal(animal.getIdAnimal());
-                } catch (Exception ex) {
-                 System.out.println(ex.getMessage());
-              
-                } } */%>
+
+
+
 
     <div class="row d-flex justify-content-end"> 
 
@@ -37,13 +34,6 @@
                         </button>
                     </div>
 
-                    <% try {
-
-                            for (Animal a : Animal.getAnimais(user.getId())) {;%>  
-
-                    <%if (a == null) {
-                            msg = Animal.getMsgConnection();
-                        } else {%>
                 </div>
 
             </div>
@@ -51,8 +41,17 @@
 
 
         <div class="container">
+            <h3 class=" dark link ">Publicações</h3><br>
+            <% try {
+
+                    for (Animal a : Animal.getAnimais(user.getId())) {;%>  
+
+            <%if (a == null) {
+                    msg = Animal.getMsgConnection();
+                } else {%>
+
             <div class="border-bottom text-left pl-3">
-                Sobre sua publicação
+
                 <form method="post" action="alterar-publicacoes.jsp">   
                     <div style="background-color: #E0EEEE;">    
                         <div class="row mt-2">
@@ -180,28 +179,40 @@
                             </div>
                         </div>
                     </div>
-                             
-                    <button class="btn btn-success" type="submit" name="alterar" >Alterar</button>  
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" name="deleteAnimal" >Excluir</button>
+
+
+                    <div class="container py-2 d-flex justify-content-between">
+                        <div class="col-sm-3 px-0">
+                            <button class="btn btn-success" type="submit" name="alterar" >Alterar Publicação</button>  
+                        </div>  
                 </form>
-               
+                            
+                <form method="post" action="perfil.jsp">  
 
-                <%}%>
-                <br>
-                <hr>
+                    <div class="col-sm-3 px-0">
+                        <input type="hidden" name="idAnimal" value="<%=a.getIdAnimal()%>">
+                        <button  type="submit" class="btn btn-danger" data-dismiss="modal" name="deletePet" >Excluir</button>          
+                    </div>
+                  </div>
+
+             
+                </form>
 
 
-                <% }
-                        } catch (Exception ex) {
-                            System.out.println(ex.getMessage());
-                            msg = ex.getMessage();
-                        }
-                    }%>  
-
-            </div>
+            <%}%>
+           
+            <% }
+                    } catch (Exception ex) {
+                        System.out.println(ex.getMessage());
+                        msg = ex.getMessage();
+                    }
+                }%>  
 
         </div>
 
-
     </div>
 
+
+</div>
+
+</div>

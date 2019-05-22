@@ -8,4 +8,4 @@
  * Created: 18/05/2019
  */
 
-SELECT * FROM users;
+SELECT * FROM animal;

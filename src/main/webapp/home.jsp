@@ -26,21 +26,21 @@
             String msg = "";
         %>
 
-       
+
         <%
             if (request.getParameter("registerPublication") != null) {
 
                 //cadastrando animal e associando ao usuário      
                 try {
-                    Animal.insertAnimal(Integer.parseInt(request.getParameter("statusAnimal")), request.getParameter("namePet"), request.getParameter("speciesPet"), request.getParameter("racePet"), request.getParameter("genderPet"), request.getParameter("colorPet"), Integer.parseInt(request.getParameter("agePet")), request.getParameter("comments"));
+                    Animal.insertAnimal(Integer.parseInt(request.getParameter("statusAnimal")), request.getParameter("namePet"), request.getParameter("speciesPet"), request.getParameter("racePet"), request.getParameter("genderPet"), request.getParameter("colorPet"), Integer.parseInt(request.getParameter("agePet")), "Em Desenvolvimento");
                 } catch (Exception ex) {
                     System.out.println(ex.getMessage());
                     msg = ex.getMessage();
                 }
             }
         %>
-       
-         <%if (request.getParameter("registerPublication") != null) {
+        <p><%=msg%></p>
+        <%if (request.getParameter("registerPublication") != null) {
 
                 try {
 
@@ -52,13 +52,13 @@
                 }
             }
         %>
-  
-    
+
+
         <%if (request.getParameter("registerPublication") != null) {
 
                 Animal animal = Animal.getAnimal(user.getId());
                 try {
-                    Address.insertAddress(request.getParameter("street"), Integer.parseInt(request.getParameter("postalCode")), request.getParameter("district"), request.getParameter("city"), request.getParameter("state"), request.getParameter("country"));
+                    Address.insertAddress(request.getParameter("street"), Integer.parseInt(request.getParameter("postalCode").replaceAll("\\D", "")), request.getParameter("district"), request.getParameter("city"), request.getParameter("state"), request.getParameter("country"));
                 } catch (Exception ex) {
                     System.out.println(ex.getMessage());
                     msg = ex.getMessage();
@@ -78,13 +78,13 @@
                 } catch (Exception ex) {
                     System.out.println(ex.getMessage());
                     msg = ex.getMessage();
-               }
-           }%>
+                }
+            }%>
 
 
 
 
-       
+
 
         <main class="mt-3">
             <div class="container">
@@ -145,7 +145,7 @@
                                                         <input type="text" class="form-control campoNome"  name="colorPet" placeholder="Cor do seu pet" required>
                                                         <div class="form-group">
                                                             <label>Observações</label>
-                                                            <textarea class="form-control campoComentarios" rows="3"  name="comments"></textarea>
+                                                            <textarea class="form-control campoComentarios" rows="3"  name="comments " disabled>Em Desenvolvimento</textarea>
                                                         </div>
                                                     </div>
                                                     <div class="form-group text-left">
@@ -155,7 +155,7 @@
                                                         <label for="editarNomePet">País</label>
                                                         <input type="text" class="form-control campoNome"  name="country" required>
                                                         <label>Estado</label>
-                                                        <select required  class="form-control" name="state"> 
+                                                        <select required  class="form-control" name="state" > 
                                                             <option >SP</option>
                                                             <option>MG</option>
                                                             <option>RS</option>
@@ -279,17 +279,19 @@
                 </div>
             </div>
         </main>
-         
-        <%@include file="WEB-INF/jspf/bootstrapBody.jspf"%>
-        <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/jquery.mask.min.js"></script>       
-   <script src="js/script_jquery.js"></script>  
-   <script type="text/javascript" src="js/Funcoes.js"></script>
+
+
 
         <%}%>
         <footer >          
             <hr>
-            <span class=" dark link">Disponível em : <a target="_blank" href="https://github.com/petSearch.git">https://github.com/petSearch.git</a></span>
+            <span class=" dark link">Disponível em : <a target="_blank" href="https://github.com/wandes/petSearch">https://github.com/petSearch.git</a></span>
         </footer>
+        <%@include file="WEB-INF/jspf/bootstrapBody.jspf"%>
+        <script src="js/jquery-3.4.1.min.js"></script>
+        <script src="js/jquery.mask.min.js"></script>       
+        <script src="js/script_jquery.js"></script>  
+        <script type="text/javascript" src="js/Funcoes.js"></script>
+
     </body>
 </html>

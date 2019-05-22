@@ -16,7 +16,7 @@
     </head>
     <body style="text-align:center;">
         <%@include file="../WEB-INF/jspf/header.jspf"%>
-       
+
 
         <main class="mt-3">
             <div class="container">
@@ -43,8 +43,8 @@
                         <div class="container border pb-3"><!-- Principal -->
                             <!-- ABA DO PERFIL ------------------------------------------------------------>
 
- 
-  
+
+
 
 
 

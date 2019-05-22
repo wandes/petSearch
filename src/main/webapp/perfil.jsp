@@ -29,12 +29,13 @@
         <%if (request.getParameter("updateUser") != null) {
             
                      try { User.updateUser(request.getParameter("nameUp"), request.getParameter("emailUp"), request.getParameter("passwordUp"),
-                              request.getParameter("telephoneUp"), user.getId());  
+                              request.getParameter("telephoneUp").replaceAll("\\D", ""), user.getId());  
               
                      //criar método puxar por ID user
                      user = User.getUser(request.getParameter("emailUp"), request.getParameter("passwordUp"));
                
                      session.setAttribute("session_user", user);
+                     
                 response.sendRedirect("perfil.jsp");
              } catch (Exception ex) {
               System.out.println(ex.getMessage()); } } %>
@@ -53,7 +54,16 @@
         System.out.println(ex.getMessage());
               
        } } %> 
-
+<%
+   if (request.getParameter("deletePet") != null ) {
+            
+       try {                    
+       Animal.deleteAnimal(Integer.parseInt(request.getParameter("idAnimal")));
+      
+       } catch (Exception ex) {
+        System.out.println(ex.getMessage());
+              
+       } } %> 
         <main class="mt-3">
             <div class="container">
                 <div class="row">
@@ -126,7 +136,7 @@
                                                                   <input class="form-check-input" type="radio" name="radioSexo" id="editarSexo" value="Feminino">
                                                                   <label class="form-check-label" for="editarSexo">Feminino</label>
                                                                 </div>-->
-
+                                                 
                                                             </div>
 
                                                         </div>
@@ -219,6 +229,7 @@
 
                                                             <div class="form-group text-left">
                                                                 <div class="border-bottom text-center font-weight-bold my-2">Sobre seu pet</div>
+                                                                
                                                                 <label for="editarNomePet">Nome</label>
                                                                 <input type="text" class="form-control" id="editarNomePet" value="<%=animal.getNameAnimal()%>" name="NameAnimal"  >
                                                                 <label for="editarIdade">Idade</label>
@@ -228,7 +239,7 @@
                                                                 <label for="editarCidade">Raça</label>
                                                                 <input type="text" class="form-control" id="editarRaca" value="<%=animal.getNameRace()%>" name="NameRace" >
                                                                 <label for="editarRua">Sexo</label>
-                                                                <input type="text" class="form-control" id="editarSexo" value="estruturar no banco" placeholder="Sexo do seu pet">
+                                                                <input type="text" class="form-control" id="editarSexo" value="<%=animal.getNameGenderAnimal()%>" placeholder="Sexo do seu pet">
                                                                 <label for="editarCor">Cor</label>
                                                                 <input type="text" class="form-control" id="editarCor" value="<%=animal.getNameColor()%>" name="NameColor" >
                                                             </div>
@@ -332,7 +343,7 @@
 
         <%@include file="../WEB-INF/jspf/bootstrapBody.jspf"%>
        <%}%>
-       
+      
        <footer >          
             <hr>
             <span class=" dark link">Disponível em : <a target="_blank" href="https://github.com/petSearch.git">https://github.com/petSearch.git</a></span>
