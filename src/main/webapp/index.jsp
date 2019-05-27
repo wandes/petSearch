@@ -90,16 +90,16 @@
 
 
 
-                <div class="container" >   
+                <div class="container " >   
 
                     <!--navbar-->
                     <div class="row" >
-                        <div class="col-md-5 ">
+                        <div class="col-md-6 ">
                             <br>
                             <!-- carousel--> 
                             <div class="row ">
-                                <div class="col-md-12 dark link">
-                                    <h3 class=" dark link ">Como funciona o Pet Search?</h3><br>
+                                <div class="col-md-12 dark link ">
+                                    <h3 style="text-align: center "  class=" dark link ">Como funciona o Pet Search?</h3><br>
                                     <p style="text-align: justify">
                                         Pet Search é um site que tem o intuito de facilitar o encontro de animais 
                                         desaparecidos, aproximando através de comparações de caracteristicas
@@ -137,7 +137,7 @@
 
                         </div>
 
-                        <div class="col-sm-2 "></div>
+                        <div class="col-sm-1 "></div>
                         <div class="col-md-5 ">
                             <br>
                             <div class="row ">
@@ -154,9 +154,9 @@
 
                             <form method="post" action="#">
                                 <div class="row ">
-                                    <div class="row">
+                                    <div class="row ">
 
-                                        <div class="form-group col-md-6">
+                                        <div class="form-group col-md-6 ">
                                             <label for="nome" class="dark link">Nome</label>
                                             <div class="col-sm input-group small mb-2">
                                                 <input type="text" class="form-control campoNome"    name="name" required placeholder="Nome"  required >
@@ -193,7 +193,7 @@
                                             <p class="text-danger " id="msgRegister"></p>
                                         </div>
 
-
+                                        
                                         <div class="form-group col-md-6">
                                             <div class="col-sm input-group  mb-6">
 
