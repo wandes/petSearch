@@ -99,10 +99,9 @@
                             </div>
                             <div class="row">
                                 <button type="button" class="btn btn-primary m-2 w-100" data-toggle="modal" data-target="#criarPublicacao">Criar publicação</button>
-                                <div class="modal fade " id="criarPublicacao" tabindex="-1" role="dialog" aria-labelledby="TituloModalCriarPublicacao" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                                        <div class="modal-content ">
-                                            
+                                <div class="modal fade" id="criarPublicacao" tabindex="-1" role="dialog" aria-labelledby="TituloModalCriarPublicacao" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="TituloModalCriarPublicacao">Crie sua publicação!</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
