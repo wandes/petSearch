@@ -70,11 +70,13 @@ tr:nth-child(even) {
     border-color: orange;
 }
 .stdBG{
-
+    min-height: 100%;
+    background-image: linear-gradient( #EEE9E9, white);
+    margin: auto;
 }
 .logosize{
     
-    width: auto;
+    height: 70px ;
 }
 .navbar{
     background-image: linear-gradient(to right, #113BC2, #19B2FF, #25D5E6);
@@ -105,7 +107,7 @@ footer{
     clear: both;
     background-image: linear-gradient( #EEE9E9, white );
     text-align: center;
-    margin-top: 10%;
+    margin-top: 2%;
 
     margin-bottom: 0;
 }

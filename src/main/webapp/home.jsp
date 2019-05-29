@@ -20,7 +20,7 @@
         <title>Home</title>
     </head>
 
-    <body class="stdBG" >
+    <body>
         <% if (session.getAttribute("session_user") != null) {%>
         <%User user = (User) session.getAttribute("session_user");
             String msg = "";
@@ -100,75 +100,81 @@
                             <div class="row">
                                 <button type="button" class="btn btn-primary m-2 w-100" data-toggle="modal" data-target="#criarPublicacao">Criar publicação</button>
                                 <div class="modal fade" id="criarPublicacao" tabindex="-1" role="dialog" aria-labelledby="TituloModalCriarPublicacao" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                         <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="TituloModalCriarPublicacao">Crie sua publicação!</h5>
+                                            <div class="navbar modal-header ">
+                                                <div class="modal-title h5 text-white w-100 text-center " >Crie sua publicação!</div>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
 
                                             <form method="post" action="home.jsp">
-                                                <div class="modal-body">
+                                                <div class="modal-body stdBG">
                                                     <!-- FORMULÁRIO DE EDIÇÃO --->
-                                                    <div class="form-group text-left">
-                                                        <div class="border-bottom text-center font-weight-bold my-2">Sobre sua publicação</div>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="statusAnimal" id="perdidoRadio" value="0" required >
-                                                            <label class="form-check-label" for="perdidoRadio">
-                                                                Perdido
-                                                            </label>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="border-bottom text-center font-weight-bold my-2">Sobre sua publicação</div>
                                                         </div>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="statusAnimal" id="encontradoRadio" value="1">
-                                                            <label class="form-check-label" for="encontradoRadio">
-                                                                Encontrado
-                                                            </label>
+                                                            <div class="form-group col-md-6 ">
+                                                                <div class="form-check w-100 text-center">
+                                                                    <input class="form-check-input" type="radio" name="statusAnimal" id="perdidoRadio" value="0" required >
+                                                                    <label class="form-check-label" for="perdidoRadio">
+                                                                        Perdido
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group col-md-6 ">
+                                                                <div class="form-check w-100 text-center">
+                                                                    <input class="form-check-input" type="radio" name="statusAnimal" id="encontradoRadio" value="1">
+                                                                    <label class="form-check-label" for="encontradoRadio">
+                                                                        Encontrado
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="form-group text-left col-md-5">
+                                                            <div class="border-bottom text-center font-weight-bold my-2">Cadastrar Pet</div>
+                                                            <label for="editarNomePet">Nome</label>
+                                                            <input type="text" class="form-control campoNome"  name="namePet" placeholder="Nome do seu pet" required="">
+                                                            <label for="editarIdade">Idade</label>
+                                                            <input type="text" class="form-control campoIdade"  name="agePet" placeholder="Idade do seu pet" required>
+                                                            <label for="editarEstado">Espécie</label>
+                                                            <input type="text" class="form-control campoNome"  name="speciesPet" placeholder="Espécie do seu pet" required>
+                                                            <label for="editarCidade">Raça</label>
+                                                            <input type="text" class="form-control campoNome"  name="racePet" placeholder="Raça do seu pet" required>
+                                                            <label for="editarRua">Sexo</label>
+                                                            <input type="text" class="form-control campoNome"  name="genderPet" placeholder="Sexo do seu pet" required>
+                                                            <label for="editarCor">Cor</label>
+                                                            <input type="text" class="form-control campoNome"  name="colorPet" placeholder="Cor do seu pet" required>
+                                                            <div class="form-group">
+                                                                <label>Observações</label>
+                                                                <textarea class="form-control campoComentarios" rows="3"  name="comments " disabled>Em Desenvolvimento</textarea>
+                                                            </div>
                                                         </div>
-
-                                                    </div>
-
-                                                    <div class="form-group text-left">
-                                                        <div class="border-bottom text-center font-weight-bold my-2">Cadastrar Pet</div>
-                                                        <label for="editarNomePet">Nome</label>
-                                                        <input type="text" class="form-control campoNome"  name="namePet" placeholder="Nome do seu pet" required="">
-                                                        <label for="editarIdade">Idade</label>
-                                                        <input type="text" class="form-control campoIdade"  name="agePet" placeholder="Idade do seu pet" required>
-                                                        <label for="editarEstado">Espécie</label>
-                                                        <input type="text" class="form-control campoNome"  name="speciesPet" placeholder="Espécie do seu pet" required>
-                                                        <label for="editarCidade">Raça</label>
-                                                        <input type="text" class="form-control campoNome"  name="racePet" placeholder="Raça do seu pet" required>
-                                                        <label for="editarRua">Sexo</label>
-                                                        <input type="text" class="form-control campoNome"  name="genderPet" placeholder="Sexo do seu pet" required>
-                                                        <label for="editarCor">Cor</label>
-                                                        <input type="text" class="form-control campoNome"  name="colorPet" placeholder="Cor do seu pet" required>
-                                                        <div class="form-group">
-                                                            <label>Observações</label>
-                                                            <textarea class="form-control campoComentarios" rows="3"  name="comments " disabled>Em Desenvolvimento</textarea>
+                                                        <div class="col-md-2"></div>
+                                                        <div class="form-group text-left col-md-5">
+                                                            <div class="border-bottom text-center font-weight-bold my-2">Cadastrar Endereço</div>
+                                                            <label for="editarRua">CEP</label>
+                                                            <input type="text" class="form-control campoCep"  name="postalCode" required>
+                                                            <label for="editarNomePet">País</label>
+                                                            <input type="text" class="form-control campoNome"  name="country" required>
+                                                            <label>Estado</label>
+                                                            <select required  class="form-control" name="state" > 
+                                                                <option >SP</option>
+                                                                <option>MG</option>
+                                                                <option>RS</option>
+                                                                <option>RJ</option>                                                           
+                                                            </select>
+                                                            <label for="editarEstado">Cidade</label>
+                                                            <input type="text" class="form-control campoNome"  name="city" required>
+                                                            <label for="editarCidade">Bairro</label>
+                                                            <input type="text" class="form-control campoNome"  name="district" required>
+                                                            <label for="editarCor">Rua</label>
+                                                            <input type="text" class="form-control campoNome"  name="street" required>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group text-left">
-                                                        <div class="border-bottom text-center font-weight-bold my-2">Cadastrar Endereço</div>
-                                                        <label for="editarRua">CEP</label>
-                                                        <input type="text" class="form-control campoCep"  name="postalCode" required>
-                                                        <label for="editarNomePet">País</label>
-                                                        <input type="text" class="form-control campoNome"  name="country" required>
-                                                        <label>Estado</label>
-                                                        <select required  class="form-control" name="state" > 
-                                                            <option >SP</option>
-                                                            <option>MG</option>
-                                                            <option>RS</option>
-                                                            <option>RJ</option>                                                           
-                                                        </select>
-                                                        <label for="editarEstado">Cidade</label>
-                                                        <input type="text" class="form-control campoNome"  name="city" required>
-                                                        <label for="editarCidade">Bairro</label>
-                                                        <input type="text" class="form-control campoNome"  name="district" required>
-                                                        <label for="editarCor">Rua</label>
-                                                        <input type="text" class="form-control campoNome"  name="street" required>
-                                                    </div>
-
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>

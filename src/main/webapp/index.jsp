@@ -94,12 +94,12 @@
 
                     <!--navbar-->
                     <div class="row" >
-                        <div class="col-md-5 ">
+                        <div class="col-md-6 ">
                             <br>
                             <!-- carousel--> 
                             <div class="row ">
                                 <div class="col-md-12 dark link">
-                                    <h3 class=" dark link ">Como funciona o Pet Search?</h3><br>
+                                    <h3 class=" dark link " style="text-align: center">Como funciona o Pet Search?</h3><br>
                                     <p style="text-align: justify">
                                         Pet Search é um site que tem o intuito de facilitar o encontro de animais 
                                         desaparecidos, aproximando através de comparações de caracteristicas
@@ -137,7 +137,7 @@
 
                         </div>
 
-                        <div class="col-sm-2 "></div>
+                        <div class="col-sm-1 "></div>
                         <div class="col-md-5 ">
                             <br>
                             <div class="row ">
