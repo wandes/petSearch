@@ -2,6 +2,11 @@ Pet Search em Desenvolvimento!
 
 URL: https://petsearch1.herokuapp.com/
 
+Usuário e senha para olhar caso não queira se cadastrar: 
+
+Usuário : wandessilva@outlook.com
+senha : 123
+
 Projeto com fins acadêmicos desenvolvido no NetBeans IDE 8.2 e Maven ferramenta de automação de compilação utilizada primariamente 
 em projetos Java, estamos utilizando em nosso projeto também HTML5, CSS, BOOTSTRAP, JS, JQUERY, banco de dados PostgreSQL VERSÃO 11.2 
 e o servidor Heroku para hospedagem.
