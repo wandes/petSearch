@@ -9,7 +9,6 @@
 <div id="publicacoesConteudo">
 
     <%
-
         if (session.getAttribute("session_user") == null) {
             response.sendRedirect("index.jsp");
 
@@ -17,9 +16,6 @@
             User user = (User) session.getAttribute("session_user");
 
     %>
-
-
-
 
     <div class="row d-flex justify-content-end"> 
 
@@ -38,7 +34,6 @@
 
             </div>
         </div>
-
 
         <div class="container">
             <h3 class=" dark link ">Publicações</h3><br>
@@ -62,7 +57,12 @@
                                 <div class="font-weight-bold text-right">Tipo:</div>
                             </div>
                             <div class="col-8">
-                                <div class="text-left"><%=a.getStatusAnimal()%></div>
+
+                                <%if (a.getStatusAnimal() == 0) {%>
+                                <p>Perdido </p>
+                                <%} else {%>
+                                <p>Encontrado</p>
+                                <%}%>
                             </div>
                         </div>
 

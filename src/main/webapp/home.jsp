@@ -5,9 +5,6 @@
 --%>
 
 
-
-
-
 <%@page import="java.util.Date"%>
 <%@page import="java.util.Calendar"%>
 
@@ -188,14 +185,11 @@
                             </div>
                         </div>
                     </div>   
-
-
                     <!--- publicação-->
 
                     <div class="col-sm-8 mb-5">
-                        <h1> Publicações</h1>
-                        <div class="container border py-2"> 
-
+                        <h2> Publicações</h2>
+                        <div class="container border py-2">
                             <%try {
                                     for (Publication p : Publication.getPublication()) {
 
@@ -206,9 +200,8 @@
                             %>
 
                             <div class="row"> 
+
                                 <div class="col-lg-4 d-flex align-items-center">
-
-
 
                                     <img src="img/testePerfil.jpg" alt="avatar" class="md-avatar size-2 rounded-circle">
                                     <span class="pl-3"><%=userPublic.getName()%></span>
@@ -230,14 +223,16 @@
                                         <%} else {%>
                                         <p>Encontrado em:</p>
                                         <%}%></span>
+                                    <span class=" text-center"><%=endPublic.getCity()%></span>
+                                    <span class=" text-center"><%=endPublic.getDistrict()%></span>
                                     <span class=" text-center"><%=endPublic.getStreet()%></span>
                                 </div>
                             </div>
-                            <div class="row"> Observações
+                            <div class="row"><p> Observações</p>
                                 <div class="container">
-                                    <p>
+                                    <span>
                                         <%=animalPublic.getComments()%>
-                                    </p>
+                                    </span>
                                 </div>
                             </div>
                             <div class="row"><!-- Fotos-->
@@ -291,21 +286,15 @@
                                     </div>
                                 </div>
                             </div>
+                            <hr>
                             <%}%>
                         </div>
-
-
 
                         <% } catch (Exception ex) {
                                 System.out.println(ex.getMessage());
                                 msg = ex.getMessage();
                             }%>
-
-
                     </div>
-
-
-
 
                 </div>
             </div>
