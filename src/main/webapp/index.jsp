@@ -224,7 +224,7 @@
             </div>
         </div>
 
-        <footer >          
+        <footer>          
             <hr>
             <span class=" dark link">Disponível em : <a target="_blank" href="https://github.com/wandes/petSearch">https://github.com/wandes/petSearch</a></span>
         </footer>
@@ -243,7 +243,6 @@
              </div>
          </div>   
         -->
-
 
 
     </body>

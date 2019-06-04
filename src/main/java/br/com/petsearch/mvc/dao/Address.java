@@ -13,6 +13,7 @@ import java.util.ArrayList;
  * @author Wandes
  */
 public class Address {
+
     private int idAddress;
     private String street;
     private int postalCode;
@@ -79,8 +80,6 @@ public class Address {
         Object parameters[] = {street, postalCode, district, city, state, country, codAnimal};
         DatabaseConnector.execute(SQL, parameters);
     }
-    
-  
 
     public String getStreet() {
         return street;

@@ -4,7 +4,13 @@
     Author     : Leona
 --%>
 
-<%@page import="java.sql.Date"%>
+
+
+
+
+<%@page import="java.util.Date"%>
+<%@page import="java.util.Calendar"%>
+
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="br.com.petsearch.mvc.dao.User"%>
 <%@page import="br.com.petsearch.mvc.dao.Animal"%>
@@ -32,14 +38,14 @@
 
                 //cadastrando animal e associando ao usuário      
                 try {
-                    Animal.insertAnimal(Integer.parseInt(request.getParameter("statusAnimal")), request.getParameter("namePet"), request.getParameter("speciesPet"), request.getParameter("racePet"), request.getParameter("genderPet"), request.getParameter("colorPet"), Integer.parseInt(request.getParameter("agePet")), "Em Desenvolvimento");
+                    Animal.insertAnimal(Integer.parseInt(request.getParameter("statusAnimal")), request.getParameter("namePet"), request.getParameter("speciesPet"), request.getParameter("racePet"), request.getParameter("genderPet"), request.getParameter("colorPet"), Integer.parseInt(request.getParameter("agePet")), request.getParameter("comentarios"));
                 } catch (Exception ex) {
                     System.out.println(ex.getMessage());
                     msg = ex.getMessage();
                 }
             }
         %>
-        <p><%=msg%></p>
+
         <%if (request.getParameter("registerPublication") != null) {
 
                 try {
@@ -67,24 +73,18 @@
         %>
 
 
-        <%if (request.getParameter("registerPublication") != null) {
 
-                Date data = new Date(System.currentTimeMillis());
-                SimpleDateFormat formatarDate = new SimpleDateFormat("yyyy-MM-dd");
+        <%
+            if (request.getParameter("registerPublication") != null) {
 
                 try {
-                    Publication.insertPublication(Integer.parseInt(request.getParameter("statusAnimal")), data, user.getId());
+                    Publication.insertPublication(Integer.parseInt(request.getParameter("statusAnimal")), user.getId());
 
                 } catch (Exception ex) {
                     System.out.println(ex.getMessage());
                     msg = ex.getMessage();
                 }
             }%>
-
-
-
-
-
 
         <main class="mt-3">
             <div class="container">
@@ -113,10 +113,10 @@
                                                 <div class="modal-body stdBG">
                                                     <!-- FORMULÁRIO DE EDIÇÃO --->
                                                     <div class="row">
-                                                        <div class="col-md-12">
+                                                        <div class="col-md-6">
                                                             <div class="border-bottom text-center font-weight-bold my-2">Sobre sua publicação</div>
-                                                        </div>
-                                                            <div class="form-group col-md-6 ">
+
+                                                            <div class="form-group col-md-3 ">
                                                                 <div class="form-check w-100 text-center">
                                                                     <input class="form-check-input" type="radio" name="statusAnimal" id="perdidoRadio" value="0" required >
                                                                     <label class="form-check-label" for="perdidoRadio">
@@ -124,7 +124,7 @@
                                                                     </label>
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group col-md-6 ">
+                                                            <div class="form-group col-md-3 ">
                                                                 <div class="form-check w-100 text-center">
                                                                     <input class="form-check-input" type="radio" name="statusAnimal" id="encontradoRadio" value="1">
                                                                     <label class="form-check-label" for="encontradoRadio">
@@ -132,6 +132,7 @@
                                                                     </label>
                                                                 </div>
                                                             </div>
+                                                        </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="form-group text-left col-md-5">
@@ -148,9 +149,9 @@
                                                             <input type="text" class="form-control campoNome"  name="genderPet" placeholder="Sexo do seu pet" required>
                                                             <label for="editarCor">Cor</label>
                                                             <input type="text" class="form-control campoNome"  name="colorPet" placeholder="Cor do seu pet" required>
-                                                            <div class="form-group">
+                                                            <div class="form-group" name="comments" >
                                                                 <label>Observações</label>
-                                                                <textarea class="form-control campoComentarios" rows="3"  name="comments " disabled>Em Desenvolvimento</textarea>
+                                                                <textarea class="form-control" rows="3" name="comentarios"></textarea>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-2"></div>
@@ -186,12 +187,23 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>   
 
-                    <%%>              
+
+                    <!--- publicação-->
 
                     <div class="col-sm-8 mb-5">
+                        <h1> Publicações</h1>
                         <div class="container border py-2"> 
+
+                            <%try {
+                                    for (Publication p : Publication.getPublication()) {
+
+                                        User userPublic = User.getUserForId(p.getCodUser());
+                                        Animal animalPublic = Animal.getAnimal(p.getCodAnimal());
+                                        Address endPublic = Address.getAddress(p.getCodAnimal());
+
+                            %>
 
                             <div class="row"> 
                                 <div class="col-lg-4 d-flex align-items-center">
@@ -199,31 +211,32 @@
 
 
                                     <img src="img/testePerfil.jpg" alt="avatar" class="md-avatar size-2 rounded-circle">
-                                    <span class="pl-3">Nome Sobrenome</span>
+                                    <span class="pl-3"><%=userPublic.getName()%></span>
                                 </div>
 
                                 <div class="col-lg-2 d-flex flex-column py-4">
-                                    <span class=" text-center">Nome</span>
-                                    <span class=" text-center">Espécie Raça</span>
-                                    <span class=" text-center">Sexo</span>
+                                    <span class=" text-center">Nome: <%=animalPublic.getNameAnimal()%></span>
+                                    <span class=" text-center">Raça: <%=animalPublic.getNameRace()%></span>
+                                    <span class=" text-center">Sexo: <%=animalPublic.getNameGenderAnimal()%></span>
                                 </div>
                                 <div class="col-lg-2 d-flex flex-column py-4">
-                                    <span class=" text-center">Cor</span>
-                                    <span class=" text-center">Idade</span>
+                                    <span class=" text-center">Cor: <%=animalPublic.getNameColor()%></span>
+                                    <span class=" text-center">Idade: <%=animalPublic.getAgeAnimal()%></span>
                                 </div>
                                 <div class="col-lg-4 d-flex flex-column py-4">
-                                    <span class=" text-center">ENCONTRADO EM:</span>
-                                    <span class=" text-center">Rua José Agapito Cardoso</span>
+                                    <span class=" text-center">
+                                        <%if (animalPublic.getStatusAnimal() == 0) {%>
+                                        <p>Perdido em: </p>
+                                        <%} else {%>
+                                        <p>Encontrado em:</p>
+                                        <%}%></span>
+                                    <span class=" text-center"><%=endPublic.getStreet()%></span>
                                 </div>
                             </div>
-                            <div class="row"> Obesrvações
+                            <div class="row"> Observações
                                 <div class="container">
                                     <p>
-                                        <strong>Observações:</strong>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                        Duis ornare id dui sit amet consequat. Vivamus id elementum tortor. 
-                                        Suspendisse faucibus, libero at sagittis placerat, orci nisl vulputate mi, 
-                                        non sodales metus ligula vel ante. Vestibulum vitae efficitur orci.
+                                        <%=animalPublic.getComments()%>
                                     </p>
                                 </div>
                             </div>
@@ -278,17 +291,28 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <%}%>
                         </div>
+
+
+
+                        <% } catch (Exception ex) {
+                                System.out.println(ex.getMessage());
+                                msg = ex.getMessage();
+                            }%>
+
+
                     </div>
+
+
+
 
                 </div>
             </div>
         </main>
 
-
-
         <%}%>
+
         <footer >          
             <hr>
             <span class=" dark link">Disponível em : <a target="_blank" href="https://github.com/wandes/petSearch">https://github.com/wandes/petSearch</a></span>

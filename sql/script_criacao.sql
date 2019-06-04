@@ -55,7 +55,6 @@ foreign key (cd_animal) references animal (cd_animal) ON DELETE CASCADE);
 create table publication(
 cd_publication serial not null ,
 cd_status_animal int,
-dt_publication date,
 cd_user int,
 cd_animal serial not null,
 primary key (cd_publication),

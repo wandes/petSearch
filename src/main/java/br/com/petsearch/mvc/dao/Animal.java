@@ -24,7 +24,6 @@ public class Animal {
     private String nameColor;
     private int ageAnimal;
     private String comments;
-  
 
     public Animal(int idAnimal, int statusAnimal, String nameAnimal, String nameSpeciesAnimal, String nameRace, String nameGenderAnimal, String nameColor, int ageAnimal, String comments) {
         this.idAnimal = idAnimal;
@@ -38,10 +37,10 @@ public class Animal {
         this.nameGenderAnimal = nameGenderAnimal;
     }
 
-    public static void updateAnimal(int statusAnimal, String nameAnimal, String nameSpeciesAnimal, String nameRace, String nameGenderAnimal ,String nameColor, int ageAnimal, String comments, int cd_animal) throws Exception {
+    public static void updateAnimal(int statusAnimal, String nameAnimal, String nameSpeciesAnimal, String nameRace, String nameGenderAnimal, String nameColor, int ageAnimal, String comments, int cd_animal) throws Exception {
 
         String SQL = "UPDATE animal SET cd_status_animal = ?, nm_animal = ? , nm_species_animal = ? , nm_race = ? ,sg_gender_animal = ? , nm_color = ?, qt_age_animal = ?, ds_comments = ?  WHERE cd_animal= ?";
-        Object parameters[] = {statusAnimal, nameAnimal, nameSpeciesAnimal, nameRace,nameGenderAnimal , nameColor, ageAnimal, comments, cd_animal};
+        Object parameters[] = {statusAnimal, nameAnimal, nameSpeciesAnimal, nameRace, nameGenderAnimal, nameColor, ageAnimal, comments, cd_animal};
         DatabaseConnector.execute(SQL, parameters);
     }
 
@@ -65,48 +64,43 @@ public class Animal {
                         (String) row[6],
                         (int) row[7],
                         (String) row[8]);
-                     
+
                 return a;
             }
         } catch (Exception ex) {
             msgConnection = "Problemas com a conexao: " + ex;
-           return null;
+            return null;
         }
     }
-    
-    public static ArrayList<Animal> getAnimais (int cod)throws Exception{
-      String SQL = "SELECT a.cd_animal, a.cd_status_animal, a.nm_animal, a.nm_species_animal, a.nm_race, a.sg_gender_animal, a.nm_color, a.qt_age_animal, a.ds_comments FROM animal a, users_animal u WHERE a.cd_animal = u.cd_animal AND u.cd_user = ?  ";
+
+    public static ArrayList<Animal> getAnimais(int cod) throws Exception {
+        String SQL = "SELECT a.cd_animal, a.cd_status_animal, a.nm_animal, a.nm_species_animal, a.nm_race, a.sg_gender_animal, a.nm_color, a.qt_age_animal, a.ds_comments FROM animal a, users_animal u WHERE a.cd_animal = u.cd_animal AND u.cd_user = ?  ";
         ArrayList<Animal> animal = new ArrayList<>();
         ArrayList<Object[]> list = DatabaseConnector.getQuery(SQL, new Object[]{cod});
         for (int i = 0; i < list.size(); i++) {
             Object row[] = list.get(i);
             Animal a = new Animal(
-                        (int) row[0],
-                        (int) row[1],
-                        (String) row[2],
-                        (String) row[3],
-                        (String) row[4],
-                        (String) row[5],
-                        (String) row[6],
-                        (int) row[7],
-                        (String) row[8]);
+                    (int) row[0],
+                    (int) row[1],
+                    (String) row[2],
+                    (String) row[3],
+                    (String) row[4],
+                    (String) row[5],
+                    (String) row[6],
+                    (int) row[7],
+                    (String) row[8]);
             animal.add(a);
         }
         return animal;
     }
 
- 
-  
+    public static void deleteAnimal(int cd_animal) throws Exception {
 
-    
-     public static void deleteAnimal(int cd_animal) throws Exception {
-       
         String SQL = "DELETE FROM animal WHERE cd_animal = ?";
         Object parameters[] = {cd_animal};
         DatabaseConnector.execute(SQL, parameters);
-        
+
     }
-     
 
     public static void insertAnimal(int statusAnimal, String nameAnimal, String nameSpeciesAnimal, String nameRace, String nameGenderAnimal, String nameColor, int ageAnimal, String comments) throws Exception {
         //inserir animal
@@ -186,8 +180,6 @@ public class Animal {
     public void setIdAnimal(int idAnimal) {
         this.idAnimal = idAnimal;
     }
-
-  
 
     public String getNameGenderAnimal() {
         return nameGenderAnimal;

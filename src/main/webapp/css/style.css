@@ -75,7 +75,7 @@ tr:nth-child(even) {
     margin: auto;
 }
 .logosize{
-    
+
     height: 70px ;
 }
 .navbar{
@@ -104,11 +104,10 @@ p{
 }
 
 footer{
-    clear: both;
+
     background-image: linear-gradient( #EEE9E9, white );
     text-align: center;
-    margin-top: 2%;
-
+    margin-top : 12%;
     margin-bottom: 0;
 }
 

@@ -14,7 +14,7 @@
         <%if (session.getAttribute("session_user") == null) {
                 response.sendRedirect("index.jsp");
             } else {%>
-             <%String msg = "";%>
+        <%String msg = "";%>
         <% if (session.getAttribute("session_animal") == null) {
 
                 Animal animal = Animal.getAnimal(Integer.parseInt(request.getParameter("idAnimal")));
@@ -27,9 +27,9 @@
         <title>Alterar Publicação</title>
 
     </head>
-    
+
     <body style="text-align:center;">
-       
+
         <%@include file="../WEB-INF/jspf/header.jspf"%>
 
 
@@ -74,7 +74,7 @@
                             } else {
 
                         %>
-                        
+
                         <div class="form-group text-left">
                             <div class="border-bottom text-center font-weight-bold my-2">Sobre sua publicação</div>
                             <div class="form-check">
@@ -100,7 +100,7 @@
                             <input type="text" class="form-control campoNome" id="editarNomePet"  value="<%=an.getNameAnimal()%>" name="nameAnimal" placeholder="Nome do seu pet" >
                             <label for="editarIdade">Idade</label>
                             <input type="text" class="form-control campoIdade" id="editarIdade" value="<%=an.getAgeAnimal()%>" name="ageAnimal" placeholder="Idade do seu pet">
-                            
+
                             <label for="editarEspecie">Espécie</label>
                             <input type="text" class="form-control campoNome"  id="editarEspecie"  value="<%=an.getNameSpeciesAnimal()%>" name="nameSpeciesAnimal" placeholder="Espécie do seu pet">
                             <label for="editarRaca">Raça</label>
@@ -111,7 +111,7 @@
                             <input type="text" class="form-control campoNome" id="editarCor"  value="<%=an.getNameColor()%>" name="nameColor" placeholder="Cor do seu pet">
                             <div class="form-group">
                                 <label>Observações</label>
-                                <textarea class="form-control" rows="3" name="comments" disabled></textarea>
+                                <textarea class="form-control" rows="3"  name="comments" value=""><%=an.getComments()%></textarea>
                             </div>
                             <% Address end = Address.getAddress(an.getIdAnimal());%>      
 
@@ -142,35 +142,35 @@
 
                     </div>
                 </form>
-                   </div>
-                 </div>
-                         
+            </div>
+        </div>
 
-            <%}%>
-            
 
-            <% } catch (Exception ex) {
-                    System.out.println(ex.getMessage());
-                    msg = ex.getMessage();
-                }
-            %>  
-           
- 
-            <%}}%>
-            
- 
-            
-            <footer >          
-                <hr>
-                <span class=" dark link">Disponível em : <a target="_blank" href="https://github.com/wandes/petSearch">https://github.com/petSearch.git</a></span>
-            </footer>
-            <%@include file="WEB-INF/jspf/bootstrapBody.jspf"%>
-            <script src="js/jquery-3.4.1.min.js"></script>
-            <script src="js/jquery.mask.min.js"></script>       
-            <script src="js/script_jquery.js"></script>  
-            <script type="text/javascript" src="js/Funcoes.js"></script>
+        <%}%>
 
-</body>
+
+        <% } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+                msg = ex.getMessage();
+            }
+        %>  
+
+
+        <%}}%>
+
+
+
+        <footer >          
+            <hr>
+            <span class=" dark link">Disponível em : <a target="_blank" href="https://github.com/wandes/petSearch">https://github.com/petSearch.git</a></span>
+        </footer>
+        <%@include file="WEB-INF/jspf/bootstrapBody.jspf"%>
+        <script src="js/jquery-3.4.1.min.js"></script>
+        <script src="js/jquery.mask.min.js"></script>       
+        <script src="js/script_jquery.js"></script>  
+        <script type="text/javascript" src="js/Funcoes.js"></script>
+
+    </body>
 </html>
 
 

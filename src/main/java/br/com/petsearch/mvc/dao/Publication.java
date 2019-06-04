@@ -6,9 +6,10 @@
 package br.com.petsearch.mvc.dao;
 
 import static br.com.petsearch.mvc.dao.Animal.msgConnection;
-import java.sql.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+
+import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
+import java.util.Date;
+
 import java.util.ArrayList;
 
 /**
@@ -19,70 +20,48 @@ public class Publication {
 
     private int codPublication;
     private int codStatusAnimal;
-    private Date dataPublication;
     private int codUser;
-   
     private int codAnimal;
     protected static String msgConnection;
 
-    public Publication( int codStatusAnimal, Date dataPublication, int codUser) {
-       
+    public Publication(int codPublication, int codStatusAnimal, int codUser, int codAnimal) {
+        this.codPublication = codPublication;
         this.codStatusAnimal = codStatusAnimal;
-        this.dataPublication = dataPublication;
         this.codUser = codUser;
-       
+        this.codAnimal = codAnimal;
     }
 
-    public static void insertPublication(int codStatusAnimal, Date dataPublication, int codUser) throws Exception {
+    public static void insertPublication(int codStatusAnimal, int codUser) throws Exception {
         //inserir animal
-        String sql = "INSERT INTO  publication( cd_publication, cd_status_animal , dt_publication, cd_user, cd_animal) VALUES (default,?, ?, ?, default)";
+        String sql = "INSERT INTO  publication( cd_publication, cd_status_animal , cd_user, cd_animal) VALUES (default,?, ?, default)";
 
-        Object parameters[] = {codStatusAnimal, dataPublication, codUser};
+        Object parameters[] = {codStatusAnimal, codUser};
 
         DatabaseConnector.execute(sql, parameters);
 
     }
 
-    public static Publication getPublication(int cd_user) throws Exception {
-        try {
-            String SQL = "SELECT u.nm_user, a.nm_animal, a.nm_species_animal, a.nm_color, a.qt_age_animal, e.nm_street FROM users u, animal a, address e WHERE"
-                    + "u.cd_user = a.cd_user AND u.user = e.cd_user ";
-            Object parameters[] = {cd_user};
-            ArrayList<Object[]> list = DatabaseConnector.getQuery(SQL, parameters);
+    public static ArrayList<Publication> getPublication() throws Exception {
 
-            if (list.isEmpty()) {
-                msgConnection = "Não existe dados cadastrados ";
-                return null;
-            } else {
-                Object row[] = list.get(0);
+        try {
+            String SQL = "SELECT * FROM publication ORDER BY cd_animal DESC;";
+            ArrayList<Publication> publication = new ArrayList<>();
+            ArrayList<Object[]> list = DatabaseConnector.getQuery(SQL, new Object[]{});
+            for (int i = 0; i < list.size(); i++) {
+                Object row[] = list.get(i);
                 Publication p = new Publication(
                         (int) row[0],
-                        (Date) row[1],
-                        (int) row[2]);
-                     
-                return p;
+                        (int) row[1],
+                        (int) row[2],
+                        (int) row[3]);
+                publication.add(p);
             }
+            return publication;
+
         } catch (Exception ex) {
             msgConnection = "Error conexao " + ex;
-            return null;
         }
-    }
-
-    public static ArrayList<Publication> getPublications() throws Exception {
-
-        String SQL = "SELECT u.nm_user, a.nm_animal, a.nm_species_animal, a.nm_color, a.qt_age_animal, e.nm_street FROM users u, animal a, address e WHERE"
-                + "u.cd_user = a.cd_user AND u.user = e.cd_user ";
-        ArrayList<Publication> publication = new ArrayList<>();
-        ArrayList<Object[]> list = DatabaseConnector.getQuery(SQL, new Object[]{});
-        for (int i = 0; i < list.size(); i++) {
-            Object row[] = list.get(i);
-            Publication p = new Publication(
-                    (int) row[0],
-                        (Date) row[1],
-                        (int) row[2]);
-            publication.add(p);
-        }
-        return publication;
+        return null;
     }
 
     public static String getMsgConnection() {
@@ -113,14 +92,6 @@ public class Publication {
         this.codStatusAnimal = codStatusAnimal;
     }
 
-    public Date getDataPublication() {
-        return dataPublication;
-    }
-
-    public void setDataPublication(Date dataPublication) {
-        this.dataPublication = dataPublication;
-    }
-
     public int getCodUser() {
         return codUser;
     }
@@ -128,7 +99,5 @@ public class Publication {
     public void setCodUser(int codUser) {
         this.codUser = codUser;
     }
-
- 
 
 }

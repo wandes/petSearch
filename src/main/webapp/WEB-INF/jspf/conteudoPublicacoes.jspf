@@ -186,21 +186,21 @@
                             <button class="btn btn-success" type="submit" name="alterar" >Alterar Publicação</button>  
                         </div>  
                 </form>
-                            
+
                 <form method="post" action="perfil.jsp">  
 
                     <div class="col-sm-3 px-0">
                         <input type="hidden" name="idAnimal" value="<%=a.getIdAnimal()%>">
                         <button  type="submit" class="btn btn-danger" data-dismiss="modal" name="deletePet" >Excluir</button>          
                     </div>
-                  </div>
+            </div>
 
-             
-                </form>
+
+            </form>
 
 
             <%}%>
-           
+
             <% }
                     } catch (Exception ex) {
                         System.out.println(ex.getMessage());

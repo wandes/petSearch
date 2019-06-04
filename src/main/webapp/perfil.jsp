@@ -301,7 +301,7 @@
                                                     <div class="font-weight-bold text-right">Sexo:</div>
                                                 </div>
                                                 <div class="col-8">
-                                                    <div class="text-left">estruturar banco, get e set</div>
+                                                    <div class="text-left"><%=animal.getNameGenderAnimal()%></div>
                                                 </div>
                                             </div>
                                             <div class="row mt-2">

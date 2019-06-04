@@ -20,6 +20,7 @@ import org.postgresql.core.ConnectionFactory;
  * @author Wandes
  */
 public class User {
+
     protected static String msgConnection;
     private int id;
     private String name;
@@ -47,34 +48,15 @@ public class User {
         DatabaseConnector.execute(sql, parameters);
 
     }
-   
-     public static void insertUserAnimal(int codUser) throws Exception {
+
+    public static void insertUserAnimal(int codUser) throws Exception {
         //inserir animal
         String sql = "INSERT INTO  users_animal( cd_users_animal, cd_user, cd_animal) VALUES (default,?,default)";
 
-        Object parameters[] = { codUser};
+        Object parameters[] = {codUser};
 
         DatabaseConnector.execute(sql, parameters);
 
-    }
-
-    public static ArrayList<User> getUserForId() throws Exception {
-
-        String SQL = "SELECT * FROM users;";
-        ArrayList<User> usuarios = new ArrayList<>();
-        ArrayList<Object[]> list = DatabaseConnector.getQuery(SQL, new Object[]{});
-        for (int i = 0; i < list.size(); i++) {
-            Object row[] = list.get(i);
-            User u = new User(
-                    (int) row[0],
-                    (String) row[1],
-                    (String) row[2],
-                    (String) row[3],
-                    (String) row[4],
-                    (String) row[5]);
-            usuarios.add(u);
-        }
-        return usuarios;
     }
 
     public static ArrayList<User> getUsers() throws Exception {
@@ -96,28 +78,54 @@ public class User {
     }
 
     public static User getUser(String email, String pass) throws Exception {
-     try {
-        String SQL = "SELECT cd_user, nm_name , nm_email, nm_password, cd_telephone , sg_gender  FROM users  WHERE nm_email = ? AND nm_password = ? ";
-        Object parameters[] = {email, pass};
-        ArrayList<Object[]> list = DatabaseConnector.getQuery(SQL, parameters);
+        try {
+            String SQL = "SELECT cd_user, nm_name , nm_email, nm_password, cd_telephone , sg_gender  FROM users  WHERE nm_email = ? AND nm_password = ? ";
+            Object parameters[] = {email, pass};
+            ArrayList<Object[]> list = DatabaseConnector.getQuery(SQL, parameters);
 
-        if (list.isEmpty()) {
-            msgConnection = "Não existe dados cadastrados ";
-            return null;
-        } else {
-            Object row[] = list.get(0);
-            User u = new User(
-                    (int) row[0],
-                    (String) row[1],
-                    (String) row[2],
-                    (String) row[3],
-                    (String) row[4],
-                    (String) row[5]);
-            return u;
-        }
-         } catch (Exception ex) {
+            if (list.isEmpty()) {
+                msgConnection = "Não existe dados cadastrados ";
+                return null;
+            } else {
+                Object row[] = list.get(0);
+                User u = new User(
+                        (int) row[0],
+                        (String) row[1],
+                        (String) row[2],
+                        (String) row[3],
+                        (String) row[4],
+                        (String) row[5]);
+                return u;
+            }
+        } catch (Exception ex) {
             msgConnection = "Problemas com a conexao: " + ex;
-           return null;
+            return null;
+        }
+    }
+
+    public static User getUserForId(int cod) throws Exception {
+        try {
+            String SQL = "SELECT cd_user, nm_name , nm_email, nm_password, cd_telephone , sg_gender  FROM users  WHERE cd_user = ? ";
+            Object parameters[] = {cod};
+            ArrayList<Object[]> list = DatabaseConnector.getQuery(SQL, parameters);
+
+            if (list.isEmpty()) {
+                msgConnection = "Não existe dados cadastrados ";
+                return null;
+            } else {
+                Object row[] = list.get(0);
+                User u = new User(
+                        (int) row[0],
+                        (String) row[1],
+                        (String) row[2],
+                        (String) row[3],
+                        (String) row[4],
+                        (String) row[5]);
+                return u;
+            }
+        } catch (Exception ex) {
+            msgConnection = "Problemas com a conexao: " + ex;
+            return null;
         }
     }
 
@@ -127,17 +135,18 @@ public class User {
         Object parameters[] = {name, email, password, telephone, cd_user};
         DatabaseConnector.execute(SQL, parameters);
     }
-  
+
     public static void deleteUser(int cd_user) throws Exception {
-       
+
         String SQL = "DELETE FROM users WHERE cd_user = ?";
         Object parameters[] = {cd_user};
         DatabaseConnector.execute(SQL, parameters);
-     
+
     }
-     public static String getMsgConnection() {
+
+    public static String getMsgConnection() {
         return msgConnection;
-    } 
+    }
 
     public int getId() {
         return id;
