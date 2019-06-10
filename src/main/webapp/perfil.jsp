@@ -115,7 +115,7 @@
                                                             <!---------------- FORMULÁRIO DE EDIÇÃO --------------------------------------->
                                                             <div class="form-group text-left">
                                                                 <div class="border-bottom text-center font-weight-bold my-2">Sobre seu perfil</div>
-                                                                <label for="editarFoto">Fonto de perfil</label>
+                                                                <label for="editarFoto">Foto de perfil</label>
                                                                 <input type="file" class="form-control-file" id="editarFoto">
                                                                 <label for="editarNome" >ID</label>
                                                                 <input type="text" class="form-control" id="editarNome" value="<%=user.getId()%>" name="idUp" disabled="">
@@ -135,8 +135,7 @@
                                                                 <div class="form-check form-check-inline">
                                                                   <input class="form-check-input" type="radio" name="radioSexo" id="editarSexo" value="Feminino">
                                                                   <label class="form-check-label" for="editarSexo">Feminino</label>
-                                                                </div>-->
-                                                 
+                                                                </div>-->                                                
                                                             </div>
 
                                                         </div>
@@ -160,7 +159,7 @@
                                                 <div class="col-4 ">
                                                     <div class="font-weight-bold text-right">Foto de perfil:</div>
                                                 </div>
-                                                <div class="col-8">
+                                                <div class="col-4">
                                                     <div class="text-left">
                                                         <img src="img/testePerfil.jpg" alt="avatar" class="md-avatar size-3 rounded-circle">
                                                     </div>

@@ -147,8 +147,9 @@
                                                             <label for="editarCor">Cor</label>
                                                             <input type="text" class="form-control campoNome"  name="colorPet" placeholder="Cor do seu pet" required>
                                                             <div class="form-group" name="comments" >
-                                                                <label>Observações</label>
-                                                                <textarea class="form-control" rows="3" name="comentarios"></textarea>
+                                                                <label>Observações: </label>
+                                                                <textarea type="text" class="form-control "  rows="3" name="comentarios"></textarea>
+                                                                <label style="color: red;"> 'estudando para mostrar acentuação de caráter vindos do Banco'</label>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-2"></div>
