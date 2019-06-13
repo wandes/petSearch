@@ -8,4 +8,4 @@
  * Created: 18/05/2019
  */
 
-SELECT * FROM users;
+SELECT cd_user, nm_name , nm_email, nm_password, cd_telephone , sg_gender  FROM users  WHERE nm_email = 'wandessilva@outlook.com' AND nm_password = '123';

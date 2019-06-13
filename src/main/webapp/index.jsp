@@ -14,8 +14,26 @@
         <title>Login</title>
 
     </head>
+    
+     <%String msg = "";
+         
+        if (request.getParameter("login") != null) {
 
-    <% String msg = "";
+            String email = request.getParameter("email");
+            String pass = request.getParameter("password");
+
+            User user = User.getUser(email, pass);
+            %><p><%=email%></p>/<p><%=pass%></p>=<p><%=user%></p><%
+            if (user == null) {
+                msg = "Usuário ou senha Inválido!";
+            } else {
+                session.setAttribute("session_user", user);
+                response.sendRedirect("home.jsp");
+
+            }
+        }%>
+
+    <% 
 
         if (request.getParameter("register") != null && request.getParameter("password").equals(request.getParameter("ConfirmPass"))) {
 
@@ -35,24 +53,8 @@
             }
         } %>
 
-    <%
-         
-        if (request.getParameter("login") != null) {
-
-            String email = request.getParameter("email");
-            String pass = request.getParameter("password");
-
-            User user = User.getUser(email, pass);
-
-            if (user == null) {
-                msg = "Usuário ou senha Inválido!";
-            } else {
-                session.setAttribute("session_user", user);
-                response.sendRedirect("home.jsp");
-
-            }
-        }%>
-
+   
+     
 
     <body>
         <div id="conteudo">
@@ -67,13 +69,13 @@
                             <div class="row">
                                 <label for="email" class="text-white">E-mail</label>
                                 <div class="col-md-3 input-group-md ">
-                                    <input type="email" class="form-control campoNomeEmail"    aria-label="Username" aria-describedby="basic-addon1" name="email" placeholder="nome@email.com"  required="">
+                                    <input type="email" class="form-control "    aria-label="Username" aria-describedby="basic-addon1" name="email" placeholder="nome@email.com"  required="">
 
                                 </div>
 
                                 <label for="senha" class="text-white">Senha</label>
                                 <div class="col-md-3 input-group-md ">    
-                                    <input type="password" class="form-control campoSenha"  aria-label="Username" aria-describedby="basic-addon1"  placeholder="senha"  name="password" required="">
+                                    <input type="password" class="form-control "  aria-label="Username" aria-describedby="basic-addon1"  placeholder="senha"  name="password" required="">
                                 </div>
 
                                 <div class="col-md-3 input-group-md " >

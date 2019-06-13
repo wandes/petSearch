@@ -79,7 +79,7 @@ public class User {
 
     public static User getUser(String email, String pass) throws Exception {
         try {
-            String SQL = "SELECT cd_user, nm_name , nm_email, nm_password, cd_telephone , sg_gender  FROM users  WHERE nm_email = ? AND nm_password = ? ";
+            String SQL = "SELECT cd_user, nm_name , nm_email, nm_password, cd_telephone , sg_gender  FROM users  WHERE nm_email = ? AND nm_password = ?; ";
             Object parameters[] = {email, pass};
             ArrayList<Object[]> list = DatabaseConnector.getQuery(SQL, parameters);
 
