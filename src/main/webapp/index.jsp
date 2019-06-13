@@ -36,7 +36,7 @@
         } %>
 
     <%
-
+         
         if (request.getParameter("login") != null) {
 
             String email = request.getParameter("email");

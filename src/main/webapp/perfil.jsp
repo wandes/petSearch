@@ -16,6 +16,9 @@
     <body style="text-align:center;">
         <%@include file="../WEB-INF/jspf/header.jspf"%>
  <% if(session.getAttribute("session_user") != null){%>
+ 
+ 
+ 
         <%
           String msg = ""; 
           User user = (User)session.getAttribute("session_user");
@@ -39,21 +42,17 @@
                 response.sendRedirect("perfil.jsp");
              } catch (Exception ex) {
               System.out.println(ex.getMessage()); } } %>
-
-        
-
-        <% 
-                      
-    if (request.getParameter("deleteUser") != null ) {
+ <%if (request.getParameter("deleteUser") != null ) {
             
        try {                     
        User.deleteUser(user.getId());
-         session.invalidate();
+     session.invalidate();
     response.sendRedirect("index.jsp");
        } catch (Exception ex) {
         System.out.println(ex.getMessage());
               
-       } } %> 
+       } } %>                       
+   
 <%
    if (request.getParameter("deletePet") != null ) {
             
@@ -63,7 +62,7 @@
        } catch (Exception ex) {
         System.out.println(ex.getMessage());
               
-       } } %> 
+       } } %>  
         <main class="mt-3">
             <div class="container">
                 <div class="row">
@@ -341,8 +340,8 @@
         -->  
 
         <%@include file="../WEB-INF/jspf/bootstrapBody.jspf"%>
-       <%}%>
-      
+     
+      <%}%>
        <footer >          
             <hr>
             <span class=" dark link">Disponível em : <a target="_blank" href="https://github.com/wandes/petSearch">https://github.com/wandes/petSearch</a></span>

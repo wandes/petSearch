@@ -3,7 +3,7 @@
 <div id="perfilConteudo">
    
     <% if(session.getAttribute("session_user") == null){
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("logout.jsp");
              }else{%>
              
     <div class="row d-flex justify-content-end">

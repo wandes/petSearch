@@ -8,4 +8,4 @@
  * Created: 18/05/2019
  */
 
-SELECT * FROM animal ORDER BY cd_animal DESC;
+SELECT * FROM users;
