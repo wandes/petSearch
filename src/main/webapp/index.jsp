@@ -23,7 +23,6 @@
             String pass = request.getParameter("password");
 
             User user = User.getUser(email, pass);
-            %><p><%=email%></p>/<p><%=pass%></p>=<p><%=user%></p><%
             if (user == null) {
                 msg = "Usuário ou senha Inválido!";
             } else {
